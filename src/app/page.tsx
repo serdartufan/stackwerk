@@ -74,6 +74,34 @@ const waarom = [
   },
 ];
 
+const steps = [
+  {
+    num: "01",
+    title: "Kennismaking",
+    desc: "Vrijblijvend gesprek over je idee, doelen en budget. Geen verkooppraatje, gewoon kijken of het klikt.",
+  },
+  {
+    num: "02",
+    title: "Voorstel",
+    desc: "Een concreet projectvoorstel met scope, planning en prijs. Geen vage offertes, gewoon duidelijkheid.",
+  },
+  {
+    num: "03",
+    title: "Bouw",
+    desc: "We bouwen in sprints. Je ziet tussentijds de voortgang en geeft feedback waar nodig.",
+  },
+  {
+    num: "04",
+    title: "Revisies",
+    desc: "We verwerken je feedback en schaven bij tot het precies klopt zoals jij het voor je ziet.",
+  },
+  {
+    num: "05",
+    title: "Oplevering",
+    desc: "Het project wordt overgedragen. Code, toegangen en documentatie, alles netjes geregeld.",
+  },
+];
+
 const stats = [
   { number: "10+", label: "Projecten opgeleverd" },
   { number: "3", label: "Actieve SaaS producten" },
@@ -273,6 +301,201 @@ export default function Home() {
                 </ScrollAnimation>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── Werkwijze — wit ──────────────────────────────────────────────── */}
+        <section style={{ backgroundColor: "#FFFFFF" }}>
+          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
+            <ScrollAnimation>
+              <p
+                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
+                style={{ color: "#E85D26" }}
+              >
+                HOE WE WERKEN
+              </p>
+              <h2
+                className="font-serif font-bold mb-16 lg:mb-24"
+                style={{
+                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                  color: "#111111",
+                }}
+              >
+                Onze{" "}
+                <span className="italic" style={{ color: "#E85D26" }}>
+                  werkwijze.
+                </span>
+              </h2>
+
+              {/* Desktop: horizontale timeline */}
+              <div className="relative hidden md:block">
+                {/* Horizontale verbindingslijn — gecentreerd op de cirkels */}
+                <div
+                  className="absolute left-0 right-0"
+                  style={{
+                    top: "167px",
+                    height: "1px",
+                    backgroundColor: "rgba(17,17,17,0.12)",
+                  }}
+                />
+
+                <div className="grid grid-cols-5">
+                  {steps.map((step, i) => {
+                    const isOdd = i % 2 === 0;
+                    return (
+                      <div key={step.title} className="flex flex-col items-center px-3">
+                        {/* Boven de lijn — fixed height zodat cirkels uitlijnen */}
+                        <div
+                          className="flex w-full flex-col items-center justify-end text-center"
+                          style={{ height: "160px", paddingBottom: "12px" }}
+                        >
+                          {isOdd ? (
+                            <>
+                              <p
+                                className="font-sans uppercase mb-2"
+                                style={{
+                                  fontSize: "11px",
+                                  letterSpacing: "0.2em",
+                                  color: "rgba(17,17,17,0.35)",
+                                }}
+                              >
+                                {step.num}
+                              </p>
+                              <p
+                                className="font-serif font-bold"
+                                style={{ fontSize: "1.1rem", color: "#111111" }}
+                              >
+                                {step.title}
+                              </p>
+                            </>
+                          ) : (
+                            <p
+                              className="font-sans text-center"
+                              style={{
+                                fontSize: "13px",
+                                color: "rgba(17,17,17,0.6)",
+                                maxWidth: "160px",
+                                lineHeight: "1.6",
+                              }}
+                            >
+                              {step.desc}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Cirkel op de lijn */}
+                        <div
+                          className="shrink-0 rounded-full"
+                          style={{
+                            width: "14px",
+                            height: "14px",
+                            backgroundColor: "#E85D26",
+                            border: "3px solid white",
+                            boxShadow: "0 0 0 1px #E85D26",
+                          }}
+                        />
+
+                        {/* Onder de lijn */}
+                        <div
+                          className="flex w-full flex-col items-center text-center"
+                          style={{ paddingTop: "12px" }}
+                        >
+                          {isOdd ? (
+                            <p
+                              className="font-sans"
+                              style={{
+                                fontSize: "13px",
+                                color: "rgba(17,17,17,0.6)",
+                                maxWidth: "160px",
+                                lineHeight: "1.6",
+                              }}
+                            >
+                              {step.desc}
+                            </p>
+                          ) : (
+                            <>
+                              <p
+                                className="font-sans uppercase mb-2"
+                                style={{
+                                  fontSize: "11px",
+                                  letterSpacing: "0.2em",
+                                  color: "rgba(17,17,17,0.35)",
+                                }}
+                              >
+                                {step.num}
+                              </p>
+                              <p
+                                className="font-serif font-bold"
+                                style={{ fontSize: "1.1rem", color: "#111111" }}
+                              >
+                                {step.title}
+                              </p>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Mobiel: verticale timeline */}
+              <div className="md:hidden">
+                {steps.map((step, i) => (
+                  <div key={step.title} className="flex gap-5">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className="shrink-0 rounded-full"
+                        style={{
+                          width: "14px",
+                          height: "14px",
+                          backgroundColor: "#E85D26",
+                          border: "3px solid white",
+                          boxShadow: "0 0 0 1px #E85D26",
+                        }}
+                      />
+                      {i < steps.length - 1 && (
+                        <div
+                          className="mt-1 w-px flex-1"
+                          style={{
+                            backgroundColor: "rgba(17,17,17,0.12)",
+                            minHeight: "60px",
+                          }}
+                        />
+                      )}
+                    </div>
+                    <div className="pb-10">
+                      <p
+                        className="font-sans uppercase mb-1"
+                        style={{
+                          fontSize: "11px",
+                          letterSpacing: "0.2em",
+                          color: "rgba(17,17,17,0.35)",
+                        }}
+                      >
+                        {step.num}
+                      </p>
+                      <p
+                        className="font-serif font-bold mb-2"
+                        style={{ fontSize: "1.1rem", color: "#111111" }}
+                      >
+                        {step.title}
+                      </p>
+                      <p
+                        className="font-sans"
+                        style={{
+                          fontSize: "13px",
+                          color: "rgba(17,17,17,0.6)",
+                          lineHeight: "1.6",
+                        }}
+                      >
+                        {step.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </ScrollAnimation>
           </div>
         </section>
 
