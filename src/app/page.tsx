@@ -101,7 +101,7 @@ export default function Home() {
           className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 lg:px-8"
           style={{ backgroundColor: "#111111" }}
         >
-          <div className="mx-auto w-full max-w-7xl pt-12 pb-10 lg:pt-16 lg:pb-12">
+          <div className="mx-auto w-full max-w-7xl pt-6 pb-10 lg:pt-8 lg:pb-12">
             <p
               className="font-sans mb-6 text-xs uppercase tracking-[0.28em]"
               style={{ color: "rgba(240,237,232,0.38)" }}
@@ -221,16 +221,15 @@ export default function Home() {
                   <div
                     className="dienst-card flex h-full flex-col rounded-2xl p-10"
                     style={{
-                      backgroundColor: "rgba(0,0,0,0.15)",
-                      border: "1px solid rgba(0,0,0,0.12)",
+                      backgroundColor: "#111111",
+                      border: "1px solid rgba(255,255,255,0.06)",
                     }}
                   >
                     <p
                       className="font-serif font-bold mb-6 leading-none select-none"
                       style={{
                         fontSize: "3rem",
-                        opacity: 0.15,
-                        color: "#FFFFFF",
+                        color: "#E85D26",
                       }}
                     >
                       {d.num}
@@ -243,7 +242,7 @@ export default function Home() {
                     </h3>
                     <p
                       className="font-sans flex-1 text-sm leading-relaxed mb-8"
-                      style={{ color: "rgba(255,255,255,0.75)" }}
+                      style={{ color: "rgba(255,255,255,0.65)" }}
                     >
                       {d.desc}
                     </p>
@@ -254,8 +253,8 @@ export default function Home() {
                             key={tag}
                             className="font-sans rounded-full px-3 py-1 text-xs"
                             style={{
-                              backgroundColor: "rgba(0,0,0,0.12)",
-                              color: "rgba(255,255,255,0.7)",
+                              backgroundColor: "rgba(255,255,255,0.08)",
+                              color: "rgba(255,255,255,0.55)",
                             }}
                           >
                             {tag}
@@ -264,7 +263,7 @@ export default function Home() {
                       </div>
                       <span
                         className="font-sans ml-4 shrink-0 text-xl"
-                        style={{ color: "#FFFFFF" }}
+                        style={{ color: "#E85D26" }}
                         aria-hidden="true"
                       >
                         →
