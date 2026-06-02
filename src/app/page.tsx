@@ -243,8 +243,8 @@ export default function Home() {
                   <div
                     className="dienst-card flex h-full flex-col rounded-2xl p-10"
                     style={{
-                      backgroundColor: "#111111",
-                      border: "1px solid rgba(255,255,255,0.06)",
+                      backgroundColor: "#FFFFFF",
+                      border: "1px solid rgba(17,17,17,0.08)",
                     }}
                   >
                     <p
@@ -258,13 +258,13 @@ export default function Home() {
                     </p>
                     <h3
                       className="font-serif font-bold text-3xl mb-4"
-                      style={{ color: "#FFFFFF" }}
+                      style={{ color: "#111111" }}
                     >
                       {d.title}
                     </h3>
                     <p
                       className="font-sans flex-1 text-sm leading-relaxed mb-8"
-                      style={{ color: "rgba(255,255,255,0.65)" }}
+                      style={{ color: "rgba(17,17,17,0.6)" }}
                     >
                       {d.desc}
                     </p>
@@ -275,8 +275,8 @@ export default function Home() {
                             key={tag}
                             className="font-sans rounded-full px-3 py-1 text-xs"
                             style={{
-                              backgroundColor: "rgba(255,255,255,0.08)",
-                              color: "rgba(255,255,255,0.55)",
+                              backgroundColor: "rgba(17,17,17,0.06)",
+                              color: "rgba(17,17,17,0.5)",
                             }}
                           >
                             {tag}
