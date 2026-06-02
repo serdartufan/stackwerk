@@ -533,8 +533,8 @@ export default function Home() {
                       aria-hidden="true"
                       style={{
                         fontSize: "clamp(4rem, 8vw, 7rem)",
-                        color: "#F0EDE8",
-                        opacity: 0.08,
+                        color: "#E85D26",
+                        opacity: 0.15,
                       }}
                     >
                       {c.num}
