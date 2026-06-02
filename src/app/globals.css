@@ -41,6 +41,21 @@ body {
   color: #e85d26;
 }
 
+/* Contact formulier velden */
+.contact-input::placeholder {
+  color: rgba(240,237,232,0.3);
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: rgba(232,93,38,0.35);
+}
+
+.contact-input option {
+  background-color: #1a1a1a;
+  color: #f0ede8;
+}
+
 /* Diensten cards — top accent border via inset box-shadow (vermijdt conflict met inline border) */
 .dienst-card {
   box-shadow: inset 0 3px 0 transparent;

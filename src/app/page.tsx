@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import ContactForm from "@/components/ContactForm";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -667,40 +668,125 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── CTA — zwart ──────────────────────────────────────────────────── */}
+        {/* ── Contact — zwart ──────────────────────────────────────────────── */}
         <section id="contact" style={{ backgroundColor: "#111111" }}>
-          <div className="mx-auto max-w-7xl px-6 py-32 text-center lg:px-8 lg:py-40">
+          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation>
+              <p
+                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
+                style={{ color: "#E85D26" }}
+              >
+                CONTACT
+              </p>
               <h2
-                className="font-serif font-bold mb-6"
+                className="font-serif font-bold mb-12"
                 style={{
-                  fontSize: "clamp(2rem, 5vw, 4rem)",
+                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
                   color: "#F0EDE8",
                 }}
               >
-                Klaar om te{" "}
+                Start een{" "}
                 <span className="italic" style={{ color: "#E85D26" }}>
-                  bouwen?
+                  project.
                 </span>
               </h2>
-              <p
-                className="font-sans mx-auto mb-10"
-                style={{
-                  maxWidth: "480px",
-                  color: "rgba(240,237,232,0.55)",
-                  fontSize: "17px",
-                  lineHeight: "1.7",
-                }}
-              >
-                Vertel ons over je idee en we nemen binnen 24 uur contact op.
-              </p>
-              <a
-                href="mailto:serdar@stackwerk.nl"
-                className="inline-flex items-center rounded-full px-8 py-4 font-sans text-base font-medium text-white transition-opacity hover:opacity-85"
-                style={{ backgroundColor: "#E85D26" }}
-              >
-                Start een project
-              </a>
+
+              <div className="grid gap-10 lg:grid-cols-3">
+                {/* Linker kolom: formulier */}
+                <div className="lg:col-span-2">
+                  <ContactForm />
+                </div>
+
+                {/* Rechter kolom: contactgegevens */}
+                <div className="flex flex-col gap-5">
+                  {/* Card 1: Contactgegevens */}
+                  <div
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(240,237,232,0.08)",
+                      borderRadius: "14px",
+                      padding: "24px",
+                    }}
+                  >
+                    <p
+                      className="font-serif font-bold mb-5"
+                      style={{ fontSize: "1.1rem", color: "#FFFFFF" }}
+                    >
+                      Contactgegevens
+                    </p>
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center gap-3">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="#E85D26" strokeWidth="1.25"/>
+                          <polyline points="2,5.5 8,9.5 14,5.5" stroke="#E85D26" strokeWidth="1.25" strokeLinejoin="round"/>
+                        </svg>
+                        <span
+                          className="font-sans"
+                          style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}
+                        >
+                          serdar@stackwerk.nl
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M5.5 2h2l1 2.5-1.5 1.5a7 7 0 003 3l1.5-1.5L14 8.5v2a1 1 0 01-1 1C6.7 11.5 2.5 7.3 2.5 3a1 1 0 011-1z" stroke="#E85D26" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        <span
+                          className="font-sans"
+                          style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}
+                        >
+                          +31 6 00000000
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M8 1.5A3.5 3.5 0 004.5 5c0 3.5 3.5 8.5 3.5 8.5S11.5 8.5 11.5 5A3.5 3.5 0 008 1.5z" stroke="#E85D26" strokeWidth="1.25"/>
+                          <circle cx="8" cy="5" r="1.25" stroke="#E85D26" strokeWidth="1.25"/>
+                        </svg>
+                        <span
+                          className="font-sans"
+                          style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}
+                        >
+                          Groningen, Nederland
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 2: Bedrijfsgegevens */}
+                  <div
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(240,237,232,0.08)",
+                      borderRadius: "14px",
+                      padding: "24px",
+                    }}
+                  >
+                    <p
+                      className="font-serif font-bold mb-5"
+                      style={{ fontSize: "1.1rem", color: "#FFFFFF" }}
+                    >
+                      Bedrijfsgegevens
+                    </p>
+                    <div className="flex flex-col gap-2">
+                      {[
+                        "Stackwerk",
+                        "Groningen, Nederland",
+                        "KVK: 73815462",
+                        "serdar@stackwerk.nl",
+                      ].map((item) => (
+                        <p
+                          key={item}
+                          className="font-sans"
+                          style={{ fontSize: "14px", color: "rgba(240,237,232,0.55)" }}
+                        >
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </ScrollAnimation>
           </div>
         </section>
