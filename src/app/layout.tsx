@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, DM_Sans } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -33,7 +34,10 @@ export default function RootLayout({
       lang="nl"
       className={`${fraunces.variable} ${dmSans.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

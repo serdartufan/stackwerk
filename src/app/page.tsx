@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ContactForm from "@/components/ContactForm";
 
@@ -122,8 +121,6 @@ const navLinks = [
 export default function Home() {
   return (
     <>
-      <Navbar />
-
       <main>
         {/* ── Hero — zwart ─────────────────────────────────────────────────── */}
         <section
