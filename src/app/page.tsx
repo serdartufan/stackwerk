@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ContactForm from "@/components/ContactForm";
 
@@ -7,18 +8,21 @@ const diensten = [
   {
     num: "01",
     title: "Websites",
+    href: "/diensten/websites",
     desc: "Conversiegerichte websites die snel laden, goed ranken en bezoekers omzetten in klanten. Van landingspagina tot volledige bedrijfssite.",
     tags: ["Next.js", "TypeScript", "Tailwind"],
   },
   {
     num: "02",
     title: "SaaS Platforms",
+    href: "/diensten/saas-platforms",
     desc: "Van MVP tot schaalbaar platform. Wij bouwen multi-tenant applicaties met auth, dashboards, betalingen en alles wat erbij hoort.",
     tags: ["Next.js", "Supabase", "Stripe"],
   },
   {
     num: "03",
     title: "Maatwerk Software",
+    href: "/diensten/maatwerk-software",
     desc: "Heeft jouw bedrijf iets nodig dat nergens kant-en-klaar bestaat? Wij bouwen het. Van interne tools tot complexe integraties.",
     tags: ["API's", "Automatisering", "Integraties"],
   },
@@ -238,8 +242,9 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-3">
               {diensten.map((d, i) => (
                 <ScrollAnimation key={d.num} delay={i * 110}>
+                  <Link href={d.href} className="block h-full">
                   <div
-                    className="dienst-card flex h-full flex-col rounded-2xl p-10"
+                    className="dienst-card flex h-full flex-col rounded-2xl p-10 cursor-pointer"
                     style={{
                       backgroundColor: "#FFFFFF",
                       border: "1px solid rgba(17,17,17,0.08)",
@@ -290,6 +295,7 @@ export default function Home() {
                       </span>
                     </div>
                   </div>
+                  </Link>
                 </ScrollAnimation>
               ))}
             </div>
