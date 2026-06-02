@@ -130,12 +130,6 @@ export default function Home() {
           style={{ backgroundColor: "#111111" }}
         >
           <div className="mx-auto w-full max-w-7xl pt-6 pb-10 lg:pt-8 lg:pb-12">
-            <p
-              className="font-sans mb-6 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "rgba(240,237,232,0.38)" }}
-            >
-              WEBSITES · SAAS PLATFORMS · MAATWERK SOFTWARE
-            </p>
 
             <h1
               className="font-serif font-bold leading-[1.02] mb-10"
