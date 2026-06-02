@@ -39,7 +39,7 @@ const cases = [
     title: "Just Harry",
     desc: "AI lead kwalificatie tool voor dienstverleners. Multi-tenant platform met auth, dashboards, Stripe betalingen en Claude AI integratie.",
     tags: ["Next.js", "Supabase", "Claude AI"],
-    result: "Van idee naar product in 60 dagen",
+    result: "Van idee naar product in 30 dagen",
   },
   {
     num: "03",
@@ -49,30 +49,26 @@ const cases = [
     tags: ["Next.js", "Tailwind", "Vercel"],
     result: "Conversie +40%",
   },
-  {
-    num: "04",
-    label: "Lead Generatie",
-    title: "Verpoorten Vitality",
-    desc: "Lead generatie systeem voor een personal training studio via Meta Ads en geautomatiseerde opvolging via GoHighLevel.",
-    tags: ["Meta Ads", "GoHighLevel", "Automations"],
-    result: "300+ leads in 60 dagen",
-  },
 ];
 
 const waarom = [
   {
+    num: "01",
     title: "AI als werktool",
     desc: "Wij gebruiken AI intern om sneller te bouwen en beter te testen. Dat betekent minder uren, betere code en snellere oplevering voor jou.",
   },
   {
+    num: "02",
     title: "Eén aanspreekpunt",
     desc: "Geen account managers of doorverwijzingen. Je werkt direct met de mensen die jouw product bouwen.",
   },
   {
+    num: "03",
     title: "Schaalbaar vanaf dag 1",
     desc: "Wij bouwen met architectuur die meegroeit. Van MVP naar enterprise zonder alles opnieuw te hoeven bouwen.",
   },
   {
+    num: "04",
     title: "Resultaat boven process",
     desc: "Wij leveren op tijd. Geen eindeloze trajecten of vage timelines. Afspraak is afspraak.",
   },
@@ -105,34 +101,22 @@ export default function Home() {
           className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 lg:px-8"
           style={{ backgroundColor: "#111111" }}
         >
-          {/* Decoratieve achtergrondgloed */}
-          <div
-            className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/4 -translate-y-1/4"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(232,93,38,0.07) 0%, transparent 65%)",
-            }}
-          />
-
           <div className="mx-auto w-full max-w-7xl py-24">
             <p
-              className="font-sans mb-8 text-xs tracking-[0.22em] uppercase"
+              className="font-sans mb-6 text-xs uppercase tracking-[0.28em]"
               style={{ color: "rgba(240,237,232,0.38)" }}
             >
               WEBSITES · SAAS PLATFORMS · MAATWERK SOFTWARE
             </p>
 
             <h1
-              className="font-serif font-bold leading-[1.04] mb-8"
-              style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+              className="font-serif font-bold leading-[1.02] mb-10"
+              style={{ fontSize: "clamp(4.5rem, 11vw, 10rem)" }}
             >
               <span className="block" style={{ color: "#F0EDE8" }}>
                 Wij bouwen
               </span>
-              <span
-                className="block italic"
-                style={{ color: "#E85D26" }}
-              >
+              <span className="block italic" style={{ color: "#E85D26" }}>
                 jouw visie.
               </span>
             </h1>
@@ -140,9 +124,9 @@ export default function Home() {
             <p
               className="font-sans mb-10 leading-relaxed"
               style={{
-                maxWidth: "520px",
-                color: "rgba(240,237,232,0.6)",
-                fontSize: "17px",
+                maxWidth: "460px",
+                color: "rgba(240,237,232,0.55)",
+                fontSize: "16px",
               }}
             >
               Stackwerk is een onafhankelijk development bureau in Groningen.
@@ -153,14 +137,14 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center rounded-full px-7 py-3.5 font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
+                className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
                 style={{ backgroundColor: "#E85D26" }}
               >
                 Start een project
               </a>
               <a
                 href="#werk"
-                className="inline-flex items-center rounded-full px-7 py-3.5 font-sans text-sm font-medium transition-colors hover:border-white/40"
+                className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium"
                 style={{
                   border: "1px solid rgba(240,237,232,0.2)",
                   color: "#F0EDE8",
@@ -209,10 +193,10 @@ export default function Home() {
 
         {/* ── Diensten ─────────────────────────────────────────────────────── */}
         <section id="diensten" style={{ backgroundColor: "#1A1A1A" }}>
-          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation>
               <p
-                className="font-sans mb-4 text-xs uppercase tracking-[0.22em]"
+                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
                 style={{ color: "#E85D26" }}
               >
                 WAT WE BOUWEN
@@ -235,43 +219,56 @@ export default function Home() {
               {diensten.map((d, i) => (
                 <ScrollAnimation key={d.num} delay={i * 110}>
                   <div
-                    className="flex h-full flex-col rounded-2xl p-8"
+                    className="dienst-card flex h-full flex-col rounded-2xl p-10"
                     style={{
                       backgroundColor: "#111111",
                       border: "1px solid rgba(240,237,232,0.08)",
                     }}
                   >
                     <p
-                      className="font-sans mb-6 text-xs tracking-widest"
-                      style={{ color: "rgba(240,237,232,0.28)" }}
+                      className="font-serif font-bold mb-6 leading-none select-none"
+                      style={{
+                        fontSize: "3rem",
+                        opacity: 0.15,
+                        color: "#F0EDE8",
+                      }}
                     >
                       {d.num}
                     </p>
                     <h3
-                      className="font-serif font-bold text-2xl mb-4"
+                      className="font-serif font-bold text-3xl mb-4"
                       style={{ color: "#F0EDE8" }}
                     >
                       {d.title}
                     </h3>
                     <p
-                      className="font-sans flex-1 text-sm leading-relaxed mb-6"
+                      className="font-sans flex-1 text-sm leading-relaxed mb-8"
                       style={{ color: "rgba(240,237,232,0.58)" }}
                     >
                       {d.desc}
                     </p>
-                    <div className="mt-auto flex flex-wrap gap-2">
-                      {d.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="font-sans rounded-full px-3 py-1 text-xs"
-                          style={{
-                            backgroundColor: "rgba(240,237,232,0.06)",
-                            color: "rgba(240,237,232,0.45)",
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                    <div className="mt-auto flex items-end justify-between">
+                      <div className="flex flex-wrap gap-2">
+                        {d.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="font-sans rounded-full px-3 py-1 text-xs"
+                            style={{
+                              backgroundColor: "rgba(240,237,232,0.06)",
+                              color: "rgba(240,237,232,0.45)",
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <span
+                        className="font-sans ml-4 shrink-0 text-xl"
+                        style={{ color: "#E85D26" }}
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
                     </div>
                   </div>
                 </ScrollAnimation>
@@ -282,10 +279,10 @@ export default function Home() {
 
         {/* ── Werk ─────────────────────────────────────────────────────────── */}
         <section id="werk" style={{ backgroundColor: "#111111" }}>
-          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation>
               <p
-                className="font-sans mb-4 text-xs uppercase tracking-[0.22em]"
+                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
                 style={{ color: "#E85D26" }}
               >
                 ONS WERK
@@ -305,74 +302,88 @@ export default function Home() {
               </h2>
             </ScrollAnimation>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div>
               {cases.map((c, i) => (
-                <ScrollAnimation key={c.num} delay={i * 90}>
+                <ScrollAnimation key={c.num} delay={i * 80}>
                   <div
-                    className="flex h-full flex-col rounded-2xl p-8"
+                    className="case-row relative py-12 md:py-16"
                     style={{
-                      backgroundColor: "#1A1A1A",
-                      border: "1px solid rgba(240,237,232,0.08)",
+                      borderBottom: "1px solid rgba(240,237,232,0.08)",
                     }}
                   >
-                    <div className="mb-6 flex items-start justify-between">
-                      <span
-                        className="font-sans text-xs tracking-widest"
-                        style={{ color: "rgba(240,237,232,0.28)" }}
-                      >
-                        {c.num}
-                      </span>
-                      <span
-                        className="font-sans rounded-full px-3 py-1 text-xs"
-                        style={{
-                          backgroundColor: "rgba(232,93,38,0.12)",
-                          color: "#E85D26",
-                        }}
-                      >
-                        {c.label}
-                      </span>
-                    </div>
-
-                    <h3
-                      className="font-serif font-bold text-2xl mb-3"
-                      style={{ color: "#F0EDE8" }}
-                    >
-                      {c.title}
-                    </h3>
-                    <p
-                      className="font-sans flex-1 text-sm leading-relaxed mb-6"
-                      style={{ color: "rgba(240,237,232,0.58)" }}
-                    >
-                      {c.desc}
-                    </p>
-
-                    <div className="mb-5 flex flex-wrap gap-2">
-                      {c.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="font-sans rounded-full px-3 py-1 text-xs"
-                          style={{
-                            backgroundColor: "rgba(240,237,232,0.06)",
-                            color: "rgba(240,237,232,0.45)",
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div
-                      className="mt-auto pt-5"
+                    {/* Groot achtergrondnummer */}
+                    <span
+                      className="absolute left-0 top-1/2 -translate-y-1/2 font-serif font-bold leading-none select-none pointer-events-none"
+                      aria-hidden="true"
                       style={{
-                        borderTop: "1px solid rgba(240,237,232,0.08)",
+                        fontSize: "clamp(4rem, 8vw, 7rem)",
+                        color: "#F0EDE8",
+                        opacity: 0.08,
                       }}
                     >
-                      <p
-                        className="font-sans text-sm font-medium"
-                        style={{ color: "#E85D26" }}
-                      >
-                        {c.result}
-                      </p>
+                      {c.num}
+                    </span>
+
+                    {/* Content — verschoven voorbij het nummer */}
+                    <div
+                      className="relative flex flex-col gap-6 md:flex-row md:items-start"
+                      style={{
+                        paddingLeft: "clamp(4.5rem, 9.5vw, 8rem)",
+                      }}
+                    >
+                      <div className="flex-1 min-w-0">
+                        <div className="mb-3">
+                          <span
+                            className="font-sans rounded-full px-3 py-1 text-xs"
+                            style={{
+                              backgroundColor: "rgba(232,93,38,0.12)",
+                              color: "#E85D26",
+                            }}
+                          >
+                            {c.label}
+                          </span>
+                        </div>
+                        <h3
+                          className="case-title font-serif font-bold mb-3"
+                          style={{
+                            fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+                          }}
+                        >
+                          {c.title}
+                        </h3>
+                        <p
+                          className="font-sans text-sm leading-relaxed mb-5"
+                          style={{
+                            maxWidth: "520px",
+                            color: "rgba(240,237,232,0.58)",
+                          }}
+                        >
+                          {c.desc}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {c.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="font-sans rounded-full px-3 py-1 text-xs"
+                              style={{
+                                backgroundColor: "rgba(240,237,232,0.06)",
+                                color: "rgba(240,237,232,0.45)",
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="shrink-0 md:pt-2 md:text-right">
+                        <p
+                          className="font-sans text-sm font-medium"
+                          style={{ color: "#E85D26" }}
+                        >
+                          {c.result}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </ScrollAnimation>
@@ -383,10 +394,10 @@ export default function Home() {
 
         {/* ── Waarom Stackwerk ─────────────────────────────────────────────── */}
         <section id="over-ons" style={{ backgroundColor: "#1A1A1A" }}>
-          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation>
               <p
-                className="font-sans mb-4 text-xs uppercase tracking-[0.22em]"
+                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
                 style={{ color: "#E85D26" }}
               >
                 WAAROM STACKWERK
@@ -394,7 +405,7 @@ export default function Home() {
               <h2
                 className="font-serif font-bold mb-16"
                 style={{
-                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                  fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
                   color: "#F0EDE8",
                 }}
               >
@@ -415,8 +426,14 @@ export default function Home() {
                       border: "1px solid rgba(240,237,232,0.08)",
                     }}
                   >
+                    <p
+                      className="font-sans text-sm font-medium mb-2"
+                      style={{ color: "#E85D26" }}
+                    >
+                      {w.num}
+                    </p>
                     <h3
-                      className="font-serif font-bold text-xl mb-3"
+                      className="font-serif font-bold text-2xl mb-3"
                       style={{ color: "#F0EDE8" }}
                     >
                       {w.title}
@@ -436,7 +453,7 @@ export default function Home() {
 
         {/* ── CTA ──────────────────────────────────────────────────────────── */}
         <section id="contact" style={{ backgroundColor: "#F5F2EB" }}>
-          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-8 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 py-32 text-center lg:px-8 lg:py-40">
             <ScrollAnimation>
               <h2
                 className="font-serif font-bold mb-6"

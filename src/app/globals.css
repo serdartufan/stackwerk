@@ -11,6 +11,7 @@ body {
   font-family: var(--font-dm-sans), sans-serif;
 }
 
+/* Scroll animaties */
 .scroll-anim {
   opacity: 0;
   transform: translateY(20px);
@@ -28,4 +29,24 @@ body {
     transform: none;
     transition: none;
   }
+}
+
+/* Case rijen — hover kleurt de titel oranje */
+.case-title {
+  color: #f0ede8;
+  transition: color 0.25s ease;
+}
+
+.case-row:hover .case-title {
+  color: #e85d26;
+}
+
+/* Diensten cards — top accent border via inset box-shadow (vermijdt conflict met inline border) */
+.dienst-card {
+  box-shadow: inset 0 3px 0 transparent;
+  transition: box-shadow 0.3s ease;
+}
+
+.dienst-card:hover {
+  box-shadow: inset 0 3px 0 #e85d26;
 }
