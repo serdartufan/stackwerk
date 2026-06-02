@@ -38,7 +38,7 @@ body {
 }
 
 .case-row:hover .case-title {
-  color: #111111;
+  color: #e85d26;
 }
 
 /* Diensten cards — top accent border via inset box-shadow (vermijdt conflict met inline border) */

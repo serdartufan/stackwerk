@@ -96,15 +96,15 @@ export default function Home() {
       <Navbar />
 
       <main>
-        {/* ── Hero — oranje achtergrond ─────────────────────────────────────── */}
+        {/* ── Hero — zwart ─────────────────────────────────────────────────── */}
         <section
           className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 lg:px-8"
-          style={{ backgroundColor: "#E85D26" }}
+          style={{ backgroundColor: "#111111" }}
         >
-          <div className="mx-auto w-full max-w-7xl py-24">
+          <div className="mx-auto w-full max-w-7xl pt-12 pb-10 lg:pt-16 lg:pb-12">
             <p
               className="font-sans mb-6 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "rgba(0,0,0,0.45)" }}
+              style={{ color: "rgba(240,237,232,0.38)" }}
             >
               WEBSITES · SAAS PLATFORMS · MAATWERK SOFTWARE
             </p>
@@ -113,10 +113,10 @@ export default function Home() {
               className="font-serif font-bold leading-[1.02] mb-10"
               style={{ fontSize: "clamp(4.5rem, 11vw, 10rem)" }}
             >
-              <span className="block" style={{ color: "#FFFFFF" }}>
+              <span className="block" style={{ color: "#F0EDE8" }}>
                 Wij bouwen
               </span>
-              <span className="block italic" style={{ color: "#111111" }}>
+              <span className="block italic" style={{ color: "#E85D26" }}>
                 jouw visie.
               </span>
             </h1>
@@ -125,7 +125,7 @@ export default function Home() {
               className="font-sans mb-10 leading-relaxed"
               style={{
                 maxWidth: "460px",
-                color: "rgba(0,0,0,0.6)",
+                color: "rgba(240,237,232,0.55)",
                 fontSize: "16px",
               }}
             >
@@ -138,7 +138,7 @@ export default function Home() {
               <a
                 href="#contact"
                 className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
-                style={{ backgroundColor: "#111111" }}
+                style={{ backgroundColor: "#E85D26" }}
               >
                 Start een project
               </a>
@@ -146,8 +146,8 @@ export default function Home() {
                 href="#werk"
                 className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium transition-opacity hover:opacity-75"
                 style={{
-                  border: "1px solid rgba(0,0,0,0.25)",
-                  color: "#111111",
+                  border: "1px solid rgba(240,237,232,0.2)",
+                  color: "#F0EDE8",
                 }}
               >
                 Bekijk ons werk
@@ -158,7 +158,7 @@ export default function Home() {
           <div className="absolute bottom-8 right-6 lg:right-8">
             <p
               className="font-sans text-xs uppercase tracking-[0.18em]"
-              style={{ color: "rgba(0,0,0,0.35)" }}
+              style={{ color: "rgba(240,237,232,0.28)" }}
             >
               ACTIEF SINDS 2024 · GRONINGEN
             </p>
@@ -191,13 +191,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Diensten — donker, geen wijzigingen ──────────────────────────── */}
-        <section id="diensten" style={{ backgroundColor: "#1A1A1A" }}>
+        {/* ── Diensten — oranje ────────────────────────────────────────────── */}
+        <section id="diensten" style={{ backgroundColor: "#E85D26" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation>
               <p
                 className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "#E85D26" }}
+                style={{ color: "rgba(0,0,0,0.45)" }}
               >
                 WAT WE BOUWEN
               </p>
@@ -205,11 +205,11 @@ export default function Home() {
                 className="font-serif font-bold mb-16"
                 style={{
                   fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                  color: "#F0EDE8",
+                  color: "#FFFFFF",
                 }}
               >
                 Van idee naar{" "}
-                <span className="italic" style={{ color: "#E85D26" }}>
+                <span className="italic" style={{ color: "#111111" }}>
                   werkend product.
                 </span>
               </h2>
@@ -221,8 +221,8 @@ export default function Home() {
                   <div
                     className="dienst-card flex h-full flex-col rounded-2xl p-10"
                     style={{
-                      backgroundColor: "#111111",
-                      border: "1px solid rgba(240,237,232,0.08)",
+                      backgroundColor: "rgba(0,0,0,0.15)",
+                      border: "1px solid rgba(0,0,0,0.12)",
                     }}
                   >
                     <p
@@ -230,20 +230,20 @@ export default function Home() {
                       style={{
                         fontSize: "3rem",
                         opacity: 0.15,
-                        color: "#F0EDE8",
+                        color: "#FFFFFF",
                       }}
                     >
                       {d.num}
                     </p>
                     <h3
                       className="font-serif font-bold text-3xl mb-4"
-                      style={{ color: "#F0EDE8" }}
+                      style={{ color: "#FFFFFF" }}
                     >
                       {d.title}
                     </h3>
                     <p
                       className="font-sans flex-1 text-sm leading-relaxed mb-8"
-                      style={{ color: "rgba(240,237,232,0.58)" }}
+                      style={{ color: "rgba(255,255,255,0.75)" }}
                     >
                       {d.desc}
                     </p>
@@ -254,8 +254,8 @@ export default function Home() {
                             key={tag}
                             className="font-sans rounded-full px-3 py-1 text-xs"
                             style={{
-                              backgroundColor: "rgba(240,237,232,0.06)",
-                              color: "rgba(240,237,232,0.45)",
+                              backgroundColor: "rgba(0,0,0,0.12)",
+                              color: "rgba(255,255,255,0.7)",
                             }}
                           >
                             {tag}
@@ -264,7 +264,7 @@ export default function Home() {
                       </div>
                       <span
                         className="font-sans ml-4 shrink-0 text-xl"
-                        style={{ color: "#E85D26" }}
+                        style={{ color: "#FFFFFF" }}
                         aria-hidden="true"
                       >
                         →
@@ -277,13 +277,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Werk — oranje achtergrond ─────────────────────────────────────── */}
-        <section id="werk" style={{ backgroundColor: "#E85D26" }}>
+        {/* ── Werk — zwart ─────────────────────────────────────────────────── */}
+        <section id="werk" style={{ backgroundColor: "#111111" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation>
               <p
                 className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "rgba(0,0,0,0.45)" }}
+                style={{ color: "#E85D26" }}
               >
                 ONS WERK
               </p>
@@ -291,11 +291,11 @@ export default function Home() {
                 className="font-serif font-bold mb-16"
                 style={{
                   fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                  color: "#FFFFFF",
+                  color: "#F0EDE8",
                 }}
               >
                 Projecten waar we{" "}
-                <span className="italic" style={{ color: "#111111" }}>
+                <span className="italic" style={{ color: "#E85D26" }}>
                   trots
                 </span>{" "}
                 op zijn.
@@ -308,7 +308,7 @@ export default function Home() {
                   <div
                     className="case-row relative py-12 md:py-16"
                     style={{
-                      borderBottom: "1px solid rgba(0,0,0,0.12)",
+                      borderBottom: "1px solid rgba(240,237,232,0.08)",
                     }}
                   >
                     {/* Groot achtergrondnummer */}
@@ -317,8 +317,8 @@ export default function Home() {
                       aria-hidden="true"
                       style={{
                         fontSize: "clamp(4rem, 8vw, 7rem)",
-                        color: "#111111",
-                        opacity: 0.06,
+                        color: "#F0EDE8",
+                        opacity: 0.08,
                       }}
                     >
                       {c.num}
@@ -336,8 +336,8 @@ export default function Home() {
                           <span
                             className="font-sans rounded-full px-3 py-1 text-xs"
                             style={{
-                              backgroundColor: "rgba(0,0,0,0.12)",
-                              color: "#111111",
+                              backgroundColor: "rgba(232,93,38,0.12)",
+                              color: "#E85D26",
                             }}
                           >
                             {c.label}
@@ -355,7 +355,7 @@ export default function Home() {
                           className="font-sans text-sm leading-relaxed mb-5"
                           style={{
                             maxWidth: "520px",
-                            color: "rgba(0,0,0,0.65)",
+                            color: "rgba(240,237,232,0.58)",
                           }}
                         >
                           {c.desc}
@@ -366,8 +366,8 @@ export default function Home() {
                               key={tag}
                               className="font-sans rounded-full px-3 py-1 text-xs"
                               style={{
-                                backgroundColor: "rgba(0,0,0,0.08)",
-                                color: "rgba(0,0,0,0.55)",
+                                backgroundColor: "rgba(240,237,232,0.06)",
+                                color: "rgba(240,237,232,0.45)",
                               }}
                             >
                               {tag}
@@ -379,7 +379,7 @@ export default function Home() {
                       <div className="shrink-0 md:pt-2 md:text-right">
                         <p
                           className="font-sans text-sm font-medium"
-                          style={{ color: "#111111" }}
+                          style={{ color: "#E85D26" }}
                         >
                           {c.result}
                         </p>
@@ -451,7 +451,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── CTA — donker ─────────────────────────────────────────────────── */}
+        {/* ── CTA — zwart ──────────────────────────────────────────────────── */}
         <section id="contact" style={{ backgroundColor: "#111111" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 text-center lg:px-8 lg:py-40">
             <ScrollAnimation>
