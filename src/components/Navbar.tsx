@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const NAV_LINKS = [
-  { label: "Diensten", href: "#diensten" },
-  { label: "Werk", href: "#werk" },
+  { label: "Diensten", href: "/#diensten" },
+  { label: "Werk", href: "/#werk" },
   { label: "Over ons", href: "/over-ons" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -22,35 +23,35 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <a
+          <Link
             href="/"
             className="font-serif text-xl tracking-tight"
             style={{ color: "#F0EDE8" }}
           >
             Stackwerk
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(({ label, href }) => (
-              <a
+              <Link
                 key={label}
                 href={href}
                 className="font-sans text-sm transition-colors hover:text-[#F0EDE8]"
                 style={{ color: "rgba(240,237,232,0.55)" }}
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-4">
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className="hidden md:inline-flex items-center px-5 py-2 rounded-full font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
               style={{ backgroundColor: "#E85D26" }}
             >
               Start een project
-            </a>
+            </Link>
 
             <button
               className="md:hidden p-2"
@@ -92,7 +93,7 @@ export default function Navbar() {
           style={{ borderTop: "1px solid rgba(240,237,232,0.08)" }}
         >
           {NAV_LINKS.map(({ label, href }) => (
-            <a
+            <Link
               key={label}
               href={href}
               className="block font-sans text-base"
@@ -100,16 +101,16 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
             >
               {label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className="inline-flex items-center px-5 py-2.5 rounded-full font-sans text-sm font-medium text-white"
             style={{ backgroundColor: "#E85D26" }}
             onClick={() => setOpen(false)}
           >
             Start een project
-          </a>
+          </Link>
         </div>
       )}
     </header>
