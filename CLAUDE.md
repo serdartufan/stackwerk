@@ -24,6 +24,10 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 ## Deploy workflow
 git push naar main → GitHub Action → SSH naar Hetzner VPS (46.225.5.91) → git pull + npm install + npm run build + pm2 restart
 
+## Sessieafsluiting
+Na elke sessie altijd automatisch uitvoeren zonder dat Serdar het hoeft te vragen:
+git add . && git commit -m "<bondige beschrijving>" && git push
+
 ## Sessie 02-06-2026
 
 ### Wat er gebouwd is

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ScrollAnimation from "@/components/ScrollAnimation";
 
@@ -66,38 +67,55 @@ export default function MaatwerkSoftwareDienst() {
   return (
     <main>
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section
-        className="px-6 py-32 lg:px-8 lg:py-40"
-        style={{ backgroundColor: "#111111" }}
-      >
-        <div className="mx-auto max-w-7xl">
-          <p
-            className="font-sans mb-6 text-xs uppercase tracking-[0.28em]"
-            style={{ color: "#E85D26" }}
-          >
-            DIENST 03
-          </p>
-          <h1
-            className="font-serif font-bold leading-[1.06] mb-8"
-            style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "#F0EDE8" }}
-          >
-            Software die past bij{" "}
-            <span className="italic" style={{ color: "#E85D26" }}>
-              jouw bedrijf.
-            </span>
-          </h1>
-          <p
-            className="font-sans leading-relaxed"
-            style={{
-              maxWidth: "580px",
-              color: "rgba(240,237,232,0.6)",
-              fontSize: "17px",
-            }}
-          >
-            Soms bestaat er geen kant-en-klare oplossing voor wat jij nodig
-            hebt. Wij bouwen het dan gewoon. Van interne tools tot complexe
-            koppelingen tussen systemen.
-          </p>
+      <section className="overflow-hidden" style={{ backgroundColor: "#111111" }}>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid items-center gap-16 py-32 lg:grid-cols-2 lg:py-40">
+            <div>
+              <p
+                className="font-sans mb-6 text-xs uppercase tracking-[0.28em]"
+                style={{ color: "#E85D26" }}
+              >
+                DIENST 03
+              </p>
+              <h1
+                className="font-serif font-bold leading-[1.06] mb-8"
+                style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "#F0EDE8" }}
+              >
+                Software die past bij{" "}
+                <span className="italic" style={{ color: "#E85D26" }}>
+                  jouw bedrijf.
+                </span>
+              </h1>
+              <p
+                className="font-sans leading-relaxed"
+                style={{
+                  maxWidth: "480px",
+                  color: "rgba(240,237,232,0.6)",
+                  fontSize: "17px",
+                }}
+              >
+                Soms bestaat er geen kant-en-klare oplossing voor wat jij nodig
+                hebt. Wij bouwen het dan gewoon. Van interne tools tot complexe
+                koppelingen tussen systemen.
+              </p>
+            </div>
+            <div
+              className="relative hidden overflow-hidden rounded-2xl lg:block"
+              style={{ height: "420px" }}
+            >
+              <div
+                className="absolute inset-0 z-10"
+                style={{ backgroundColor: "rgba(17,17,17,0.3)" }}
+              />
+              <Image
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=85&auto=format&fit=crop"
+                alt=""
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </section>
 

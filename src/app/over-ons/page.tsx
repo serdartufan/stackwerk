@@ -160,34 +160,50 @@ export default function OverOns() {
               </div>
             </ScrollAnimation>
 
-            {/* Rechter kolom: stats */}
+            {/* Rechter kolom: afbeelding + stats */}
             <ScrollAnimation>
-              <div className="flex flex-col">
-                {verhaalStats.map((stat, i) => (
-                  <div
-                    key={stat.number}
-                    className="py-8"
-                    style={{
-                      borderBottom:
-                        i < verhaalStats.length - 1
-                          ? "1px solid rgba(17,17,17,0.08)"
-                          : "none",
-                    }}
-                  >
-                    <p
-                      className="font-serif font-bold mb-1"
-                      style={{ fontSize: "3rem", color: "#111111", lineHeight: 1 }}
+              <div className="flex flex-col gap-0">
+                {/* Atmospheric foto */}
+                <div
+                  className="overflow-hidden rounded-2xl mb-2"
+                  style={{ height: "260px" }}
+                >
+                  <Image
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=85&auto=format&fit=crop"
+                    alt="Stackwerk team aan het werk"
+                    width={600}
+                    height={260}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+                {/* Stats */}
+                <div className="flex flex-col">
+                  {verhaalStats.map((stat, i) => (
+                    <div
+                      key={stat.number}
+                      className="py-7"
+                      style={{
+                        borderBottom:
+                          i < verhaalStats.length - 1
+                            ? "1px solid rgba(17,17,17,0.08)"
+                            : "none",
+                      }}
                     >
-                      {stat.number}
-                    </p>
-                    <p
-                      className="font-sans"
-                      style={{ fontSize: "13px", color: "rgba(17,17,17,0.45)" }}
-                    >
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
+                      <p
+                        className="font-serif font-bold mb-1"
+                        style={{ fontSize: "2.5rem", color: "#111111", lineHeight: 1 }}
+                      >
+                        {stat.number}
+                      </p>
+                      <p
+                        className="font-sans"
+                        style={{ fontSize: "13px", color: "rgba(17,17,17,0.45)" }}
+                      >
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </ScrollAnimation>
           </div>
