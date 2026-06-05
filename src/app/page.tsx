@@ -132,74 +132,68 @@ export default function Home() {
       <main>
         {/* ── Hero — zwart ─────────────────────────────────────────────────── */}
         <section
-          className="relative flex min-h-screen overflow-hidden"
+          className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 lg:px-8"
           style={{ backgroundColor: "#111111" }}
         >
-          {/* Linker panel: tekst */}
-          <div className="relative z-10 flex w-full flex-col justify-center px-6 py-32 lg:w-[58%] lg:px-8 lg:py-40">
-            <div className="mx-auto w-full max-w-7xl">
-              <div style={{ maxWidth: "540px" }}>
-                <h1
-                  className="font-serif font-bold leading-[1.02] mb-10"
-                  style={{ fontSize: "clamp(4.5rem, 11vw, 10rem)" }}
-                >
-                  <span className="block" style={{ color: "#F0EDE8" }}>
-                    Wij bouwen
-                  </span>
-                  <span className="block italic" style={{ color: "#E85D26" }}>
-                    jouw visie.
-                  </span>
-                </h1>
+          {/* Tekst — zelfde layout als voor de foto */}
+          <div className="relative z-10 mx-auto w-full max-w-7xl pt-6 pb-10 lg:pt-8 lg:pb-12">
+            <h1
+              className="font-serif font-bold leading-[1.02] mb-10"
+              style={{ fontSize: "clamp(4.5rem, 11vw, 10rem)" }}
+            >
+              <span className="block" style={{ color: "#F0EDE8" }}>
+                Wij bouwen
+              </span>
+              <span className="block italic" style={{ color: "#E85D26" }}>
+                jouw visie.
+              </span>
+            </h1>
 
-                <p
-                  className="font-sans mb-10 leading-relaxed"
-                  style={{
-                    maxWidth: "460px",
-                    color: "rgba(240,237,232,0.55)",
-                    fontSize: "16px",
-                  }}
-                >
-                  Stackwerk is een onafhankelijk development bureau in Groningen.
-                  Wij bouwen websites, SaaS platforms en maatwerk software voor
-                  ondernemers die hun idee serieus nemen.
-                </p>
+            <p
+              className="font-sans mb-10 leading-relaxed"
+              style={{
+                maxWidth: "460px",
+                color: "rgba(240,237,232,0.55)",
+                fontSize: "16px",
+              }}
+            >
+              Stackwerk is een onafhankelijk development bureau in Groningen.
+              Wij bouwen websites, SaaS platforms en maatwerk software voor
+              ondernemers die hun idee serieus nemen.
+            </p>
 
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
-                    style={{ backgroundColor: "#E85D26" }}
-                  >
-                    Start een project
-                  </a>
-                  <a
-                    href="#werk"
-                    className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium transition-opacity hover:opacity-75"
-                    style={{
-                      border: "1px solid rgba(240,237,232,0.2)",
-                      color: "#F0EDE8",
-                    }}
-                  >
-                    Bekijk ons werk
-                  </a>
-                </div>
-              </div>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
+                style={{ backgroundColor: "#E85D26" }}
+              >
+                Start een project
+              </a>
+              <a
+                href="#werk"
+                className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium transition-opacity hover:opacity-75"
+                style={{
+                  border: "1px solid rgba(240,237,232,0.2)",
+                  color: "#F0EDE8",
+                }}
+              >
+                Bekijk ons werk
+              </a>
             </div>
           </div>
 
-          {/* Rechter panel: afbeelding — desktop only */}
-          <div className="absolute right-0 top-0 hidden h-full w-[45%] lg:block">
-            {/* Gradient fade naar links */}
+          {/* Afbeelding — absoluut rechts, desktop only */}
+          <div className="absolute right-0 top-0 hidden h-full w-[42%] lg:block">
             <div
               className="absolute inset-0 z-10"
               style={{
-                background: "linear-gradient(to right, #111111 0%, rgba(17,17,17,0.2) 45%, rgba(17,17,17,0) 100%)",
+                background: "linear-gradient(to right, #111111 0%, rgba(17,17,17,0) 40%)",
               }}
             />
-            {/* Donkere overlay */}
             <div
               className="absolute inset-0 z-[5]"
-              style={{ backgroundColor: "rgba(17,17,17,0.35)" }}
+              style={{ backgroundColor: "rgba(17,17,17,0.3)" }}
             />
             <Image
               src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&q=85&auto=format&fit=crop"
@@ -210,12 +204,14 @@ export default function Home() {
             />
           </div>
 
-          <p
-            className="absolute bottom-8 right-6 z-10 font-sans text-xs uppercase tracking-[0.18em] lg:right-8"
-            style={{ color: "rgba(240,237,232,0.28)" }}
-          >
-            ACTIEF SINDS 2019 · GRONINGEN
-          </p>
+          <div className="absolute bottom-8 right-6 z-10 lg:right-8">
+            <p
+              className="font-sans text-xs uppercase tracking-[0.18em]"
+              style={{ color: "rgba(240,237,232,0.28)" }}
+            >
+              ACTIEF SINDS 2019 · GRONINGEN
+            </p>
+          </div>
         </section>
 
         {/* ── Stats — puur wit ─────────────────────────────────────────────── */}
