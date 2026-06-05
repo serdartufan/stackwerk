@@ -1,0 +1,150 @@
+[
+  {
+    "slug": "funnelvision",
+    "num": "01",
+    "label": "Marketing Bureau",
+    "title": "FunnelVision",
+    "jaar": "2026",
+    "desc": "Volledige agency website met SEO, AEO, schema markup en kennisbank. Van nul naar live in twee weken.",
+    "tags": ["Next.js", "SEO", "AEO"],
+    "result": "Live in 2 weken",
+    "img": "/cases/funnelvision.png",
+    "showcaseImg": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=85&auto=format&fit=crop",
+    "projectIntro": "FunnelVision is een performance marketing bureau uit Groningen gespecialiseerd in Meta Ads en Google Ads. Ze hadden een website nodig die hun positionering scherp neerzet, vertrouwen opbouwt bij potentiële klanten en direct aanzet tot contact.",
+    "geleverd": [
+      "Homepage met hero, statistieken, diensten en cases",
+      "6 individuele dienstenpagina's",
+      "Cases pagina met 6 klantcases",
+      "Over ons pagina met team en werkwijze",
+      "Contactformulier gekoppeld aan Resend",
+      "Kennisbank met 5 SEO-artikelen",
+      "Privacybeleid en algemene voorwaarden",
+      "Volledige schema markup (Organization, Service, FAQPage, Person)",
+      "IndexNow implementatie voor snelle indexering"
+    ],
+    "aanpak": [
+      {
+        "num": "01",
+        "title": "Positionering als vertrekpunt",
+        "desc": "We begonnen niet met design maar met de vraag: wie is FunnelVision voor en waarom zouden die mensen bellen? Vanuit dat antwoord schreven we de copy en bepaalden we de structuur."
+      },
+      {
+        "num": "02",
+        "title": "SEO ingebakken, niet erbij bedacht",
+        "desc": "Elke pagina heeft een specifieke zoekintentie. Schema markup, heldere H-structuur, AEO-optimalisatie voor AI-antwoordmachines en een kennisbank voor long-tail verkeer."
+      },
+      {
+        "num": "03",
+        "title": "Snelle oplevering zonder concessies",
+        "desc": "Door een bewuste stack (Next.js App Router, Tailwind v4) en duidelijke scope konden we de volledige site in twee weken opleveren, inclusief alle technische optimalisaties."
+      }
+    ],
+    "resultaten": [
+      { "number": "2 wkn", "label": "Van brief naar live" },
+      { "number": "29", "label": "Pagina's gebouwd" },
+      { "number": "5+", "label": "Kennisbank artikelen" },
+      { "number": "100%", "label": "Build zonder errors" }
+    ],
+    "resultatenTekst": "De site staat live, is volledig geïndexeerd via IndexNow en scoort op alle technische SEO-punten. De kennisbank trekt organisch verkeer voor performance marketing zoektermen in Groningen en omgeving."
+  },
+  {
+    "slug": "just-harry",
+    "num": "02",
+    "label": "AI SaaS",
+    "title": "Just Harry",
+    "jaar": "2026",
+    "desc": "AI lead kwalificatie tool voor dienstverleners. Multi-tenant platform met auth, dashboards, Stripe betalingen en Claude AI integratie.",
+    "tags": ["Next.js", "Supabase", "Claude AI"],
+    "result": "Van idee naar product in 30 dagen",
+    "img": "/cases/justharry.png",
+    "showcaseImg": "/cases/justharry.png",
+    "projectIntro": "Just Harry is een AI-tool die dienstverleners helpt om leads automatisch te kwalificeren via een conversatie-interface. De opdracht: bouw een volledig multi-tenant SaaS platform dat klanten zelf kunnen onboarden, betalen en direct kunnen gebruiken.",
+    "geleverd": [
+      "Multi-tenant architectuur met gescheiden data per klant",
+      "Authenticatie en gebruikersbeheer via Supabase Auth",
+      "Conversatie-interface aangedreven door Claude AI",
+      "Dashboard met lead-overzicht en kwalificatiescores",
+      "Stripe integratie voor maandelijkse abonnementen",
+      "Onboarding flow voor nieuwe klanten",
+      "Admin paneel voor platformbeheer",
+      "Webhook afhandeling voor Stripe events"
+    ],
+    "aanpak": [
+      {
+        "num": "01",
+        "title": "Core loop eerst",
+        "desc": "We begonnen met het minimale werkende product: een gebruiker kan inloggen, een gesprek voeren met de AI en een lead zien. Alles wat daarna komt bouwt op die kern."
+      },
+      {
+        "num": "02",
+        "title": "Multi-tenant vanaf dag 1",
+        "desc": "De architectuur is van begin af aan gebouwd voor meerdere klanten. Dat betekent Row Level Security in Supabase, gescheiden configuraties per tenant en een onboarding flow die zichzelf bedient."
+      },
+      {
+        "num": "03",
+        "title": "Betaling als feature, niet als afterthought",
+        "desc": "Stripe is vroeg in het proces geïntegreerd. Een product dat niet betaald wordt is geen product. We bouwden abonnementen, upgrade-flows en webhook-verwerking direct in sprint 1."
+      },
+      {
+        "num": "04",
+        "title": "Claude AI als gespreksmotor",
+        "desc": "De kwalificatie-logica draait op Claude AI met een specifiek prompt-systeem per klant. Zo kan elke dienstverlener zijn eigen kwalificatiecriteria definiëren zonder code te schrijven."
+      }
+    ],
+    "resultaten": [
+      { "number": "30", "label": "Dagen van idee naar live" },
+      { "number": "100%", "label": "Self-service onboarding" },
+      { "number": "3", "label": "Actieve abonnees bij launch" },
+      { "number": "0", "label": "Handmatige interventies nodig" }
+    ],
+    "resultatenTekst": "Just Harry ging binnen 30 dagen van whiteboard-idee naar live product met betalende klanten. De volledige onboarding, betaling en gebruik verloopt zonder tussenkomst van ons. Het platform draait stabiel en schaalt mee naarmate het klantenbestand groeit."
+  },
+  {
+    "slug": "my-miracle",
+    "num": "03",
+    "label": "Website",
+    "title": "My Miracle",
+    "jaar": "2026",
+    "desc": "Website voor een LPG Endermologie behandelcentrum. Snel, mobielvriendelijk en geoptimaliseerd voor lokale SEO.",
+    "tags": ["Next.js", "Tailwind", "TypeScript"],
+    "result": "Conversie +40%",
+    "img": "/cases/mymiracle.png",
+    "showcaseImg": "/cases/mymiracle.png",
+    "projectIntro": "My Miracle is een behandelcentrum in Den Haag gespecialiseerd in LPG Endermologie. De bestaande website converteerde slecht en stond niet goed in Google voor lokale zoekopdrachten. De opdracht: een snelle, vertrouwenwekkende site die lokaal gevonden wordt en bezoekers omzet in boekingen.",
+    "geleverd": [
+      "Volledige website met 8 pagina's",
+      "Behandelingspagina's voor lichaam en gezicht",
+      "Prijzenpagina met behandelingsoverzicht",
+      "Contactformulier gekoppeld aan Resend",
+      "Booking integratie via Calendly",
+      "Kennisbank met 5 SEO-artikelen over LPG en huidverzorging",
+      "Lokale SEO (HealthAndBeautyBusiness schema, geo meta tags)",
+      "Google Business Profile aangemaakt en geoptimaliseerd",
+      "IndexNow voor snelle indexering bij nieuwe content"
+    ],
+    "aanpak": [
+      {
+        "num": "01",
+        "title": "Lokale vindbaarheid als hoofddoel",
+        "desc": "My Miracle bedient klanten in Den Haag en omgeving. Elke pagina is geoptimaliseerd voor lokale zoektermen: LPG Endermologie Den Haag, cellulitis behandeling Den Haag, enzovoort."
+      },
+      {
+        "num": "02",
+        "title": "Vertrouwen opbouwen via content",
+        "desc": "Potentiële klanten zoeken eerst informatie voordat ze boeken. De kennisbank beantwoordt veelgestelde vragen en positioneert My Miracle als de autoriteit op dit gebied."
+      },
+      {
+        "num": "03",
+        "title": "Conversiepad kort houden",
+        "desc": "Van elke pagina is het maximaal twee klikken naar een boeking. De Calendly integratie zorgt dat de drempel zo laag mogelijk is: informatie lezen, vertrouwen krijgen, direct boeken."
+      }
+    ],
+    "resultaten": [
+      { "number": "+40%", "label": "Conversieratio" },
+      { "number": "8", "label": "Pagina's live" },
+      { "number": "5", "label": "SEO-artikelen" },
+      { "number": "Top 3", "label": "Lokale zoekresultaten" }
+    ],
+    "resultatenTekst": "De nieuwe site converteert 40% beter dan de vorige. My Miracle staat in de top 3 voor de belangrijkste lokale zoektermen in Den Haag. De kennisbank trekt maandelijks nieuwe bezoekers die via organisch zoekverkeer binnenkomen."
+  }
+]
