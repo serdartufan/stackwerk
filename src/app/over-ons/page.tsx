@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ScrollAnimation from "@/components/ScrollAnimation";
 
 export const metadata: Metadata = {
@@ -11,25 +12,28 @@ export const metadata: Metadata = {
 
 const verhaalStats = [
   { number: "2019", label: "Jaar van oprichting" },
-  { number: "20+", label: "Jaar gecombineerde ervaring" },
   { number: "10+", label: "Opgeleverde projecten" },
+  { number: "3", label: "Actieve SaaS producten" },
 ];
 
 const team = [
   {
     naam: "Serdar",
-    rol: "CRO Specialist en Developer",
-    desc: "Serdar combineert jarenlange ervaring in performance marketing met een scherp oog voor conversie en techniek. Hij bewaakt de strategie en zorgt dat elk project aansluit op het doel van de klant.",
+    rol: "Lead Developer & Strateeg",
+    desc: "Begon in 2019 als performance marketeer en bouwde van daaruit zijn technische kennis op. Kent het verschil tussen een mooie website en een website die converteert, en bouwt altijd het tweede.",
+    img: "/Serdar.jpeg",
   },
   {
     naam: "Dogukan",
-    rol: "CRO Specialist en Developer",
-    desc: "Dogukan brengt dezelfde mix van marketing en techniek mee. Zijn analytische aanpak zorgt ervoor dat wat wij bouwen niet alleen goed werkt, maar ook meetbaar resultaat oplevert.",
+    rol: "Full-Stack Developer",
+    desc: "Scherp op detail en sterk in complexe logica. Zorgt ervoor dat wat we opleveren niet alleen werkt op de dag van lancering, maar ook over een jaar nog foutloos draait.",
+    img: "/Dogukan.jpeg",
   },
   {
     naam: "Vertrouwde partners",
     rol: "Extern netwerk",
-    desc: "Voor complexere projecten werken we samen met een select netwerk van vertrouwde developers en specialisten. Alles blijft in eigen beheer, zodat we de kwaliteit kunnen blijven waarborgen.",
+    desc: "Voor complexere projecten werken we samen met een select netwerk van developers en specialisten. Alles blijft in eigen beheer, zodat we de kwaliteit kunnen waarborgen.",
+    img: null,
   },
 ];
 
@@ -37,22 +41,22 @@ const waaromPunten = [
   {
     num: "01",
     title: "Wij begrijpen je klant",
-    desc: "We zijn begonnen als marketeers. Dat betekent dat we niet alleen bouwen wat je vraagt, maar nadenken over wie het gaat gebruiken en wat die persoon nodig heeft om te converteren.",
+    desc: "We zijn begonnen als marketeers. Dat betekent dat we nadenken over wie het gaat gebruiken en wat die persoon nodig heeft om te converteren, niet alleen over wat technisch mogelijk is.",
   },
   {
     num: "02",
     title: "Techniek én strategie",
-    desc: "Wij verbinden de technische uitvoering aan het strategische doel. Een mooie website is nutteloos als hij niet converteert. Wij zorgen dat hij dat wel doet.",
+    desc: "Een mooie website die niet converteert is een duur visitekaartje. Wij bouwen met een doel: meer aanvragen, meer verkopen, meer klanten.",
   },
   {
     num: "03",
-    title: "Kwaliteit boven kwantiteit",
-    desc: "We nemen bewust een beperkt aantal projecten per jaar aan. Zo kunnen we elk project de aandacht geven die het verdient en resultaten leveren waar we trots op zijn.",
+    title: "Beperkte intake",
+    desc: "We nemen bewust een beperkt aantal projecten per kwartaal aan. Zo heeft elk project onze volledige aandacht en geen enkel project een half resultaat.",
   },
   {
     num: "04",
-    title: "Eén aanspreekpunt",
-    desc: "Geen doorverwijzingen of account managers. Je werkt direct met de mensen die jouw project bouwen.",
+    title: "Direct contact",
+    desc: "Je werkt direct met de mensen die jouw project bouwen. Geen account managers, geen vertraagde feedback, geen uitleg die twee keer gedaan moet worden.",
   },
 ];
 
@@ -77,10 +81,10 @@ export default function OverOns() {
             className="font-serif font-bold leading-[1.06] mb-8"
             style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "#F0EDE8" }}
           >
-            Wij bouwen al jaren
+            Van marketeers
             <br />
             <span className="italic" style={{ color: "#E85D26" }}>
-              met een reden.
+              naar developers.
             </span>
           </h1>
           <p
@@ -92,9 +96,8 @@ export default function OverOns() {
             }}
           >
             Stackwerk begon niet als development bureau. We zijn gestart als
-            performance marketeers en hebben van daaruit geleerd wat een website
-            echt moet doen: converteren. Dat inzicht zit in alles wat we
-            bouwen.
+            performance marketeers en leerden van daaruit wat een website
+            écht moet doen: converteren. Dat zit in alles wat we bouwen.
           </p>
         </div>
       </section>
@@ -225,11 +228,25 @@ export default function OverOns() {
                     borderTop: "1px solid rgba(240,237,232,0.08)",
                   }}
                 >
+                  {lid.img && (
+                    <div
+                      className="mb-5 overflow-hidden rounded-xl"
+                      style={{ width: "72px", height: "72px" }}
+                    >
+                      <Image
+                        src={lid.img}
+                        alt={lid.naam}
+                        width={72}
+                        height={72}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )}
                   <p
-                    className="font-sans uppercase mb-3"
+                    className="font-sans uppercase mb-2"
                     style={{
-                      fontSize: "13px",
-                      letterSpacing: "0.1em",
+                      fontSize: "11px",
+                      letterSpacing: "0.12em",
                       color: "#E85D26",
                     }}
                   >
@@ -278,32 +295,28 @@ export default function OverOns() {
             </h2>
           </ScrollAnimation>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-0 md:grid-cols-2">
             {waaromPunten.map((punt, i) => (
               <ScrollAnimation key={punt.num} delay={i * 80}>
                 <div
-                  style={{
-                    backgroundColor: "#F5F5F5",
-                    border: "1px solid rgba(17,17,17,0.06)",
-                    borderRadius: "16px",
-                    padding: "32px",
-                  }}
+                  className="py-10 pr-12"
+                  style={{ borderTop: "1px solid rgba(17,17,17,0.1)" }}
                 >
                   <p
-                    className="font-sans text-sm font-medium mb-3"
+                    className="font-sans text-xs font-medium mb-5 uppercase tracking-[0.2em]"
                     style={{ color: "#E85D26" }}
                   >
                     {punt.num}
                   </p>
                   <h3
-                    className="font-serif font-bold text-xl mb-3"
-                    style={{ color: "#111111" }}
+                    className="font-serif font-bold mb-4"
+                    style={{ fontSize: "1.4rem", color: "#111111", lineHeight: 1.2 }}
                   >
                     {punt.title}
                   </h3>
                   <p
                     className="font-sans text-sm leading-relaxed"
-                    style={{ color: "rgba(17,17,17,0.6)" }}
+                    style={{ color: "rgba(17,17,17,0.58)", maxWidth: "340px" }}
                   >
                     {punt.desc}
                   </p>

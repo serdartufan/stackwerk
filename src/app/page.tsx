@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ContactForm from "@/components/ContactForm";
@@ -35,7 +36,8 @@ const cases = [
     title: "FunnelVision",
     desc: "Volledige agency website met SEO, AEO, schema markup en kennisbank. Van nul naar live in twee weken.",
     tags: ["Next.js", "SEO", "AEO"],
-    result: "Live sinds 2026",
+    result: "Live in 2 weken",
+    img: "/cases/funnelvision.png",
   },
   {
     num: "02",
@@ -44,14 +46,16 @@ const cases = [
     desc: "AI lead kwalificatie tool voor dienstverleners. Multi-tenant platform met auth, dashboards, Stripe betalingen en Claude AI integratie.",
     tags: ["Next.js", "Supabase", "Claude AI"],
     result: "Van idee naar product in 30 dagen",
+    img: "/cases/justharry.png",
   },
   {
     num: "03",
     label: "Website",
     title: "My Miracle",
     desc: "Website voor een LPG Endermologie behandelcentrum. Snel, mobielvriendelijk en geoptimaliseerd voor lokale SEO.",
-    tags: ["Next.js", "Tailwind", "Vercel"],
+    tags: ["Next.js", "Tailwind", "TypeScript"],
     result: "Conversie +40%",
+    img: "/cases/mymiracle.png",
   },
 ];
 
@@ -64,7 +68,7 @@ const waarom = [
   {
     num: "02",
     title: "Eén aanspreekpunt",
-    desc: "Geen account managers of doorverwijzingen. Je werkt direct met de mensen die jouw product bouwen.",
+    desc: "Je werkt direct met de mensen die jouw product bouwen. Geen tussenpersonen, geen vertraagde feedback, geen uitleg die twee keer gedaan moet worden.",
   },
   {
     num: "03",
@@ -73,8 +77,8 @@ const waarom = [
   },
   {
     num: "04",
-    title: "Resultaat boven process",
-    desc: "Wij leveren op tijd. Geen eindeloze trajecten of vage timelines. Afspraak is afspraak.",
+    title: "Resultaat boven proces",
+    desc: "Wij leveren op tijd. Concrete deadlines, vaste prijs, geen verrassingen achteraf.",
   },
 ];
 
@@ -82,12 +86,12 @@ const steps = [
   {
     num: "01",
     title: "Kennismaking",
-    desc: "Vrijblijvend gesprek over je idee, doelen en budget. Geen verkooppraatje, gewoon kijken of het klikt.",
+    desc: "Vrijblijvend gesprek over je idee, doelen en budget. We kijken eerlijk of we de juiste match zijn.",
   },
   {
     num: "02",
     title: "Voorstel",
-    desc: "Een concreet projectvoorstel met scope, planning en prijs. Geen vage offertes, gewoon duidelijkheid.",
+    desc: "Een concreet projectvoorstel met scope, planning en vaste prijs. Wat je ziet is wat je betaalt.",
   },
   {
     num: "03",
@@ -110,7 +114,7 @@ const stats = [
   { number: "10+", label: "Projecten opgeleverd" },
   { number: "3", label: "Actieve SaaS producten" },
   { number: "100%", label: "Op tijd opgeleverd" },
-  { number: "Next.js", label: "Stack van keuze" },
+  { number: "2019", label: "Actief sinds" },
 ];
 
 const navLinks = [
@@ -184,7 +188,7 @@ export default function Home() {
               className="font-sans text-xs uppercase tracking-[0.18em]"
               style={{ color: "rgba(240,237,232,0.28)" }}
             >
-              ACTIEF SINDS 2024 · GRONINGEN
+              ACTIEF SINDS 2019 · GRONINGEN
             </p>
           </div>
         </section>
@@ -546,7 +550,7 @@ export default function Home() {
 
                     {/* Content — verschoven voorbij het nummer */}
                     <div
-                      className="relative flex flex-col gap-6 md:flex-row md:items-start"
+                      className="relative flex flex-col gap-6 md:flex-row md:items-center"
                       style={{
                         paddingLeft: "clamp(4.5rem, 9.5vw, 8rem)",
                       }}
@@ -574,41 +578,71 @@ export default function Home() {
                         <p
                           className="font-sans text-sm leading-relaxed mb-5"
                           style={{
-                            maxWidth: "520px",
+                            maxWidth: "480px",
                             color: "rgba(240,237,232,0.58)",
                           }}
                         >
                           {c.desc}
                         </p>
-                        <div className="flex flex-wrap gap-2">
-                          {c.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="font-sans rounded-full px-3 py-1 text-xs"
-                              style={{
-                                backgroundColor: "rgba(240,237,232,0.06)",
-                                color: "rgba(240,237,232,0.45)",
-                              }}
-                            >
-                              {tag}
-                            </span>
-                          ))}
+                        <div className="flex flex-wrap items-center gap-3">
+                          <div className="flex flex-wrap gap-2">
+                            {c.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="font-sans rounded-full px-3 py-1 text-xs"
+                                style={{
+                                  backgroundColor: "rgba(240,237,232,0.06)",
+                                  color: "rgba(240,237,232,0.45)",
+                                }}
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <p
+                            className="font-sans text-sm font-medium"
+                            style={{ color: "#E85D26" }}
+                          >
+                            {c.result}
+                          </p>
                         </div>
                       </div>
 
-                      <div className="shrink-0 md:pt-2 md:text-right">
-                        <p
-                          className="font-sans text-sm font-medium"
-                          style={{ color: "#E85D26" }}
-                        >
-                          {c.result}
-                        </p>
+                      {/* Thumbnail — desktop only */}
+                      <div
+                        className="hidden lg:block shrink-0 overflow-hidden rounded-xl"
+                        style={{
+                          width: "200px",
+                          height: "130px",
+                          border: "1px solid rgba(240,237,232,0.08)",
+                        }}
+                      >
+                        <Image
+                          src={c.img}
+                          alt={c.title}
+                          width={200}
+                          height={130}
+                          className="h-full w-full object-cover object-top"
+                        />
                       </div>
                     </div>
                   </div>
                 </ScrollAnimation>
               ))}
             </div>
+
+            <ScrollAnimation>
+              <div className="mt-16">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 font-sans text-sm font-medium transition-opacity hover:opacity-70"
+                  style={{ color: "#F0EDE8" }}
+                >
+                  Zulke resultaten voor jouw project?
+                  <span style={{ color: "#E85D26" }}>Plan een kennismaking →</span>
+                </a>
+              </div>
+            </ScrollAnimation>
           </div>
         </section>
 
@@ -636,31 +670,30 @@ export default function Home() {
               </h2>
             </ScrollAnimation>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-0 md:grid-cols-2">
               {waarom.map((w, i) => (
                 <ScrollAnimation key={w.title} delay={i * 90}>
                   <div
-                    className="rounded-2xl p-8"
+                    className="py-10 pr-12"
                     style={{
-                      backgroundColor: "#F5F5F5",
-                      border: "1px solid rgba(17,17,17,0.06)",
+                      borderTop: "1px solid rgba(17,17,17,0.1)",
                     }}
                   >
                     <p
-                      className="font-sans text-sm font-medium mb-2"
+                      className="font-sans text-xs font-medium mb-5 uppercase tracking-[0.2em]"
                       style={{ color: "#E85D26" }}
                     >
                       {w.num}
                     </p>
                     <h3
-                      className="font-serif font-bold text-2xl mb-3"
-                      style={{ color: "#111111" }}
+                      className="font-serif font-bold mb-4"
+                      style={{ fontSize: "1.4rem", color: "#111111", lineHeight: 1.2 }}
                     >
                       {w.title}
                     </h3>
                     <p
                       className="font-sans text-sm leading-relaxed"
-                      style={{ color: "rgba(17,17,17,0.6)" }}
+                      style={{ color: "rgba(17,17,17,0.58)", maxWidth: "340px" }}
                     >
                       {w.desc}
                     </p>
@@ -688,9 +721,9 @@ export default function Home() {
                   color: "#F0EDE8",
                 }}
               >
-                Start een{" "}
+                Plan een{" "}
                 <span className="italic" style={{ color: "#E85D26" }}>
-                  project.
+                  kennismaking.
                 </span>
               </h2>
 
