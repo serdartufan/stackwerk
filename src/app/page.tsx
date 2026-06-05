@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ContactForm from "@/components/ContactForm";
+import { cases } from "@/data/cases";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -29,35 +30,6 @@ const diensten = [
   },
 ];
 
-const cases = [
-  {
-    num: "01",
-    label: "Marketing Bureau",
-    title: "FunnelVision",
-    desc: "Volledige agency website met SEO, AEO, schema markup en kennisbank. Van nul naar live in twee weken.",
-    tags: ["Next.js", "SEO", "AEO"],
-    result: "Live in 2 weken",
-    img: "/cases/funnelvision.png",
-  },
-  {
-    num: "02",
-    label: "AI SaaS",
-    title: "Just Harry",
-    desc: "AI lead kwalificatie tool voor dienstverleners. Multi-tenant platform met auth, dashboards, Stripe betalingen en Claude AI integratie.",
-    tags: ["Next.js", "Supabase", "Claude AI"],
-    result: "Van idee naar product in 30 dagen",
-    img: "/cases/justharry.png",
-  },
-  {
-    num: "03",
-    label: "Website",
-    title: "My Miracle",
-    desc: "Website voor een LPG Endermologie behandelcentrum. Snel, mobielvriendelijk en geoptimaliseerd voor lokale SEO.",
-    tags: ["Next.js", "Tailwind", "TypeScript"],
-    result: "Conversie +40%",
-    img: "/cases/mymiracle.png",
-  },
-];
 
 const waarom = [
   {
@@ -551,8 +523,9 @@ export default function Home() {
             <div>
               {cases.map((c, i) => (
                 <ScrollAnimation key={c.num} delay={i * 80}>
-                  <div
-                    className="case-row relative py-12 md:py-16"
+                  <Link
+                    href={`/werk/${c.slug}`}
+                    className="case-row group relative block py-12 md:py-16"
                     style={{
                       borderBottom: "1px solid rgba(240,237,232,0.08)",
                     }}
@@ -644,11 +617,11 @@ export default function Home() {
                           alt={c.title}
                           width={200}
                           height={130}
-                          className="h-full w-full object-cover object-top"
+                          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </ScrollAnimation>
               ))}
             </div>
