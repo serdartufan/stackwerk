@@ -183,17 +183,18 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Afbeelding — absoluut rechts, desktop only */}
-          <div className="absolute right-0 top-0 hidden h-full w-[42%] lg:block">
+          {/* Afbeelding — absoluut rechts, desktop only. z-[1] zodat tekst (z-10) altijd bovenop ligt */}
+          <div className="absolute right-0 top-0 hidden h-full w-[42%] lg:block" style={{ zIndex: 1 }}>
             <div
-              className="absolute inset-0 z-10"
+              className="absolute inset-0"
               style={{
+                zIndex: 2,
                 background: "linear-gradient(to right, #111111 0%, rgba(17,17,17,0) 40%)",
               }}
             />
             <div
-              className="absolute inset-0 z-[5]"
-              style={{ backgroundColor: "rgba(17,17,17,0.3)" }}
+              className="absolute inset-0"
+              style={{ zIndex: 1, backgroundColor: "rgba(17,17,17,0.3)" }}
             />
             <Image
               src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&q=85&auto=format&fit=crop"
