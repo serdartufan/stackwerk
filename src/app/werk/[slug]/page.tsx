@@ -9,12 +9,13 @@ export function generateStaticParams() {
   return cases.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const c = cases.find((c) => c.slug === params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const c = cases.find((c) => c.slug === slug);
   if (!c) return {};
   return {
     title: `${c.title} | Stackwerk`,
@@ -22,8 +23,9 @@ export function generateMetadata({
   };
 }
 
-export default function CasePage({ params }: { params: { slug: string } }) {
-  const c = cases.find((c) => c.slug === params.slug);
+export default async function CasePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const c = cases.find((c) => c.slug === slug);
   if (!c) notFound();
 
   const isExternal = c.showcaseImg.startsWith("http");
