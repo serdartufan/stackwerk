@@ -4,7 +4,7 @@
 - Naam: Stackwerk
 - Domein: stackwerk.nl
 - Stack: Next.js, TypeScript, Tailwind CSS
-- Hosting: Hetzner VPS (CX22) — IP 46.225.5.91 — /var/www/stackwerk — poort 3001
+- Hosting: Hetzner VPS (CX22) — IP 46.225.5.91 — /var/www/stackwerk — poort 3000
 - Repo: github.com/serdartufan/stackwerk
 
 ## Positionering
@@ -12,7 +12,7 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 
 ## Huidige staat
 - Volledig uitgebouwde site met homepage, over ons en drie dienstenpaginas
-- Live op: stackwerk.nl (Hetzner VPS, poort 3001, Nginx + Cloudflare Flexible SSL)
+- Live op: stackwerk.nl (Hetzner VPS, poort 3000, Nginx + Cloudflare Flexible SSL)
 
 ## Copy regels
 - Geen em dashes
@@ -23,6 +23,8 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 
 ## Deploy workflow
 git push naar main → GitHub Action → SSH naar Hetzner VPS (46.225.5.91) → git pull + npm install + npm run build + pm2 restart
+
+**Let op:** GitHub Action deployt de code wel, maar build en restart werken nog niet automatisch — dit moet nog gefixed worden. PM2 wordt gestart met `--cwd /var/www/stackwerk` zodat de working directory altijd klopt.
 
 ## Sessieafsluiting
 Na elke sessie altijd automatisch uitvoeren zonder dat Serdar het hoeft te vragen:
@@ -82,6 +84,27 @@ git add . && git commit -m "<bondige beschrijving>" && git push
 - ✅ Over-ons waarom-sectie zelfde list layout als homepage
 
 ### To do
+- [ ] Contactformulier backend koppelen (nu client-side only)
+- [ ] SEO: sitemap, schema markup, meta tags per pagina
+- [ ] Kennisbank of blog toevoegen
+- [ ] FunnelVision toevoegen als portfolio case met eigen pagina
+
+## Sessie 06-06-2026 — Technische fixes en micro-animaties
+
+### Opgelost
+- ✅ Async params fix in `src/app/werk/[slug]/page.tsx` voor Next.js 15+: `params` is nu `Promise<{ slug: string }>`, beide `generateMetadata` en `CasePage` zijn `async` en awaiten params
+- ✅ Cases data staat in `src/data/cases.json` (was eerder inline in page.tsx)
+- ✅ Calendly-vermelding verwijderd uit My Miracle case (geleverd-lijst en stap 03 aanpak) — My Miracle gebruikt een contactformulier via Resend, geen Calendly
+- ✅ Micro-animaties toegevoegd in `globals.css` en `page.tsx`:
+  - **Tech ticker**: horizontale scrollende techstack labels tussen hero en stats (`Next.js · TypeScript · Tailwind · React · Hetzner · GitHub Actions · Nginx · Node.js`) — crème tekst, donkere achtergrond, 24s loop
+  - **Werkwijze bolletjes**: sequentiële oranje pulse/glow via CSS keyframe `dot-glow` (3.5s cyclus, 5 stappen met 0.7s delay tussenpozen), klassen `timeline-dot dot-step-{0-4}`
+  - **Case-rijen hover border**: oranje left-border schuift van boven naar beneden via `scaleY(0 → 1)` op `.case-row::before`
+  - Alle animaties respecteren `prefers-reduced-motion`
+- ✅ Nginx poort aangepast van 3001 naar 3000
+- ✅ PM2 gestart met `--cwd /var/www/stackwerk`
+
+### To do
+- [ ] GitHub Action automatische build en PM2 restart fixen
 - [ ] Contactformulier backend koppelen (nu client-side only)
 - [ ] SEO: sitemap, schema markup, meta tags per pagina
 - [ ] Kennisbank of blog toevoegen
