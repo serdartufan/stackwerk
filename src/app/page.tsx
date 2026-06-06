@@ -206,7 +206,7 @@ export default function Home() {
               <span
                 key={i}
                 className="font-sans text-[11px] uppercase tracking-[0.2em] shrink-0"
-                style={{ color: "rgba(240,237,232,0.4)", padding: "14px 28px" }}
+                style={{ color: "rgba(240,237,232,0.85)", padding: "14px 28px" }}
               >
                 {item}
                 <span className="ml-6" style={{ color: "rgba(240,237,232,0.18)" }}>·</span>
