@@ -96,6 +96,11 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const TICKER_ITEMS = [
+  "Next.js", "TypeScript", "Tailwind", "React",
+  "Hetzner", "GitHub Actions", "Nginx", "Node.js",
+];
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -186,6 +191,29 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        {/* ── Tech Ticker ──────────────────────────────────────────────────── */}
+        <div
+          className="overflow-hidden"
+          style={{
+            backgroundColor: "#111111",
+            borderTop: "1px solid rgba(240,237,232,0.04)",
+            borderBottom: "1px solid rgba(240,237,232,0.04)",
+          }}
+        >
+          <div className="ticker-track">
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+              <span
+                key={i}
+                className="font-sans text-[11px] uppercase tracking-[0.2em] shrink-0"
+                style={{ color: "rgba(240,237,232,0.4)", padding: "14px 28px" }}
+              >
+                {item}
+                <span className="ml-6" style={{ color: "rgba(240,237,232,0.18)" }}>·</span>
+              </span>
+            ))}
+          </div>
+        </div>
 
         {/* ── Stats — puur wit ─────────────────────────────────────────────── */}
         <section style={{ backgroundColor: "#FFFFFF" }}>
@@ -381,13 +409,12 @@ export default function Home() {
 
                         {/* Cirkel op de lijn */}
                         <div
-                          className="shrink-0 rounded-full"
+                          className={`timeline-dot dot-step-${i} shrink-0 rounded-full`}
                           style={{
                             width: "14px",
                             height: "14px",
                             backgroundColor: "#E85D26",
                             border: "3px solid white",
-                            boxShadow: "0 0 0 1px #E85D26",
                           }}
                         />
 
@@ -441,13 +468,12 @@ export default function Home() {
                   <div key={step.title} className="flex gap-5">
                     <div className="flex flex-col items-center">
                       <div
-                        className="shrink-0 rounded-full"
+                        className={`timeline-dot dot-step-${i} shrink-0 rounded-full`}
                         style={{
                           width: "14px",
                           height: "14px",
                           backgroundColor: "#E85D26",
                           border: "3px solid white",
-                          boxShadow: "0 0 0 1px #E85D26",
                         }}
                       />
                       {i < steps.length - 1 && (
