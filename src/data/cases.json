@@ -116,7 +116,7 @@
       "Behandelingspagina's voor lichaam en gezicht",
       "Prijzenpagina met behandelingsoverzicht",
       "Contactformulier gekoppeld aan Resend",
-      "Booking integratie via Calendly",
+      "Contactformulier met directe e-mailnotificatie via Resend",
       "Kennisbank met 5 SEO-artikelen over LPG en huidverzorging",
       "Lokale SEO (HealthAndBeautyBusiness schema, geo meta tags)",
       "Google Business Profile aangemaakt en geoptimaliseerd",
@@ -136,7 +136,7 @@
       {
         "num": "03",
         "title": "Conversiepad kort houden",
-        "desc": "Van elke pagina is het maximaal twee klikken naar een boeking. De Calendly integratie zorgt dat de drempel zo laag mogelijk is: informatie lezen, vertrouwen krijgen, direct boeken."
+        "desc": "Van elke pagina is het maximaal twee klikken naar het contactformulier. Het formulier stuurt direct een e-mail via Resend zodat de drempel zo laag mogelijk is: informatie lezen, vertrouwen krijgen, direct contact opnemen."
       }
     ],
     "resultaten": [
