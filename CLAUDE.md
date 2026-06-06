@@ -24,7 +24,7 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 ## Deploy workflow
 git push naar main → GitHub Action → SSH naar Hetzner VPS (46.225.5.91) → git pull + npm install + npm run build + pm2 restart
 
-**Let op:** GitHub Action deployt de code wel, maar build en restart werken nog niet automatisch — dit moet nog gefixed worden. PM2 wordt gestart met `--cwd /var/www/stackwerk` zodat de working directory altijd klopt.
+PM2 wordt gestart met `--cwd /var/www/stackwerk` zodat de working directory altijd klopt.
 
 ## Sessieafsluiting
 Na elke sessie altijd automatisch uitvoeren zonder dat Serdar het hoeft te vragen:
@@ -104,7 +104,7 @@ git add . && git commit -m "<bondige beschrijving>" && git push
 - ✅ PM2 gestart met `--cwd /var/www/stackwerk`
 
 ### To do
-- [ ] GitHub Action automatische build en PM2 restart fixen
+- ✅ GitHub Action automatische build en PM2 restart gefixed (`nvm use --lts` toegevoegd zodat npm en pm2 in PATH staan)
 - [ ] Contactformulier backend koppelen (nu client-side only)
 - [ ] SEO: sitemap, schema markup, meta tags per pagina
 - [ ] Kennisbank of blog toevoegen
