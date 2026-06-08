@@ -26,10 +26,42 @@ const labelStyle: CSSProperties = {
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  const [naam, setNaam] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefoon, setTelefoon] = useState("");
+  const [projectType, setProjectType] = useState("");
+  const [bericht, setBericht] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ naam, email, telefoon, projectType, bericht }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(
+          (data as { error?: string }).error ||
+            "Er ging iets mis. Probeer het later opnieuw."
+        );
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("Er ging iets mis. Controleer je verbinding en probeer opnieuw.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -67,6 +99,8 @@ export default function ContactForm() {
             placeholder="Je naam"
             className="contact-input"
             style={fieldStyle()}
+            value={naam}
+            onChange={(e) => setNaam(e.target.value)}
           />
         </div>
         <div>
@@ -79,6 +113,8 @@ export default function ContactForm() {
             placeholder="je@email.nl"
             className="contact-input"
             style={fieldStyle()}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
       </div>
@@ -97,6 +133,8 @@ export default function ContactForm() {
             placeholder="+31 6 00000000"
             className="contact-input"
             style={fieldStyle()}
+            value={telefoon}
+            onChange={(e) => setTelefoon(e.target.value)}
           />
         </div>
         <div>
@@ -104,17 +142,18 @@ export default function ContactForm() {
             Project type
           </label>
           <select
-            defaultValue=""
+            value={projectType}
+            onChange={(e) => setProjectType(e.target.value)}
             className="contact-input"
             style={fieldStyle({ cursor: "pointer" })}
           >
             <option value="" disabled>
               Selecteer een type
             </option>
-            <option value="website">Website</option>
-            <option value="saas">SaaS Platform</option>
-            <option value="maatwerk">Maatwerk Software</option>
-            <option value="anders">Anders</option>
+            <option value="Website">Website</option>
+            <option value="SaaS Platform">SaaS Platform</option>
+            <option value="Maatwerk Software">Maatwerk Software</option>
+            <option value="Anders">Anders</option>
           </select>
         </div>
       </div>
@@ -130,13 +169,26 @@ export default function ContactForm() {
           placeholder="Vertel ons over je idee..."
           className="contact-input"
           style={fieldStyle({ resize: "vertical" })}
+          value={bericht}
+          onChange={(e) => setBericht(e.target.value)}
         />
       </div>
+
+      {/* Foutmelding */}
+      {error && (
+        <p
+          className="font-sans"
+          style={{ color: "#E85D26", fontSize: "14px" }}
+        >
+          {error}
+        </p>
+      )}
 
       {/* Verstuur knop */}
       <button
         type="submit"
-        className="font-sans font-medium text-white transition-opacity hover:opacity-85"
+        disabled={loading}
+        className="font-sans font-medium text-white transition-opacity hover:opacity-85 disabled:opacity-50"
         style={{
           backgroundColor: "#E85D26",
           borderRadius: "10px",
@@ -144,10 +196,10 @@ export default function ContactForm() {
           width: "100%",
           fontSize: "15px",
           border: "none",
-          cursor: "pointer",
+          cursor: loading ? "not-allowed" : "pointer",
         }}
       >
-        Verstuur bericht
+        {loading ? "Bezig met verzenden..." : "Verstuur bericht"}
       </button>
     </form>
   );
