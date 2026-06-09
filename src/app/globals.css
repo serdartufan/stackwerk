@@ -11,16 +11,47 @@ body {
   font-family: var(--font-dm-sans), sans-serif;
 }
 
-/* Scroll animaties */
+/* ── Hero entrance ────────────────────────────────────────────────────────── */
+@keyframes hero-line-up {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-line       { display: block; overflow: hidden; }
+.hero-line-inner { display: block; animation: hero-line-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-delay-1    { animation-delay: 0.05s; }
+.hero-delay-2    { animation-delay: 0.27s; }
+.hero-sub        { animation: hero-fade-up 0.7s ease both; animation-delay: 0.55s; }
+.hero-ctas       { animation: hero-fade-up 0.7s ease both; animation-delay: 0.75s; }
+.hero-badge      { animation: hero-fade-up 0.7s ease both; animation-delay: 0.9s; }
+
+/* ── Scroll animaties ─────────────────────────────────────────────────────── */
 .scroll-anim {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(24px);
   transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.scroll-anim.variant-left    { transform: translateX(-32px); }
+.scroll-anim.variant-right   { transform: translateX(32px); }
+.scroll-anim.variant-scale   {
+  transform: scale(0.92);
+  transition: opacity 0.7s ease, transform 0.75s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.scroll-anim.variant-fade    { transform: none; }
+.scroll-anim.variant-heading {
+  transform: translateY(36px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-anim.in {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -29,9 +60,17 @@ body {
     transform: none;
     transition: none;
   }
+  .hero-line-inner,
+  .hero-sub,
+  .hero-ctas,
+  .hero-badge {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
-/* Case rijen — hover kleurt de titel oranje */
+/* ── Case rijen — hover kleurt de titel oranje ────────────────────────────── */
 .case-title {
   color: #f0ede8;
   transition: color 0.25s ease;
@@ -41,7 +80,17 @@ body {
   color: #e85d26;
 }
 
-/* Contact formulier velden */
+/* ── Case achtergrondnummer ───────────────────────────────────────────────── */
+.case-num {
+  opacity: 0.15;
+  transition: opacity 0.35s ease;
+}
+
+.case-row:hover .case-num {
+  opacity: 0.3;
+}
+
+/* ── Contact formulier velden ─────────────────────────────────────────────── */
 .contact-input::placeholder {
   color: rgba(240,237,232,0.3);
 }
@@ -56,7 +105,7 @@ body {
   color: #f0ede8;
 }
 
-/* Diensten cards — top accent border via inset box-shadow (vermijdt conflict met inline border) */
+/* ── Diensten cards — top accent border via inset box-shadow ──────────────── */
 .dienst-card {
   box-shadow: inset 0 3px 0 transparent;
   transition: box-shadow 0.3s ease;
@@ -66,7 +115,42 @@ body {
   box-shadow: inset 0 3px 0 #e85d26;
 }
 
-/* ── Timeline dots — sequentiële pulse ── */
+/* ── CTA button fill-from-left ────────────────────────────────────────────── */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-fill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn-fill:hover::before {
+  transform: translateX(0);
+}
+
+/* ── Werkwijze line draw ──────────────────────────────────────────────────── */
+.werkwijze-line-fill {
+  position: absolute;
+  inset: 0;
+  background-color: #e85d26;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.scroll-anim.in .werkwijze-line-fill {
+  transform: scaleX(1);
+}
+
+/* ── Timeline dots — sequentiële pulse ───────────────────────────────────── */
 @keyframes dot-glow {
   0% {
     box-shadow: 0 0 0 1px #e85d26;
@@ -86,14 +170,14 @@ body {
   }
 }
 
-.timeline-dot          { animation: dot-glow 3.5s ease-in-out infinite; }
-.dot-step-0            { animation-delay: 0s; }
-.dot-step-1            { animation-delay: 0.7s; }
-.dot-step-2            { animation-delay: 1.4s; }
-.dot-step-3            { animation-delay: 2.1s; }
-.dot-step-4            { animation-delay: 2.8s; }
+.timeline-dot { animation: dot-glow 3.5s ease-in-out infinite; }
+.dot-step-0   { animation-delay: 0s; }
+.dot-step-1   { animation-delay: 0.7s; }
+.dot-step-2   { animation-delay: 1.4s; }
+.dot-step-3   { animation-delay: 2.1s; }
+.dot-step-4   { animation-delay: 2.8s; }
 
-/* ── Tech ticker ── */
+/* ── Tech ticker ──────────────────────────────────────────────────────────── */
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -105,7 +189,11 @@ body {
   animation: ticker-scroll 24s linear infinite;
 }
 
-/* ── Case rijen — left border van boven naar beneden ── */
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Case rijen — left border van boven naar beneden ─────────────────────── */
 .case-row::before {
   content: '';
   position: absolute;
@@ -124,6 +212,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .timeline-dot { animation: none; }
-  .ticker-track  { animation: none; }
+  .timeline-dot         { animation: none; }
+  .ticker-track         { animation: none; }
+  .btn-fill::before     { transition: none; }
+  .werkwijze-line-fill  { transition: none; }
 }

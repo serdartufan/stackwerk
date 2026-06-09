@@ -2,16 +2,20 @@
 
 import { useEffect, useRef, ReactNode } from "react";
 
+type Variant = "up" | "left" | "right" | "scale" | "heading" | "fade";
+
 interface Props {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variant?: Variant;
 }
 
 export default function ScrollAnimation({
   children,
   className = "",
   delay = 0,
+  variant = "up",
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -19,12 +23,12 @@ export default function ScrollAnimation({
     const el = ref.current;
     if (!el) return;
 
-    // Skip animation for elements already in the initial viewport
     const rect = el.getBoundingClientRect();
     const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
     if (alreadyVisible) return;
 
     el.classList.add("scroll-anim");
+    if (variant !== "up") el.classList.add(`variant-${variant}`);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -42,7 +46,7 @@ export default function ScrollAnimation({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay]);
+  }, [delay, variant]);
 
   return (
     <div ref={ref} className={className}>

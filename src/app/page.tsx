@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ContactForm from "@/components/ContactForm";
+import CountUp from "@/components/CountUp";
 import { cases } from "@/data/cases";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -29,7 +30,6 @@ const diensten = [
     tags: ["API's", "Automatisering", "Integraties"],
   },
 ];
-
 
 const waarom = [
   {
@@ -83,10 +83,10 @@ const steps = [
 ];
 
 const stats = [
-  { number: "10+", label: "Projecten opgeleverd" },
-  { number: "3", label: "Actieve SaaS producten" },
-  { number: "100%", label: "Op tijd opgeleverd" },
-  { number: "2019", label: "Actief sinds" },
+  { value: 10, suffix: "+",  label: "Projecten opgeleverd" },
+  { value: 3,  suffix: "",   label: "Actieve SaaS producten" },
+  { value: 100, suffix: "%", label: "Op tijd opgeleverd" },
+  { value: 2019, from: 2015, suffix: "", label: "Actief sinds" },
 ];
 
 const navLinks = [
@@ -112,22 +112,25 @@ export default function Home() {
           className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 lg:px-8"
           style={{ backgroundColor: "#111111" }}
         >
-          {/* Tekst — zelfde layout als voor de foto */}
           <div className="relative z-10 mx-auto w-full max-w-7xl pt-6 pb-10 lg:pt-8 lg:pb-12">
             <h1
               className="font-serif font-bold leading-[1.02] mb-10"
               style={{ fontSize: "clamp(4.5rem, 11vw, 10rem)" }}
             >
-              <span className="block" style={{ color: "#F0EDE8" }}>
-                Wij bouwen
+              <span className="hero-line">
+                <span className="hero-line-inner hero-delay-1" style={{ color: "#F0EDE8" }}>
+                  Wij bouwen
+                </span>
               </span>
-              <span className="block italic" style={{ color: "#E85D26" }}>
-                jouw visie.
+              <span className="hero-line italic">
+                <span className="hero-line-inner hero-delay-2" style={{ color: "#E85D26" }}>
+                  jouw visie.
+                </span>
               </span>
             </h1>
 
             <p
-              className="font-sans mb-10 leading-relaxed"
+              className="hero-sub font-sans mb-10 leading-relaxed"
               style={{
                 maxWidth: "460px",
                 color: "rgba(240,237,232,0.55)",
@@ -139,10 +142,10 @@ export default function Home() {
               ondernemers die hun idee serieus nemen.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="hero-ctas flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
+                className="btn-fill inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white"
                 style={{ backgroundColor: "#E85D26" }}
               >
                 Start een project
@@ -160,7 +163,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Afbeelding — absoluut rechts, desktop only. z-[1] zodat tekst (z-10) altijd bovenop ligt */}
+          {/* Afbeelding — absoluut rechts, desktop only */}
           <div className="absolute right-0 top-0 hidden h-full w-[42%] lg:block" style={{ zIndex: 1 }}>
             <div
               className="absolute inset-0"
@@ -182,7 +185,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="absolute bottom-8 right-6 z-10 lg:right-8">
+          <div className="hero-badge absolute bottom-8 right-6 z-10 lg:right-8">
             <p
               className="font-sans text-xs uppercase tracking-[0.18em]"
               style={{ color: "rgba(240,237,232,0.28)" }}
@@ -220,13 +223,13 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
               {stats.map((stat, i) => (
-                <ScrollAnimation key={stat.number} delay={i * 90}>
+                <ScrollAnimation key={stat.label} delay={i * 90} variant="scale">
                   <div className="text-center">
                     <p
                       className="font-serif font-bold text-4xl mb-2"
                       style={{ color: "#111111" }}
                     >
-                      {stat.number}
+                      <CountUp value={stat.value} from={stat.from} suffix={stat.suffix} />
                     </p>
                     <p
                       className="font-sans text-sm"
@@ -244,7 +247,7 @@ export default function Home() {
         {/* ── Diensten — oranje ────────────────────────────────────────────── */}
         <section id="diensten" style={{ backgroundColor: "#E85D26" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
-            <ScrollAnimation>
+            <ScrollAnimation variant="heading">
               <p
                 className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
                 style={{ color: "rgba(0,0,0,0.45)" }}
@@ -265,41 +268,39 @@ export default function Home() {
               </h2>
             </ScrollAnimation>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              {diensten.map((d, i) => (
-                <ScrollAnimation key={d.num} delay={i * 110}>
-                  <Link href={d.href} className="block h-full">
+            {/* Asymmetrische layout: featured card links, twee kleinere rechts */}
+            <div className="grid gap-6 lg:grid-cols-5">
+              {/* Featured — eerste dienst, 3/5 breedte */}
+              <ScrollAnimation delay={0} className="lg:col-span-3">
+                <Link href={diensten[0].href} className="block h-full">
                   <div
-                    className="dienst-card flex h-full flex-col rounded-2xl p-10 cursor-pointer"
+                    className="dienst-card flex h-full flex-col rounded-2xl p-12 cursor-pointer"
                     style={{
                       backgroundColor: "#FFFFFF",
                       border: "1px solid rgba(17,17,17,0.08)",
                     }}
                   >
                     <p
-                      className="font-serif font-bold mb-6 leading-none select-none"
-                      style={{
-                        fontSize: "3rem",
-                        color: "#E85D26",
-                      }}
+                      className="font-serif font-bold mb-8 leading-none select-none"
+                      style={{ fontSize: "4.5rem", color: "#E85D26" }}
                     >
-                      {d.num}
+                      {diensten[0].num}
                     </p>
                     <h3
-                      className="font-serif font-bold text-3xl mb-4"
+                      className="font-serif font-bold text-4xl mb-5"
                       style={{ color: "#111111" }}
                     >
-                      {d.title}
+                      {diensten[0].title}
                     </h3>
                     <p
-                      className="font-sans flex-1 text-sm leading-relaxed mb-8"
+                      className="font-sans flex-1 text-base leading-relaxed mb-8"
                       style={{ color: "rgba(17,17,17,0.6)" }}
                     >
-                      {d.desc}
+                      {diensten[0].desc}
                     </p>
                     <div className="mt-auto flex items-end justify-between">
                       <div className="flex flex-wrap gap-2">
-                        {d.tags.map((tag) => (
+                        {diensten[0].tags.map((tag) => (
                           <span
                             key={tag}
                             className="font-sans rounded-full px-3 py-1 text-xs"
@@ -313,7 +314,7 @@ export default function Home() {
                         ))}
                       </div>
                       <span
-                        className="font-sans ml-4 shrink-0 text-xl"
+                        className="font-sans ml-4 shrink-0 text-2xl"
                         style={{ color: "#E85D26" }}
                         aria-hidden="true"
                       >
@@ -321,9 +322,67 @@ export default function Home() {
                       </span>
                     </div>
                   </div>
-                  </Link>
-                </ScrollAnimation>
-              ))}
+                </Link>
+              </ScrollAnimation>
+
+              {/* Twee kleinere kaarten — 2/5 breedte */}
+              <div className="lg:col-span-2 flex flex-col gap-6">
+                {diensten.slice(1).map((d, i) => (
+                  <ScrollAnimation key={d.num} delay={(i + 1) * 110} className="flex-1">
+                    <Link href={d.href} className="block h-full">
+                      <div
+                        className="dienst-card flex h-full flex-col rounded-2xl p-8 cursor-pointer"
+                        style={{
+                          backgroundColor: "#FFFFFF",
+                          border: "1px solid rgba(17,17,17,0.08)",
+                        }}
+                      >
+                        <p
+                          className="font-serif font-bold mb-5 leading-none select-none"
+                          style={{ fontSize: "2.5rem", color: "#E85D26" }}
+                        >
+                          {d.num}
+                        </p>
+                        <h3
+                          className="font-serif font-bold text-2xl mb-3"
+                          style={{ color: "#111111" }}
+                        >
+                          {d.title}
+                        </h3>
+                        <p
+                          className="font-sans flex-1 text-sm leading-relaxed mb-6"
+                          style={{ color: "rgba(17,17,17,0.6)" }}
+                        >
+                          {d.desc}
+                        </p>
+                        <div className="mt-auto flex items-end justify-between">
+                          <div className="flex flex-wrap gap-2">
+                            {d.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="font-sans rounded-full px-3 py-1 text-xs"
+                                style={{
+                                  backgroundColor: "rgba(17,17,17,0.06)",
+                                  color: "rgba(17,17,17,0.5)",
+                                }}
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <span
+                            className="font-sans ml-4 shrink-0 text-xl"
+                            style={{ color: "#E85D26" }}
+                            aria-hidden="true"
+                          >
+                            →
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  </ScrollAnimation>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -353,22 +412,20 @@ export default function Home() {
 
               {/* Desktop: horizontale timeline */}
               <div className="relative hidden md:block">
-                {/* Horizontale verbindingslijn — gecentreerd op de cirkels */}
+                {/* Horizontale verbindingslijn — vult zich in bij scroll */}
                 <div
-                  className="absolute left-0 right-0"
-                  style={{
-                    top: "167px",
-                    height: "1px",
-                    backgroundColor: "rgba(17,17,17,0.12)",
-                  }}
-                />
+                  className="absolute left-0 right-0 overflow-hidden"
+                  style={{ top: "167px", height: "1px" }}
+                >
+                  <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(17,17,17,0.12)" }} />
+                  <div className="werkwijze-line-fill" />
+                </div>
 
                 <div className="grid grid-cols-5">
                   {steps.map((step, i) => {
                     const isOdd = i % 2 === 0;
                     return (
                       <div key={step.title} className="flex flex-col items-center px-3">
-                        {/* Boven de lijn — fixed height zodat cirkels uitlijnen */}
                         <div
                           className="flex w-full flex-col items-center justify-end text-center"
                           style={{ height: "160px", paddingBottom: "12px" }}
@@ -407,7 +464,6 @@ export default function Home() {
                           )}
                         </div>
 
-                        {/* Cirkel op de lijn */}
                         <div
                           className={`timeline-dot dot-step-${i} shrink-0 rounded-full`}
                           style={{
@@ -418,7 +474,6 @@ export default function Home() {
                           }}
                         />
 
-                        {/* Onder de lijn */}
                         <div
                           className="flex w-full flex-col items-center text-center"
                           style={{ paddingTop: "12px" }}
@@ -524,7 +579,7 @@ export default function Home() {
         {/* ── Werk — zwart ─────────────────────────────────────────────────── */}
         <section id="werk" style={{ backgroundColor: "#111111" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
-            <ScrollAnimation>
+            <ScrollAnimation variant="heading">
               <p
                 className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
                 style={{ color: "#E85D26" }}
@@ -548,7 +603,7 @@ export default function Home() {
 
             <div>
               {cases.map((c, i) => (
-                <ScrollAnimation key={c.num} delay={i * 80}>
+                <ScrollAnimation key={c.num} delay={i * 80} variant="left">
                   <Link
                     href={`/werk/${c.slug}`}
                     className="case-row group relative block py-12 md:py-16"
@@ -558,18 +613,17 @@ export default function Home() {
                   >
                     {/* Groot achtergrondnummer */}
                     <span
-                      className="absolute left-0 top-1/2 -translate-y-1/2 font-serif font-bold leading-none select-none pointer-events-none"
+                      className="case-num absolute left-0 top-1/2 -translate-y-1/2 font-serif font-bold leading-none select-none pointer-events-none"
                       aria-hidden="true"
                       style={{
                         fontSize: "clamp(4rem, 8vw, 7rem)",
                         color: "#E85D26",
-                        opacity: 0.15,
                       }}
                     >
                       {c.num}
                     </span>
 
-                    {/* Content — verschoven voorbij het nummer */}
+                    {/* Content */}
                     <div
                       className="relative flex flex-col gap-6 md:flex-row md:items-center"
                       style={{
@@ -652,7 +706,7 @@ export default function Home() {
               ))}
             </div>
 
-            <ScrollAnimation>
+            <ScrollAnimation variant="fade">
               <div className="mt-16">
                 <a
                   href="#contact"
@@ -670,7 +724,7 @@ export default function Home() {
         {/* ── Waarom Stackwerk — wit ────────────────────────────────────────── */}
         <section id="over-ons" style={{ backgroundColor: "#FFFFFF" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
-            <ScrollAnimation>
+            <ScrollAnimation variant="heading">
               <p
                 className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
                 style={{ color: "#E85D26" }}
@@ -693,7 +747,11 @@ export default function Home() {
 
             <div className="grid gap-0 md:grid-cols-2">
               {waarom.map((w, i) => (
-                <ScrollAnimation key={w.title} delay={i * 90}>
+                <ScrollAnimation
+                  key={w.title}
+                  delay={i * 90}
+                  variant={i % 2 === 0 ? "left" : "right"}
+                >
                   <div
                     className="py-10 pr-12"
                     style={{
@@ -756,7 +814,6 @@ export default function Home() {
 
                 {/* Rechter kolom: contactgegevens */}
                 <div className="flex flex-col gap-5">
-                  {/* Card 1: Contactgegevens */}
                   <div
                     style={{
                       backgroundColor: "rgba(255,255,255,0.04)",
@@ -777,10 +834,7 @@ export default function Home() {
                           <rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="#E85D26" strokeWidth="1.25"/>
                           <polyline points="2,5.5 8,9.5 14,5.5" stroke="#E85D26" strokeWidth="1.25" strokeLinejoin="round"/>
                         </svg>
-                        <span
-                          className="font-sans"
-                          style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}
-                        >
+                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}>
                           serdar@stackwerk.nl
                         </span>
                       </div>
@@ -788,10 +842,7 @@ export default function Home() {
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                           <path d="M5.5 2h2l1 2.5-1.5 1.5a7 7 0 003 3l1.5-1.5L14 8.5v2a1 1 0 01-1 1C6.7 11.5 2.5 7.3 2.5 3a1 1 0 011-1z" stroke="#E85D26" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
-                        <span
-                          className="font-sans"
-                          style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}
-                        >
+                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}>
                           +31 6 00000000
                         </span>
                       </div>
@@ -800,17 +851,13 @@ export default function Home() {
                           <path d="M8 1.5A3.5 3.5 0 004.5 5c0 3.5 3.5 8.5 3.5 8.5S11.5 8.5 11.5 5A3.5 3.5 0 008 1.5z" stroke="#E85D26" strokeWidth="1.25"/>
                           <circle cx="8" cy="5" r="1.25" stroke="#E85D26" strokeWidth="1.25"/>
                         </svg>
-                        <span
-                          className="font-sans"
-                          style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}
-                        >
+                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}>
                           Groningen, Nederland
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Card 2: Bedrijfsgegevens */}
                   <div
                     style={{
                       backgroundColor: "rgba(255,255,255,0.04)",
@@ -849,7 +896,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* ── Footer — donker, geen wijzigingen ────────────────────────────────── */}
+      {/* ── Footer ───────────────────────────────────────────────────────────── */}
       <footer
         style={{
           backgroundColor: "#111111",
