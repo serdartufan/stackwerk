@@ -13,23 +13,31 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 ## Huidige staat (09-06-2026)
 
 **Paginas live:**
-- `/` — Homepage (hero, ticker, stats, diensten, werkwijze, cases, waarom, contact)
+- `/` — Homepage (Apple-stijl: hero, statement+stats, diensten 2x2, cases 2fr/1fr, CTA-oranje, contact)
 - `/over-ons` — Verhaal, team (Serdar + Dogukan), waarom-sectie
 - `/diensten/websites` — Volledig uitgeschreven dienstenpagina
 - `/diensten/saas-platforms` — Volledig uitgeschreven dienstenpagina
 - `/diensten/maatwerk-software` — Volledig uitgeschreven dienstenpagina
 - `/werk/[slug]` — Dynamische casepaginas op basis van `src/data/cases.json`
 
+**Design systeem (bijgewerkt):**
+- Accentkleur: `#E8620A` (was #E85D26 — iets warmer oranje)
+- Navbar: wit achtergrond, zwarte CTA-pill, donkere links
+- Sectievolgorde homepage: zwart → wit → zwart → wit → oranje → zwart
+
 **Componenten:**
-- `Navbar.tsx` — Globale navigatie via `layout.tsx`, links via volledige paden (`/#diensten` etc.)
+- `Navbar.tsx` — Wit achtergrond, logo en CTA in `#0a0a0a`, links via volledige paden (`/#diensten` etc.)
 - `ContactForm.tsx` — Gecontroleerd formulier met loading/error feedback, fetch naar `/api/contact`
 - `ScrollAnimation.tsx` — IntersectionObserver, variant prop: `up` / `left` / `right` / `scale` / `heading` / `fade`
 - `CountUp.tsx` — Animated number counter, telt op bij scroll via IntersectionObserver + rAF
 
 **Afbeeldingen:**
-- Alle 6 afbeeldingen zijn gegenereerd via Grok (`grok-imagine-image-quality`) en opgeslagen als WebP in `public/images/`
+- Alle 6 afbeeldingen zijn gegenereerd via Grok en opgeslagen als WebP in `public/images/`
 - `hero-main.webp`, `over-ons-team.webp`, `diensten-websites.webp`, `diensten-saas.webp`, `diensten-maatwerk.webp`, `funnelvision-showcase.webp`
-- Geen Unsplash meer — alles lokaal
+- Case thumbnails: `public/cases/funnelvision.png`, `justharry.png`, `mymiracle.png`
+- `public/images/generated/` — klaar voor gegenereerde assets via `generate-assets.ts`
+  - Vereist: `GEMINI_API_KEY` of `GROK_API_KEY` in `.env`
+  - Script: `npx tsx generate-assets.ts` (4 assets: hero-bg.jpg + 3 case-images)
 
 **Backend:**
 - `src/app/api/contact/route.ts` — POST endpoint, verstuurt email via Brevo SMTP
@@ -66,7 +74,8 @@ GitHub Action gebruikt `nvm use --lts` zodat `npm` en `pm2` in PATH staan.
 
 ## Openstaande taken
 - [ ] SEO: sitemap, schema markup, meta tags per pagina
-- [ ] FunnelVision toevoegen als portfolio case met eigen pagina
+- [ ] Visuals genereren: `GEMINI_API_KEY` of `GROK_API_KEY` toevoegen aan `.env` en `npx tsx generate-assets.ts` draaien
+- [ ] Gegenereerde assets integreren in layout (hero-bg.jpg als hero-achtergrond, case-*.jpg in cases-grid)
 - [ ] Kennisbank of blog toevoegen
 
 ## Sessieafsluiting (automatisch, altijd)
@@ -111,6 +120,23 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 ### Sessie 09-06-2026 — Rate limiting contactformulier
 - Rate limiting toegevoegd aan `/api/contact`: max 5 verzoeken per IP per 15 minuten via in-memory Map
 - CLAUDE.md volledig herschreven en gestructureerd
+
+### Sessie 09-06-2026 — Apple-stijl layout rebuild + generate-assets script
+
+**Homepage volledig herbouwd:**
+- Navbar: wit achtergrond, zwarte pill CTA (was donker)
+- Hero: full-bleed achtergrondafbeelding met overlay, gradient naar links
+- Statement sectie (nieuw): grote typografische zin met grijs/zwart contrast
+- Stats: 3 kolommen (was 4) met oranje CountUp-nummers en dunne scheidingslijnen
+- Diensten: zwart 2x2 grid met inline SVG-icons + oranje "Meer lezen →" links (was oranje sectie)
+- Cases: wit asymmetrisch 2fr/1fr grid — featured kaart + twee kleine kaarten gestapeld (was lijst)
+- CTA sectie (nieuw): volledig oranje, witte tekst, witte pill-knop naar #contact
+- Footer: minimaal single-row, geen kolommen
+- Accentkleur bijgewerkt naar #E8620A (was #E85D26)
+- `generate-assets.ts`: script voor Gemini (primair) + Grok (fallback) image generation
+
+**Nog te doen:**
+- API keys toevoegen voor asset generatie (zie Openstaande taken)
 
 ### Sessie 09-06-2026 — Animaties, anti-AI-tell fix en nieuwe afbeeldingen
 
