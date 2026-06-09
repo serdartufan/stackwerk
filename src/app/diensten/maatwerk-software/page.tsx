@@ -108,7 +108,7 @@ export default function MaatwerkSoftwareDienst() {
                 style={{ backgroundColor: "rgba(17,17,17,0.3)" }}
               />
               <Image
-                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=85&auto=format&fit=crop"
+                src="/images/diensten-maatwerk.webp"
                 alt=""
                 fill
                 className="object-cover object-center"

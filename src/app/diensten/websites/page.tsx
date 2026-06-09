@@ -108,7 +108,7 @@ export default function WebsitesDienst() {
                 style={{ backgroundColor: "rgba(17,17,17,0.3)" }}
               />
               <Image
-                src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&q=85&auto=format&fit=crop"
+                src="/images/diensten-websites.webp"
                 alt=""
                 fill
                 className="object-cover object-center"

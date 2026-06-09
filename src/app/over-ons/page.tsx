@@ -169,7 +169,7 @@ export default function OverOns() {
                   style={{ height: "260px" }}
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=85&auto=format&fit=crop"
+                    src="/images/over-ons-team.webp"
                     alt="Stackwerk team aan het werk"
                     width={600}
                     height={260}

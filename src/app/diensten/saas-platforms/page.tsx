@@ -108,7 +108,7 @@ export default function SaasPlatformsDienst() {
                 style={{ backgroundColor: "rgba(17,17,17,0.3)" }}
               />
               <Image
-                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=85&auto=format&fit=crop"
+                src="/images/diensten-saas.webp"
                 alt=""
                 fill
                 className="object-cover object-center"

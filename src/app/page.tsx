@@ -177,7 +177,7 @@ export default function Home() {
               style={{ zIndex: 1, backgroundColor: "rgba(17,17,17,0.3)" }}
             />
             <Image
-              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&q=85&auto=format&fit=crop"
+              src="/images/hero-main.webp"
               alt=""
               fill
               className="object-cover object-center"
