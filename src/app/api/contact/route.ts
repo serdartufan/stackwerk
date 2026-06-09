@@ -1,6 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const WINDOW_MS = 10 * 60 * 1000; // 10 minuten
+const MAX_REQUESTS = 5;
+const ipTimestamps = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = (ipTimestamps.get(ip) ?? []).filter(
+    (t) => now - t < WINDOW_MS
+  );
+  if (timestamps.length >= MAX_REQUESTS) return true;
+  timestamps.push(now);
+  ipTimestamps.set(ip, timestamps);
+  return false;
+}
+
 export async function POST(req: NextRequest) {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Te veel verzoeken. Probeer het over 10 minuten opnieuw." },
+      { status: 429 }
+    );
+  }
+
   const body = await req.json().catch(() => null);
 
   if (!body) {
