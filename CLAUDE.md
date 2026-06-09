@@ -23,7 +23,13 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 **Componenten:**
 - `Navbar.tsx` — Globale navigatie via `layout.tsx`, links via volledige paden (`/#diensten` etc.)
 - `ContactForm.tsx` — Gecontroleerd formulier met loading/error feedback, fetch naar `/api/contact`
-- `ScrollAnimation.tsx` — IntersectionObserver voor fade-in animaties
+- `ScrollAnimation.tsx` — IntersectionObserver, variant prop: `up` / `left` / `right` / `scale` / `heading` / `fade`
+- `CountUp.tsx` — Animated number counter, telt op bij scroll via IntersectionObserver + rAF
+
+**Afbeeldingen:**
+- Alle 6 afbeeldingen zijn gegenereerd via Grok (`grok-imagine-image-quality`) en opgeslagen als WebP in `public/images/`
+- `hero-main.webp`, `over-ons-team.webp`, `diensten-websites.webp`, `diensten-saas.webp`, `diensten-maatwerk.webp`, `funnelvision-showcase.webp`
+- Geen Unsplash meer — alles lokaal
 
 **Backend:**
 - `src/app/api/contact/route.ts` — POST endpoint, verstuurt email via Brevo SMTP
@@ -105,3 +111,25 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 ### Sessie 09-06-2026 — Rate limiting contactformulier
 - Rate limiting toegevoegd aan `/api/contact`: max 5 verzoeken per IP per 15 minuten via in-memory Map
 - CLAUDE.md volledig herschreven en gestructureerd
+
+### Sessie 09-06-2026 — Animaties, anti-AI-tell fix en nieuwe afbeeldingen
+
+**Animatie-upgrade (pure CSS + kleine JS, geen GSAP):**
+- Hero entrance: "Wij bouwen" + "jouw visie." ontvouwen per regel via clip-path reveal (CSS keyframes)
+  - Fix: `padding-bottom + margin-bottom` op `.hero-line` voor descenders
+  - Fix: `padding-inline + margin-inline` op `.hero-line` voor italic j-overhang (Fraunces)
+- `CountUp.tsx`: nieuw component, telt stats op bij scroll (ease-out cubic via rAF)
+- `ScrollAnimation.tsx`: `variant` prop toegevoegd (`up` / `left` / `right` / `scale` / `heading` / `fade`)
+- Werkwijze lijn: tekent zichzelf van links naar rechts bij scroll (`scaleX` via CSS + `.scroll-anim.in`)
+- CTA knoppen: fill-from-left hover animatie via `::before` pseudo-element
+- Tech ticker: pauzeert bij hover
+- Case achtergrondnummers: opaciteit stijgt bij hover (`.case-num`)
+- Waarom-sectie: items komen afwisselend van links/rechts binnen
+
+**Anti-AI-tell fix:**
+- Diensten: van 3 identieke gelijke kaartjes naar asymmetrische 3/5-2/5 grid (featured + twee compact)
+
+**Afbeeldingen vervangen:**
+- 6 nieuwe WebP afbeeldingen gegenereerd via Grok (`grok-imagine-image-quality`)
+- Geconverteerd via sharp: PNG → WebP, gezamenlijk van ~1.5MB naar ~447KB
+- Alle Unsplash URLs vervangen door lokale `/images/` paden
