@@ -74,8 +74,8 @@ GitHub Action gebruikt `nvm use --lts` zodat `npm` en `pm2` in PATH staan.
 
 ## Openstaande taken
 - [ ] SEO: sitemap, schema markup, meta tags per pagina
-- [ ] Visuals genereren: `GEMINI_API_KEY` of `GROK_API_KEY` toevoegen aan `.env` en `npx tsx generate-assets.ts` draaien
-- [ ] Gegenereerde assets integreren in layout (hero-bg.jpg als hero-achtergrond, case-*.jpg in cases-grid)
+- [x] Visuals genereren: assets gegenereerd via Grok, opgeslagen in `public/images/generated/`
+- [x] Gegenereerde assets verwerkt in layout (hero-bg.jpg in hero, case-*.jpg in cases-grid)
 - [ ] Kennisbank of blog toevoegen
 
 ## Sessieafsluiting (automatisch, altijd)
@@ -120,6 +120,24 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 ### Sessie 09-06-2026 — Rate limiting contactformulier
 - Rate limiting toegevoegd aan `/api/contact`: max 5 verzoeken per IP per 15 minuten via in-memory Map
 - CLAUDE.md volledig herschreven en gestructureerd
+
+### Sessie 09-06-2026 — Visuals genereren + homepage afronden
+
+**Afbeeldingen gegenereerd via Grok (`grok-imagine-image-quality`):**
+- `public/images/generated/hero-bg.jpg` — abstracte donkere achtergrond voor hero-sectie
+- `public/images/generated/case-capsuleautomaat.jpg` — B2B e-commerce sfeerbeeld (toekomstige case)
+- `public/images/generated/case-justharry.jpg` — AI SaaS sfeerbeeld (Just Harry case)
+- `public/images/generated/case-mymiracle.jpg` — beauty/wellness sfeerbeeld (My Miracle case)
+
+**Technische bevindingen:**
+- Gemini gratis tier: quota overschreden — Imagen 4.0 vereist betaald account
+- Grok `grok-imagine-image-quality` werkt prima als primair via `/v1/images/generations`
+- API keys toegevoegd aan `.env.local`: `GEMINI_API_KEY` en `GROK_API_KEY` (= XAI_API_KEY)
+- `generate-assets.ts` bijgewerkt met correcte modelnamen
+
+**Homepage afgerond:**
+- Hero gebruikt nu `hero-bg.jpg` als full-bleed achtergrond (was hero-main.webp)
+- Just Harry + My Miracle cases tonen gegenereerde sfeerbeelden
 
 ### Sessie 09-06-2026 — Apple-stijl layout rebuild + generate-assets script
 
