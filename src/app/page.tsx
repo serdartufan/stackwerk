@@ -83,7 +83,7 @@ export default function Home() {
           {/* Achtergrondafbeelding */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/hero-main.webp"
+              src="/images/generated/hero-bg.jpg"
               alt=""
               fill
               className="object-cover object-center"

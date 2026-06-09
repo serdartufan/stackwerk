@@ -47,7 +47,7 @@ async function generateWithGemini(
   prompt: string,
   apiKey: string
 ): Promise<Buffer | null> {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp-image-generation:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${apiKey}`;
 
   const res = await fetch(url, {
     method: "POST",
@@ -89,7 +89,7 @@ async function generateWithGrok(
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "grok-2-image",
+      model: "grok-imagine-image-quality",
       prompt,
       n: 1,
       response_format: "b64_json",
