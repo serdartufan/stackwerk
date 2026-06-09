@@ -5,100 +5,67 @@ import ContactForm from "@/components/ContactForm";
 import CountUp from "@/components/CountUp";
 import { cases } from "@/data/cases";
 
+// ─── Icons ───────────────────────────────────────────────────────────────────
+
+function WebsiteIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="M8 21h8M12 17v4" />
+    </svg>
+  );
+}
+
+function SaasIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17.5 19H9a7 7 0 116.71-9h1.79a4.5 4.5 0 110 9z" />
+    </svg>
+  );
+}
+
+function MaatwerkIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 18l6-6-6-6M8 6L2 12l6 6" />
+    </svg>
+  );
+}
+
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const diensten = [
   {
-    num: "01",
     title: "Websites",
     href: "/diensten/websites",
     desc: "Conversiegerichte websites die snel laden, goed ranken en bezoekers omzetten in klanten. Van landingspagina tot volledige bedrijfssite.",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
+    Icon: WebsiteIcon,
   },
   {
-    num: "02",
     title: "SaaS Platforms",
     href: "/diensten/saas-platforms",
     desc: "Van MVP tot schaalbaar platform. Wij bouwen multi-tenant applicaties met auth, dashboards, betalingen en alles wat erbij hoort.",
-    tags: ["Next.js", "Supabase", "Stripe"],
+    Icon: SaasIcon,
   },
   {
-    num: "03",
     title: "Maatwerk Software",
     href: "/diensten/maatwerk-software",
     desc: "Heeft jouw bedrijf iets nodig dat nergens kant-en-klaar bestaat? Wij bouwen het. Van interne tools tot complexe integraties.",
-    tags: ["API's", "Automatisering", "Integraties"],
-  },
-];
-
-const waarom = [
-  {
-    num: "01",
-    title: "AI als werktool",
-    desc: "Wij gebruiken AI intern om sneller te bouwen en beter te testen. Dat betekent minder uren, betere code en snellere oplevering voor jou.",
-  },
-  {
-    num: "02",
-    title: "Eén aanspreekpunt",
-    desc: "Je werkt direct met de mensen die jouw product bouwen. Geen tussenpersonen, geen vertraagde feedback, geen uitleg die twee keer gedaan moet worden.",
-  },
-  {
-    num: "03",
-    title: "Schaalbaar vanaf dag 1",
-    desc: "Wij bouwen met architectuur die meegroeit. Van MVP naar enterprise zonder alles opnieuw te hoeven bouwen.",
-  },
-  {
-    num: "04",
-    title: "Resultaat boven proces",
-    desc: "Wij leveren op tijd. Concrete deadlines, vaste prijs, geen verrassingen achteraf.",
-  },
-];
-
-const steps = [
-  {
-    num: "01",
-    title: "Kennismaking",
-    desc: "Vrijblijvend gesprek over je idee, doelen en budget. We kijken eerlijk of we de juiste match zijn.",
-  },
-  {
-    num: "02",
-    title: "Voorstel",
-    desc: "Een concreet projectvoorstel met scope, planning en vaste prijs. Wat je ziet is wat je betaalt.",
-  },
-  {
-    num: "03",
-    title: "Bouw",
-    desc: "We bouwen in sprints. Je ziet tussentijds de voortgang en geeft feedback waar nodig.",
-  },
-  {
-    num: "04",
-    title: "Revisies",
-    desc: "We verwerken je feedback en schaven bij tot het precies klopt zoals jij het voor je ziet.",
-  },
-  {
-    num: "05",
-    title: "Oplevering",
-    desc: "Het project wordt overgedragen. Code, toegangen en documentatie, alles netjes geregeld.",
+    Icon: MaatwerkIcon,
   },
 ];
 
 const stats = [
-  { value: 10, suffix: "+",  label: "Projecten opgeleverd" },
-  { value: 3,  suffix: "",   label: "Actieve SaaS producten" },
-  { value: 100, suffix: "%", label: "Op tijd opgeleverd" },
+  { value: 10,   suffix: "+",  label: "Projecten opgeleverd" },
+  { value: 100,  suffix: "%",  label: "Op tijd opgeleverd" },
   { value: 2019, from: 2015, suffix: "", label: "Actief sinds" },
 ];
 
 const navLinks = [
   { label: "Diensten", href: "#diensten" },
-  { label: "Werk", href: "#werk" },
+  { label: "Werk",     href: "#werk" },
   { label: "Over ons", href: "#over-ons" },
-  { label: "Contact", href: "#contact" },
-];
-
-const TICKER_ITEMS = [
-  "Next.js", "TypeScript", "Tailwind", "React",
-  "Hetzner", "GitHub Actions", "Nginx", "Node.js",
+  { label: "Contact",  href: "#contact" },
 ];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -107,23 +74,44 @@ export default function Home() {
   return (
     <>
       <main>
+
         {/* ── Hero — zwart ─────────────────────────────────────────────────── */}
         <section
           className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 lg:px-8"
-          style={{ backgroundColor: "#111111" }}
+          style={{ backgroundColor: "#0a0a0a" }}
         >
+          {/* Achtergrondafbeelding */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/hero-main.webp"
+              alt=""
+              fill
+              className="object-cover object-center"
+              style={{ opacity: 0.25 }}
+              priority
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to right, #0a0a0a 45%, rgba(10,10,10,0.3) 100%), linear-gradient(to top, #0a0a0a 15%, transparent 60%)",
+              }}
+            />
+          </div>
+
+          {/* Content */}
           <div className="relative z-10 mx-auto w-full max-w-7xl pt-6 pb-10 lg:pt-8 lg:pb-12">
             <h1
               className="font-serif font-bold leading-[1.02] mb-10"
               style={{ fontSize: "clamp(4.5rem, 11vw, 10rem)" }}
             >
               <span className="hero-line">
-                <span className="hero-line-inner hero-delay-1" style={{ color: "#F0EDE8" }}>
+                <span className="hero-line-inner hero-delay-1" style={{ color: "#ffffff" }}>
                   Wij bouwen
                 </span>
               </span>
               <span className="hero-line italic">
-                <span className="hero-line-inner hero-delay-2" style={{ color: "#E85D26" }}>
+                <span className="hero-line-inner hero-delay-2" style={{ color: "#E8620A" }}>
                   jouw visie.
                 </span>
               </span>
@@ -131,11 +119,7 @@ export default function Home() {
 
             <p
               className="hero-sub font-sans mb-10 leading-relaxed"
-              style={{
-                maxWidth: "460px",
-                color: "rgba(240,237,232,0.55)",
-                fontSize: "16px",
-              }}
+              style={{ maxWidth: "460px", color: "rgba(255,255,255,0.5)", fontSize: "16px" }}
             >
               Stackwerk is een onafhankelijk development bureau in Groningen.
               Wij bouwen websites, SaaS platforms en maatwerk software voor
@@ -146,95 +130,73 @@ export default function Home() {
               <a
                 href="#contact"
                 className="btn-fill inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white"
-                style={{ backgroundColor: "#E85D26" }}
+                style={{ backgroundColor: "#E8620A" }}
               >
                 Start een project
               </a>
               <a
                 href="#werk"
                 className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium transition-opacity hover:opacity-75"
-                style={{
-                  border: "1px solid rgba(240,237,232,0.2)",
-                  color: "#F0EDE8",
-                }}
+                style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#ffffff" }}
               >
                 Bekijk ons werk
               </a>
             </div>
           </div>
 
-          {/* Afbeelding — absoluut rechts, desktop only */}
-          <div className="absolute right-0 top-0 hidden h-full w-[42%] lg:block" style={{ zIndex: 1 }}>
-            <div
-              className="absolute inset-0"
-              style={{
-                zIndex: 2,
-                background: "linear-gradient(to right, #111111 0%, rgba(17,17,17,0) 40%)",
-              }}
-            />
-            <div
-              className="absolute inset-0"
-              style={{ zIndex: 1, backgroundColor: "rgba(17,17,17,0.3)" }}
-            />
-            <Image
-              src="/images/hero-main.webp"
-              alt=""
-              fill
-              className="object-cover object-center"
-              priority
-            />
-          </div>
-
           <div className="hero-badge absolute bottom-8 right-6 z-10 lg:right-8">
             <p
               className="font-sans text-xs uppercase tracking-[0.18em]"
-              style={{ color: "rgba(240,237,232,0.28)" }}
+              style={{ color: "rgba(255,255,255,0.22)" }}
             >
               ACTIEF SINDS 2019 · GRONINGEN
             </p>
           </div>
         </section>
 
-        {/* ── Tech Ticker ──────────────────────────────────────────────────── */}
-        <div
-          className="overflow-hidden"
-          style={{
-            backgroundColor: "#111111",
-            borderTop: "1px solid rgba(240,237,232,0.04)",
-            borderBottom: "1px solid rgba(240,237,232,0.04)",
-          }}
-        >
-          <div className="ticker-track">
-            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-              <span
-                key={i}
-                className="font-sans text-[11px] uppercase tracking-[0.2em] shrink-0"
-                style={{ color: "rgba(240,237,232,0.85)", padding: "14px 28px" }}
+        {/* ── Statement + Stats — wit ───────────────────────────────────────── */}
+        <section style={{ backgroundColor: "#ffffff" }}>
+          {/* Statement */}
+          <div className="mx-auto max-w-7xl px-6 pt-24 pb-16 lg:px-8 lg:pt-32 lg:pb-20">
+            <ScrollAnimation variant="heading">
+              <p
+                className="font-serif font-bold"
+                style={{
+                  fontSize: "clamp(2.2rem, 5.5vw, 4.5rem)",
+                  lineHeight: 1.08,
+                  maxWidth: "880px",
+                  color: "#0a0a0a",
+                }}
               >
-                {item}
-                <span className="ml-6" style={{ color: "rgba(240,237,232,0.18)" }}>·</span>
-              </span>
-            ))}
+                <span style={{ color: "rgba(0,0,0,0.22)" }}>Wij bouwen wat </span>
+                anderen niet kunnen.
+              </p>
+            </ScrollAnimation>
           </div>
-        </div>
 
-        {/* ── Stats — puur wit ─────────────────────────────────────────────── */}
-        <section style={{ backgroundColor: "#FFFFFF" }}>
-          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-            <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          {/* Stats — 3 kolommen met dunne scheidingslijnen */}
+          <div
+            className="mx-auto max-w-7xl px-6 pb-24 lg:px-8 lg:pb-32"
+          >
+            <div
+              className="grid grid-cols-3"
+              style={{ borderTop: "1px solid rgba(0,0,0,0.1)" }}
+            >
               {stats.map((stat, i) => (
-                <ScrollAnimation key={stat.label} delay={i * 90} variant="scale">
-                  <div className="text-center">
+                <ScrollAnimation key={stat.label} delay={i * 80} variant="scale">
+                  <div
+                    className="py-12 px-4 sm:px-8 text-center"
+                    style={{
+                      borderRight: i < stats.length - 1 ? "1px solid rgba(0,0,0,0.1)" : undefined,
+                    }}
+                  >
                     <p
-                      className="font-serif font-bold text-4xl mb-2"
-                      style={{ color: "#111111" }}
+                      className="font-serif font-bold mb-2"
+                      style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#E8620A", lineHeight: 1 }}
                     >
                       <CountUp value={stat.value} from={stat.from} suffix={stat.suffix} />
                     </p>
-                    <p
-                      className="font-sans text-sm"
-                      style={{ color: "rgba(17,17,17,0.5)" }}
-                    >
+                    <p className="font-sans text-sm" style={{ color: "rgba(0,0,0,0.5)" }}>
                       {stat.label}
                     </p>
                   </div>
@@ -244,139 +206,197 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Diensten — oranje ────────────────────────────────────────────── */}
-        <section id="diensten" style={{ backgroundColor: "#E85D26" }}>
+        {/* ── Diensten — zwart, 2×2 grid ───────────────────────────────────── */}
+        <section id="diensten" style={{ backgroundColor: "#0a0a0a" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation variant="heading">
               <p
                 className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "rgba(0,0,0,0.45)" }}
+                style={{ color: "rgba(255,255,255,0.3)" }}
               >
                 WAT WE BOUWEN
               </p>
               <h2
                 className="font-serif font-bold mb-16"
-                style={{
-                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                  color: "#FFFFFF",
-                }}
+                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#ffffff" }}
               >
                 Van idee naar{" "}
-                <span className="italic" style={{ color: "#111111" }}>
+                <span className="italic" style={{ color: "#E8620A" }}>
                   werkend product.
                 </span>
               </h2>
             </ScrollAnimation>
 
-            {/* Asymmetrische layout: featured card links, twee kleinere rechts */}
-            <div className="grid gap-6 lg:grid-cols-5">
-              {/* Featured — eerste dienst, 3/5 breedte */}
-              <ScrollAnimation delay={0} className="lg:col-span-3">
-                <Link href={diensten[0].href} className="block h-full">
-                  <div
-                    className="dienst-card flex h-full flex-col rounded-2xl p-12 cursor-pointer"
-                    style={{
-                      backgroundColor: "#FFFFFF",
-                      border: "1px solid rgba(17,17,17,0.08)",
-                    }}
-                  >
-                    <p
-                      className="font-serif font-bold mb-8 leading-none select-none"
-                      style={{ fontSize: "4.5rem", color: "#E85D26" }}
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {diensten.map((d, i) => (
+                <ScrollAnimation key={d.title} delay={i * 90}>
+                  <Link href={d.href} className="block h-full">
+                    <div
+                      className="dienst-card-v2 flex h-full flex-col gap-6 p-10"
+                      style={{ borderLeft: "1px solid rgba(255,255,255,0.08)" }}
                     >
-                      {diensten[0].num}
-                    </p>
-                    <h3
-                      className="font-serif font-bold text-4xl mb-5"
-                      style={{ color: "#111111" }}
-                    >
-                      {diensten[0].title}
-                    </h3>
-                    <p
-                      className="font-sans flex-1 text-base leading-relaxed mb-8"
-                      style={{ color: "rgba(17,17,17,0.6)" }}
-                    >
-                      {diensten[0].desc}
-                    </p>
-                    <div className="mt-auto flex items-end justify-between">
-                      <div className="flex flex-wrap gap-2">
-                        {diensten[0].tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="font-sans rounded-full px-3 py-1 text-xs"
-                            style={{
-                              backgroundColor: "rgba(17,17,17,0.06)",
-                              color: "rgba(17,17,17,0.5)",
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                      <div style={{ color: "#E8620A" }}>
+                        <d.Icon />
                       </div>
-                      <span
-                        className="font-sans ml-4 shrink-0 text-2xl"
-                        style={{ color: "#E85D26" }}
-                        aria-hidden="true"
+                      <h3
+                        className="font-serif font-bold text-2xl"
+                        style={{ color: "#ffffff" }}
                       >
-                        →
+                        {d.title}
+                      </h3>
+                      <p
+                        className="font-sans text-sm leading-relaxed flex-1"
+                        style={{ color: "rgba(255,255,255,0.5)" }}
+                      >
+                        {d.desc}
+                      </p>
+                      <span
+                        className="font-sans text-sm font-medium"
+                        style={{ color: "#E8620A" }}
+                      >
+                        Meer lezen →
                       </span>
                     </div>
-                  </div>
-                </Link>
-              </ScrollAnimation>
+                  </Link>
+                </ScrollAnimation>
+              ))}
 
-              {/* Twee kleinere kaarten — 2/5 breedte */}
-              <div className="lg:col-span-2 flex flex-col gap-6">
-                {diensten.slice(1).map((d, i) => (
-                  <ScrollAnimation key={d.num} delay={(i + 1) * 110} className="flex-1">
-                    <Link href={d.href} className="block h-full">
+              {/* 4e cel — CTA */}
+              <ScrollAnimation delay={3 * 90}>
+                <div
+                  className="dienst-card-v2 flex h-full flex-col justify-center gap-6 p-10"
+                  style={{ borderLeft: "1px solid rgba(255,255,255,0.08)" }}
+                >
+                  <p
+                    className="font-sans text-xs uppercase tracking-[0.22em]"
+                    style={{ color: "rgba(255,255,255,0.25)" }}
+                  >
+                    OP MAAT
+                  </p>
+                  <p
+                    className="font-serif font-bold"
+                    style={{ fontSize: "1.5rem", color: "#ffffff", lineHeight: 1.2 }}
+                  >
+                    Iets specifieks nodig dat hier niet bij staat?
+                  </p>
+                  <a
+                    href="#contact"
+                    className="font-sans text-sm font-medium"
+                    style={{ color: "#E8620A" }}
+                  >
+                    Plan een gesprek →
+                  </a>
+                </div>
+              </ScrollAnimation>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Cases — wit, asymmetrisch grid 2fr/1fr ───────────────────────── */}
+        <section id="werk" style={{ backgroundColor: "#ffffff" }}>
+          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
+            <ScrollAnimation variant="heading">
+              <p
+                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
+                style={{ color: "#E8620A" }}
+              >
+                ONS WERK
+              </p>
+              <h2
+                className="font-serif font-bold mb-16"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#0a0a0a" }}
+              >
+                Projecten waar we{" "}
+                <span className="italic" style={{ color: "#E8620A" }}>
+                  trots
+                </span>{" "}
+                op zijn.
+              </h2>
+            </ScrollAnimation>
+
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
+              {/* Featured — eerste case, 2fr */}
+              {cases[0] && (
+                <ScrollAnimation>
+                  <Link href={`/werk/${cases[0].slug}`} className="case-featured-card block group">
+                    <div
+                      className="relative overflow-hidden rounded-2xl"
+                      style={{ height: "clamp(320px, 45vw, 540px)", backgroundColor: "#f0f0f0" }}
+                    >
+                      <Image
+                        src={cases[0].showcaseImg || cases[0].img}
+                        alt={cases[0].title}
+                        fill
+                        className="case-featured-img object-cover object-top"
+                      />
                       <div
-                        className="dienst-card flex h-full flex-col rounded-2xl p-8 cursor-pointer"
+                        className="absolute inset-0 flex flex-col justify-end p-8"
                         style={{
-                          backgroundColor: "#FFFFFF",
-                          border: "1px solid rgba(17,17,17,0.08)",
+                          background:
+                            "linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.2) 55%, transparent 100%)",
                         }}
                       >
-                        <p
-                          className="font-serif font-bold mb-5 leading-none select-none"
-                          style={{ fontSize: "2.5rem", color: "#E85D26" }}
+                        <span
+                          className="font-sans rounded-full px-3 py-1 text-xs mb-4 self-start"
+                          style={{ backgroundColor: "rgba(232,98,10,0.2)", color: "#E8620A" }}
                         >
-                          {d.num}
-                        </p>
+                          {cases[0].label}
+                        </span>
                         <h3
-                          className="font-serif font-bold text-2xl mb-3"
-                          style={{ color: "#111111" }}
+                          className="font-serif font-bold mb-2 text-white"
+                          style={{ fontSize: "clamp(1.8rem, 3vw, 2.4rem)" }}
                         >
-                          {d.title}
+                          {cases[0].title}
                         </h3>
                         <p
-                          className="font-sans flex-1 text-sm leading-relaxed mb-6"
-                          style={{ color: "rgba(17,17,17,0.6)" }}
+                          className="font-sans text-sm"
+                          style={{ color: "#E8620A" }}
                         >
-                          {d.desc}
+                          {cases[0].result}
                         </p>
-                        <div className="mt-auto flex items-end justify-between">
-                          <div className="flex flex-wrap gap-2">
-                            {d.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="font-sans rounded-full px-3 py-1 text-xs"
-                                style={{
-                                  backgroundColor: "rgba(17,17,17,0.06)",
-                                  color: "rgba(17,17,17,0.5)",
-                                }}
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
+                      </div>
+                    </div>
+                  </Link>
+                </ScrollAnimation>
+              )}
+
+              {/* Kleinere cases — 1fr, gestapeld */}
+              <div className="flex flex-col gap-4">
+                {cases.slice(1).map((c, i) => (
+                  <ScrollAnimation key={c.slug} delay={(i + 1) * 100}>
+                    <Link href={`/werk/${c.slug}`} className="case-small-card block group flex-1">
+                      <div
+                        className="relative overflow-hidden rounded-2xl"
+                        style={{ height: "clamp(180px, 20vw, 260px)", backgroundColor: "#f0f0f0" }}
+                      >
+                        <Image
+                          src={c.img}
+                          alt={c.title}
+                          fill
+                          className="case-small-img object-cover object-top"
+                        />
+                        <div
+                          className="absolute inset-0 flex flex-col justify-end p-6"
+                          style={{
+                            background:
+                              "linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.1) 60%, transparent 100%)",
+                          }}
+                        >
                           <span
-                            className="font-sans ml-4 shrink-0 text-xl"
-                            style={{ color: "#E85D26" }}
-                            aria-hidden="true"
+                            className="font-sans rounded-full px-2.5 py-0.5 text-xs mb-2 self-start"
+                            style={{ backgroundColor: "rgba(232,98,10,0.2)", color: "#E8620A" }}
                           >
-                            →
+                            {c.label}
                           </span>
+                          <h3
+                            className="font-serif font-bold text-white mb-1"
+                            style={{ fontSize: "1.25rem" }}
+                          >
+                            {c.title}
+                          </h3>
+                          <p className="font-sans text-xs" style={{ color: "#E8620A" }}>
+                            {c.result}
+                          </p>
                         </div>
                       </div>
                     </Link>
@@ -384,474 +404,128 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ── Werkwijze — wit ──────────────────────────────────────────────── */}
-        <section style={{ backgroundColor: "#FFFFFF" }}>
-          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
-            <ScrollAnimation>
-              <p
-                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "#E85D26" }}
-              >
-                HOE WE WERKEN
-              </p>
-              <h2
-                className="font-serif font-bold mb-16 lg:mb-24"
-                style={{
-                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                  color: "#111111",
-                }}
-              >
-                Onze{" "}
-                <span className="italic" style={{ color: "#E85D26" }}>
-                  werkwijze.
-                </span>
-              </h2>
-
-              {/* Desktop: horizontale timeline */}
-              <div className="relative hidden md:block">
-                {/* Horizontale verbindingslijn — vult zich in bij scroll */}
-                <div
-                  className="absolute left-0 right-0 overflow-hidden"
-                  style={{ top: "167px", height: "1px" }}
-                >
-                  <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(17,17,17,0.12)" }} />
-                  <div className="werkwijze-line-fill" />
-                </div>
-
-                <div className="grid grid-cols-5">
-                  {steps.map((step, i) => {
-                    const isOdd = i % 2 === 0;
-                    return (
-                      <div key={step.title} className="flex flex-col items-center px-3">
-                        <div
-                          className="flex w-full flex-col items-center justify-end text-center"
-                          style={{ height: "160px", paddingBottom: "12px" }}
-                        >
-                          {isOdd ? (
-                            <>
-                              <p
-                                className="font-sans uppercase mb-2"
-                                style={{
-                                  fontSize: "11px",
-                                  letterSpacing: "0.2em",
-                                  color: "rgba(17,17,17,0.35)",
-                                }}
-                              >
-                                {step.num}
-                              </p>
-                              <p
-                                className="font-serif font-bold"
-                                style={{ fontSize: "1.1rem", color: "#111111" }}
-                              >
-                                {step.title}
-                              </p>
-                            </>
-                          ) : (
-                            <p
-                              className="font-sans text-center"
-                              style={{
-                                fontSize: "13px",
-                                color: "rgba(17,17,17,0.6)",
-                                maxWidth: "160px",
-                                lineHeight: "1.6",
-                              }}
-                            >
-                              {step.desc}
-                            </p>
-                          )}
-                        </div>
-
-                        <div
-                          className={`timeline-dot dot-step-${i} shrink-0 rounded-full`}
-                          style={{
-                            width: "14px",
-                            height: "14px",
-                            backgroundColor: "#E85D26",
-                            border: "3px solid white",
-                          }}
-                        />
-
-                        <div
-                          className="flex w-full flex-col items-center text-center"
-                          style={{ paddingTop: "12px" }}
-                        >
-                          {isOdd ? (
-                            <p
-                              className="font-sans"
-                              style={{
-                                fontSize: "13px",
-                                color: "rgba(17,17,17,0.6)",
-                                maxWidth: "160px",
-                                lineHeight: "1.6",
-                              }}
-                            >
-                              {step.desc}
-                            </p>
-                          ) : (
-                            <>
-                              <p
-                                className="font-sans uppercase mb-2"
-                                style={{
-                                  fontSize: "11px",
-                                  letterSpacing: "0.2em",
-                                  color: "rgba(17,17,17,0.35)",
-                                }}
-                              >
-                                {step.num}
-                              </p>
-                              <p
-                                className="font-serif font-bold"
-                                style={{ fontSize: "1.1rem", color: "#111111" }}
-                              >
-                                {step.title}
-                              </p>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Mobiel: verticale timeline */}
-              <div className="md:hidden">
-                {steps.map((step, i) => (
-                  <div key={step.title} className="flex gap-5">
-                    <div className="flex flex-col items-center">
-                      <div
-                        className={`timeline-dot dot-step-${i} shrink-0 rounded-full`}
-                        style={{
-                          width: "14px",
-                          height: "14px",
-                          backgroundColor: "#E85D26",
-                          border: "3px solid white",
-                        }}
-                      />
-                      {i < steps.length - 1 && (
-                        <div
-                          className="mt-1 w-px flex-1"
-                          style={{
-                            backgroundColor: "rgba(17,17,17,0.12)",
-                            minHeight: "60px",
-                          }}
-                        />
-                      )}
-                    </div>
-                    <div className="pb-10">
-                      <p
-                        className="font-sans uppercase mb-1"
-                        style={{
-                          fontSize: "11px",
-                          letterSpacing: "0.2em",
-                          color: "rgba(17,17,17,0.35)",
-                        }}
-                      >
-                        {step.num}
-                      </p>
-                      <p
-                        className="font-serif font-bold mb-2"
-                        style={{ fontSize: "1.1rem", color: "#111111" }}
-                      >
-                        {step.title}
-                      </p>
-                      <p
-                        className="font-sans"
-                        style={{
-                          fontSize: "13px",
-                          color: "rgba(17,17,17,0.6)",
-                          lineHeight: "1.6",
-                        }}
-                      >
-                        {step.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </ScrollAnimation>
-          </div>
-        </section>
-
-        {/* ── Werk — zwart ─────────────────────────────────────────────────── */}
-        <section id="werk" style={{ backgroundColor: "#111111" }}>
-          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
-            <ScrollAnimation variant="heading">
-              <p
-                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "#E85D26" }}
-              >
-                ONS WERK
-              </p>
-              <h2
-                className="font-serif font-bold mb-16"
-                style={{
-                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                  color: "#F0EDE8",
-                }}
-              >
-                Projecten waar we{" "}
-                <span className="italic" style={{ color: "#E85D26" }}>
-                  trots
-                </span>{" "}
-                op zijn.
-              </h2>
-            </ScrollAnimation>
-
-            <div>
-              {cases.map((c, i) => (
-                <ScrollAnimation key={c.num} delay={i * 80} variant="left">
-                  <Link
-                    href={`/werk/${c.slug}`}
-                    className="case-row group relative block py-12 md:py-16"
-                    style={{
-                      borderBottom: "1px solid rgba(240,237,232,0.08)",
-                    }}
-                  >
-                    {/* Groot achtergrondnummer */}
-                    <span
-                      className="case-num absolute left-0 top-1/2 -translate-y-1/2 font-serif font-bold leading-none select-none pointer-events-none"
-                      aria-hidden="true"
-                      style={{
-                        fontSize: "clamp(4rem, 8vw, 7rem)",
-                        color: "#E85D26",
-                      }}
-                    >
-                      {c.num}
-                    </span>
-
-                    {/* Content */}
-                    <div
-                      className="relative flex flex-col gap-6 md:flex-row md:items-center"
-                      style={{
-                        paddingLeft: "clamp(4.5rem, 9.5vw, 8rem)",
-                      }}
-                    >
-                      <div className="flex-1 min-w-0">
-                        <div className="mb-3">
-                          <span
-                            className="font-sans rounded-full px-3 py-1 text-xs"
-                            style={{
-                              backgroundColor: "rgba(232,93,38,0.12)",
-                              color: "#E85D26",
-                            }}
-                          >
-                            {c.label}
-                          </span>
-                        </div>
-                        <h3
-                          className="case-title font-serif font-bold mb-3"
-                          style={{
-                            fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
-                          }}
-                        >
-                          {c.title}
-                        </h3>
-                        <p
-                          className="font-sans text-sm leading-relaxed mb-5"
-                          style={{
-                            maxWidth: "480px",
-                            color: "rgba(240,237,232,0.58)",
-                          }}
-                        >
-                          {c.desc}
-                        </p>
-                        <div className="flex flex-wrap items-center gap-3">
-                          <div className="flex flex-wrap gap-2">
-                            {c.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="font-sans rounded-full px-3 py-1 text-xs"
-                                style={{
-                                  backgroundColor: "rgba(240,237,232,0.06)",
-                                  color: "rgba(240,237,232,0.45)",
-                                }}
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                          <p
-                            className="font-sans text-sm font-medium"
-                            style={{ color: "#E85D26" }}
-                          >
-                            {c.result}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Thumbnail — desktop only */}
-                      <div
-                        className="hidden lg:block shrink-0 overflow-hidden rounded-xl"
-                        style={{
-                          width: "200px",
-                          height: "130px",
-                          border: "1px solid rgba(240,237,232,0.08)",
-                        }}
-                      >
-                        <Image
-                          src={c.img}
-                          alt={c.title}
-                          width={200}
-                          height={130}
-                          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-                  </Link>
-                </ScrollAnimation>
-              ))}
-            </div>
 
             <ScrollAnimation variant="fade">
-              <div className="mt-16">
+              <div className="mt-12">
                 <a
                   href="#contact"
                   className="inline-flex items-center gap-2 font-sans text-sm font-medium transition-opacity hover:opacity-70"
-                  style={{ color: "#F0EDE8" }}
+                  style={{ color: "#0a0a0a" }}
                 >
                   Zulke resultaten voor jouw project?
-                  <span style={{ color: "#E85D26" }}>Plan een kennismaking →</span>
+                  <span style={{ color: "#E8620A" }}>Plan een kennismaking →</span>
                 </a>
               </div>
             </ScrollAnimation>
           </div>
         </section>
 
-        {/* ── Waarom Stackwerk — wit ────────────────────────────────────────── */}
-        <section id="over-ons" style={{ backgroundColor: "#FFFFFF" }}>
-          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
-            <ScrollAnimation variant="heading">
+        {/* ── CTA — volledig oranje ─────────────────────────────────────────── */}
+        <section style={{ backgroundColor: "#E8620A" }}>
+          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40 text-center">
+            <ScrollAnimation>
               <p
-                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "#E85D26" }}
+                className="font-sans text-xs uppercase tracking-[0.28em] mb-8"
+                style={{ color: "rgba(255,255,255,0.65)" }}
               >
-                WAAROM STACKWERK
+                START VANDAAG
               </p>
               <h2
-                className="font-serif font-bold mb-16"
+                className="font-serif font-bold mb-6"
                 style={{
-                  fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-                  color: "#111111",
+                  fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                  color: "#ffffff",
+                  lineHeight: 1.05,
                 }}
               >
-                Wij bouwen wat{" "}
-                <span className="italic" style={{ color: "#E85D26" }}>
-                  anderen niet kunnen.
-                </span>
+                Klaar om te starten?
               </h2>
+              <p
+                className="font-sans mb-12 mx-auto leading-relaxed"
+                style={{
+                  color: "rgba(255,255,255,0.72)",
+                  maxWidth: "440px",
+                  fontSize: "16px",
+                }}
+              >
+                Plan een vrijblijvende kennismaking. Wij kijken eerlijk of we
+                de juiste match zijn.
+              </p>
+              <a
+                href="#contact"
+                className="cta-pill inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium"
+                style={{ backgroundColor: "#ffffff", color: "#0a0a0a" }}
+              >
+                Plan een kennismaking
+              </a>
             </ScrollAnimation>
-
-            <div className="grid gap-0 md:grid-cols-2">
-              {waarom.map((w, i) => (
-                <ScrollAnimation
-                  key={w.title}
-                  delay={i * 90}
-                  variant={i % 2 === 0 ? "left" : "right"}
-                >
-                  <div
-                    className="py-10 pr-12"
-                    style={{
-                      borderTop: "1px solid rgba(17,17,17,0.1)",
-                    }}
-                  >
-                    <p
-                      className="font-sans text-xs font-medium mb-5 uppercase tracking-[0.2em]"
-                      style={{ color: "#E85D26" }}
-                    >
-                      {w.num}
-                    </p>
-                    <h3
-                      className="font-serif font-bold mb-4"
-                      style={{ fontSize: "1.4rem", color: "#111111", lineHeight: 1.2 }}
-                    >
-                      {w.title}
-                    </h3>
-                    <p
-                      className="font-sans text-sm leading-relaxed"
-                      style={{ color: "rgba(17,17,17,0.58)", maxWidth: "340px" }}
-                    >
-                      {w.desc}
-                    </p>
-                  </div>
-                </ScrollAnimation>
-              ))}
-            </div>
           </div>
         </section>
 
         {/* ── Contact — zwart ──────────────────────────────────────────────── */}
-        <section id="contact" style={{ backgroundColor: "#111111" }}>
+        <section id="contact" style={{ backgroundColor: "#0a0a0a" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation>
               <p
                 className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "#E85D26" }}
+                style={{ color: "#E8620A" }}
               >
                 CONTACT
               </p>
               <h2
                 className="font-serif font-bold mb-12"
-                style={{
-                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                  color: "#F0EDE8",
-                }}
+                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#ffffff" }}
               >
                 Plan een{" "}
-                <span className="italic" style={{ color: "#E85D26" }}>
+                <span className="italic" style={{ color: "#E8620A" }}>
                   kennismaking.
                 </span>
               </h2>
 
               <div className="grid gap-10 lg:grid-cols-3">
-                {/* Linker kolom: formulier */}
                 <div className="lg:col-span-2">
                   <ContactForm />
                 </div>
 
-                {/* Rechter kolom: contactgegevens */}
                 <div className="flex flex-col gap-5">
                   <div
                     style={{
                       backgroundColor: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(240,237,232,0.08)",
+                      border: "1px solid rgba(255,255,255,0.08)",
                       borderRadius: "14px",
                       padding: "24px",
                     }}
                   >
                     <p
                       className="font-serif font-bold mb-5"
-                      style={{ fontSize: "1.1rem", color: "#FFFFFF" }}
+                      style={{ fontSize: "1.1rem", color: "#ffffff" }}
                     >
                       Contactgegevens
                     </p>
                     <div className="flex flex-col gap-4">
                       <div className="flex items-center gap-3">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                          <rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="#E85D26" strokeWidth="1.25"/>
-                          <polyline points="2,5.5 8,9.5 14,5.5" stroke="#E85D26" strokeWidth="1.25" strokeLinejoin="round"/>
+                          <rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="#E8620A" strokeWidth="1.25"/>
+                          <polyline points="2,5.5 8,9.5 14,5.5" stroke="#E8620A" strokeWidth="1.25" strokeLinejoin="round"/>
                         </svg>
-                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}>
+                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
                           serdar@stackwerk.nl
                         </span>
                       </div>
                       <div className="flex items-center gap-3">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                          <path d="M5.5 2h2l1 2.5-1.5 1.5a7 7 0 003 3l1.5-1.5L14 8.5v2a1 1 0 01-1 1C6.7 11.5 2.5 7.3 2.5 3a1 1 0 011-1z" stroke="#E85D26" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M5.5 2h2l1 2.5-1.5 1.5a7 7 0 003 3l1.5-1.5L14 8.5v2a1 1 0 01-1 1C6.7 11.5 2.5 7.3 2.5 3a1 1 0 011-1z" stroke="#E8620A" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
-                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}>
+                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
                           +31 6 00000000
                         </span>
                       </div>
                       <div className="flex items-center gap-3">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                          <path d="M8 1.5A3.5 3.5 0 004.5 5c0 3.5 3.5 8.5 3.5 8.5S11.5 8.5 11.5 5A3.5 3.5 0 008 1.5z" stroke="#E85D26" strokeWidth="1.25"/>
-                          <circle cx="8" cy="5" r="1.25" stroke="#E85D26" strokeWidth="1.25"/>
+                          <path d="M8 1.5A3.5 3.5 0 004.5 5c0 3.5 3.5 8.5 3.5 8.5S11.5 8.5 11.5 5A3.5 3.5 0 008 1.5z" stroke="#E8620A" strokeWidth="1.25"/>
+                          <circle cx="8" cy="5" r="1.25" stroke="#E8620A" strokeWidth="1.25"/>
                         </svg>
-                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(240,237,232,0.65)" }}>
+                        <span className="font-sans" style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
                           Groningen, Nederland
                         </span>
                       </div>
@@ -861,32 +535,29 @@ export default function Home() {
                   <div
                     style={{
                       backgroundColor: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(240,237,232,0.08)",
+                      border: "1px solid rgba(255,255,255,0.08)",
                       borderRadius: "14px",
                       padding: "24px",
                     }}
                   >
                     <p
                       className="font-serif font-bold mb-5"
-                      style={{ fontSize: "1.1rem", color: "#FFFFFF" }}
+                      style={{ fontSize: "1.1rem", color: "#ffffff" }}
                     >
                       Bedrijfsgegevens
                     </p>
                     <div className="flex flex-col gap-2">
-                      {[
-                        "Stackwerk",
-                        "Groningen, Nederland",
-                        "KVK: 73815462",
-                        "serdar@stackwerk.nl",
-                      ].map((item) => (
-                        <p
-                          key={item}
-                          className="font-sans"
-                          style={{ fontSize: "14px", color: "rgba(240,237,232,0.55)" }}
-                        >
-                          {item}
-                        </p>
-                      ))}
+                      {["Stackwerk", "Groningen, Nederland", "KVK: 73815462", "serdar@stackwerk.nl"].map(
+                        (item) => (
+                          <p
+                            key={item}
+                            className="font-sans"
+                            style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)" }}
+                          >
+                            {item}
+                          </p>
+                        )
+                      )}
                     </div>
                   </div>
                 </div>
@@ -896,63 +567,34 @@ export default function Home() {
         </section>
       </main>
 
-      {/* ── Footer ───────────────────────────────────────────────────────────── */}
+      {/* ── Footer — zwart, minimaal ──────────────────────────────────────────── */}
       <footer
         style={{
-          backgroundColor: "#111111",
-          borderTop: "1px solid rgba(240,237,232,0.08)",
+          backgroundColor: "#0a0a0a",
+          borderTop: "1px solid rgba(255,255,255,0.07)",
         }}
       >
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-          <div className="grid gap-10 md:grid-cols-3 mb-12">
-            <div>
-              <p
-                className="font-serif text-xl mb-2"
-                style={{ color: "#F0EDE8" }}
-              >
-                Stackwerk
-              </p>
-              <p
-                className="font-sans text-sm"
-                style={{ color: "rgba(240,237,232,0.38)" }}
-              >
-                KVK: 73815462 · Groningen
-              </p>
-            </div>
+        <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <p className="font-serif text-lg" style={{ color: "rgba(255,255,255,0.9)" }}>
+              Stackwerk
+            </p>
 
-            <nav className="flex flex-col gap-3">
+            <nav className="flex flex-wrap gap-6">
               {navLinks.map(({ label, href }) => (
                 <a
                   key={label}
                   href={href}
-                  className="font-sans text-sm transition-colors hover:text-[#F0EDE8]"
-                  style={{ color: "rgba(240,237,232,0.38)" }}
+                  className="font-sans text-sm transition-colors hover:text-white"
+                  style={{ color: "rgba(255,255,255,0.35)" }}
                 >
                   {label}
                 </a>
               ))}
             </nav>
 
-            <div>
-              <a
-                href="mailto:serdar@stackwerk.nl"
-                className="font-sans text-sm transition-colors hover:text-[#F0EDE8]"
-                style={{ color: "rgba(240,237,232,0.38)" }}
-              >
-                serdar@stackwerk.nl
-              </a>
-            </div>
-          </div>
-
-          <div
-            className="pt-8"
-            style={{ borderTop: "1px solid rgba(240,237,232,0.08)" }}
-          >
-            <p
-              className="font-sans text-xs text-center"
-              style={{ color: "rgba(240,237,232,0.28)" }}
-            >
-              © 2026 Stackwerk. Alle rechten voorbehouden.
+            <p className="font-sans text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
+              © 2026 Stackwerk
             </p>
           </div>
         </div>

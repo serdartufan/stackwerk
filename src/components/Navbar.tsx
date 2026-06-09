@@ -15,18 +15,15 @@ export default function Navbar() {
 
   return (
     <header
-      className="sticky top-0 z-50 w-full"
-      style={{
-        backgroundColor: "#111111",
-        borderBottom: "1px solid rgba(240,237,232,0.08)",
-      }}
+      className="sticky top-0 z-50 w-full bg-white"
+      style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"
             className="font-serif text-xl tracking-tight"
-            style={{ color: "#F0EDE8" }}
+            style={{ color: "#0a0a0a" }}
           >
             Stackwerk
           </Link>
@@ -36,8 +33,8 @@ export default function Navbar() {
               <Link
                 key={label}
                 href={href}
-                className="font-sans text-sm transition-colors hover:text-[#F0EDE8]"
-                style={{ color: "rgba(240,237,232,0.55)" }}
+                className="font-sans text-sm transition-colors hover:text-[#0a0a0a]"
+                style={{ color: "rgba(0,0,0,0.5)" }}
               >
                 {label}
               </Link>
@@ -48,14 +45,14 @@ export default function Navbar() {
             <Link
               href="/#contact"
               className="hidden md:inline-flex items-center px-5 py-2 rounded-full font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
-              style={{ backgroundColor: "#E85D26" }}
+              style={{ backgroundColor: "#0a0a0a" }}
             >
               Start een project
             </Link>
 
             <button
               className="md:hidden p-2"
-              style={{ color: "#F0EDE8" }}
+              style={{ color: "#0a0a0a" }}
               onClick={() => setOpen(!open)}
               aria-label={open ? "Menu sluiten" : "Menu openen"}
               aria-expanded={open}
@@ -63,11 +60,7 @@ export default function Navbar() {
               <div className="w-6 space-y-1.5">
                 <span
                   className="block h-0.5 w-full bg-current transition-transform duration-300"
-                  style={{
-                    transform: open
-                      ? "translateY(8px) rotate(45deg)"
-                      : undefined,
-                  }}
+                  style={{ transform: open ? "translateY(8px) rotate(45deg)" : undefined }}
                 />
                 <span
                   className="block h-0.5 w-full bg-current transition-opacity duration-300"
@@ -75,11 +68,7 @@ export default function Navbar() {
                 />
                 <span
                   className="block h-0.5 w-full bg-current transition-transform duration-300"
-                  style={{
-                    transform: open
-                      ? "translateY(-8px) rotate(-45deg)"
-                      : undefined,
-                  }}
+                  style={{ transform: open ? "translateY(-8px) rotate(-45deg)" : undefined }}
                 />
               </div>
             </button>
@@ -89,15 +78,15 @@ export default function Navbar() {
 
       {open && (
         <div
-          className="md:hidden px-6 pb-6 pt-4 space-y-5"
-          style={{ borderTop: "1px solid rgba(240,237,232,0.08)" }}
+          className="md:hidden px-6 pb-6 pt-4 space-y-5 bg-white"
+          style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}
         >
           {NAV_LINKS.map(({ label, href }) => (
             <Link
               key={label}
               href={href}
               className="block font-sans text-base"
-              style={{ color: "#F0EDE8" }}
+              style={{ color: "#0a0a0a" }}
               onClick={() => setOpen(false)}
             >
               {label}
@@ -106,7 +95,7 @@ export default function Navbar() {
           <Link
             href="/#contact"
             className="inline-flex items-center px-5 py-2.5 rounded-full font-sans text-sm font-medium text-white"
-            style={{ backgroundColor: "#E85D26" }}
+            style={{ backgroundColor: "#0a0a0a" }}
             onClick={() => setOpen(false)}
           >
             Start een project
