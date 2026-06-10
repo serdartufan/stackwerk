@@ -312,17 +312,19 @@ export default function Home() {
                             position: "absolute",
                             inset: 0,
                             zIndex: 0,
-                            opacity: 0.3,
+                            opacity: 0.6,
                             borderRadius: "inherit",
                             overflow: "hidden",
                             pointerEvents: "none",
                           }}
                         >
                           <PixelSnow
-                            color="#E8620A"
-                            brightness={1.8}
-                            density={0.25}
-                            speed={0.9}
+                            color="#ffffff"
+                            brightness={2.2}
+                            density={0.45}
+                            speed={1.1}
+                            flakeSize={0.014}
+                            minFlakeSize={1.6}
                             variant="square"
                             pixelResolution={180}
                           />
