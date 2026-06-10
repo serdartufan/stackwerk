@@ -509,7 +509,7 @@ export default function Home() {
                           <polyline points="2,5.5 8,9.5 14,5.5" stroke="#E8620A" strokeWidth="1.25" strokeLinejoin="round"/>
                         </svg>
                         <span className="font-sans" style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
-                          serdar@stackwerk.nl
+                          info@stackwerk.nl
                         </span>
                       </div>
                       <div className="flex items-center gap-3">
@@ -517,7 +517,7 @@ export default function Home() {
                           <path d="M5.5 2h2l1 2.5-1.5 1.5a7 7 0 003 3l1.5-1.5L14 8.5v2a1 1 0 01-1 1C6.7 11.5 2.5 7.3 2.5 3a1 1 0 011-1z" stroke="#E8620A" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                         <span className="font-sans" style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
-                          +31 6 00000000
+                          +31 6 12 98 55 64
                         </span>
                       </div>
                       <div className="flex items-center gap-3">
@@ -547,7 +547,7 @@ export default function Home() {
                       Bedrijfsgegevens
                     </p>
                     <div className="flex flex-col gap-2">
-                      {["Stackwerk", "Groningen, Nederland", "KVK: 73815462", "serdar@stackwerk.nl"].map(
+                      {["Stackwerk", "Groningen, Nederland", "KVK: 73815462", "info@stackwerk.nl"].map(
                         (item) => (
                           <p
                             key={item}

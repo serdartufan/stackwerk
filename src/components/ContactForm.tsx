@@ -123,10 +123,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label className="font-sans" style={labelStyle}>
-            Telefoon{" "}
-            <span style={{ color: "rgba(240,237,232,0.35)" }}>
-              (optioneel)
-            </span>
+            Telefoon
           </label>
           <input
             type="tel"
@@ -135,6 +132,7 @@ export default function ContactForm() {
             style={fieldStyle()}
             value={telefoon}
             onChange={(e) => setTelefoon(e.target.value)}
+            required
           />
         </div>
         <div>

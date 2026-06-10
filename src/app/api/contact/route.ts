@@ -36,13 +36,13 @@ export async function POST(req: NextRequest) {
     naam?: string;
     email?: string;
     bericht?: string;
-    telefoon?: string;
+    telefoon: string;
     projectType?: string;
   };
 
-  if (!naam || !email || !bericht) {
+  if (!naam || !email || !bericht || !telefoon) {
     return NextResponse.json(
-      { error: "Naam, e-mail en bericht zijn verplicht." },
+      { error: "Alle velden zijn verplicht." },
       { status: 400 }
     );
   }
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
   }
 
   const extraInfo = [
-    telefoon ? `Telefoon: ${telefoon}` : null,
+    `Telefoon: ${telefoon}`,
     projectType ? `Project type: ${projectType}` : null,
   ]
     .filter(Boolean)
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
   const htmlContent = `
     <p><strong>Naam:</strong> ${naam}</p>
     <p><strong>E-mail:</strong> <a href="mailto:${email}">${email}</a></p>
-    ${telefoon ? `<p><strong>Telefoon:</strong> ${telefoon}</p>` : ""}
+    <p><strong>Telefoon:</strong> ${telefoon}</p>
     ${projectType ? `<p><strong>Project type:</strong> ${projectType}</p>` : ""}
     <hr />
     <p><strong>Bericht:</strong></p>
