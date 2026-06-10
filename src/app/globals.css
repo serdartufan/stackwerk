@@ -176,6 +176,8 @@ body {
 .dot-step-2   { animation-delay: 1.4s; }
 .dot-step-3   { animation-delay: 2.1s; }
 .dot-step-4   { animation-delay: 2.8s; }
+.dot-step-5   { animation-delay: 3.5s; }
+.dot-step-6   { animation-delay: 4.2s; }
 
 /* ── Tech ticker ──────────────────────────────────────────────────────────── */
 @keyframes ticker-scroll {

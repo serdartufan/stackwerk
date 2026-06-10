@@ -59,27 +59,37 @@ const steps = [
   {
     num: "01",
     title: "Kennismaking",
-    desc: "Vrijblijvend gesprek over je idee, doelen en budget. We kijken eerlijk of we de juiste match zijn.",
+    desc: "30 minuten om doel, scope en budget te begrijpen. Geen sales-pitch, wel concrete vragen of we de juiste partij voor het project zijn. Bij geen match verwijzen we door.",
   },
   {
     num: "02",
     title: "Voorstel",
-    desc: "Een concreet projectvoorstel met scope, planning en vaste prijs. Wat je ziet is wat je betaalt.",
+    desc: "Binnen 5 werkdagen ontvang je een PDF-voorstel met aanpak, planning, fasen, mijlpalen en prijs. Vaste prijs of uurtarief, jouw keuze. Voorstel ook te lezen voor niet-techneuten.",
   },
   {
     num: "03",
-    title: "Bouw",
-    desc: "We bouwen in sprints. Je ziet tussentijds de voortgang en geeft feedback waar nodig.",
+    title: "Design sprints",
+    desc: "Wekelijkse reviews, snelle feedback-loops. Werk zichtbaar vanaf week 1 op een staging-omgeving. Geen weken stilte tussen kick-off en eerste oplevering.",
   },
   {
     num: "04",
-    title: "Revisies",
-    desc: "We verwerken je feedback en schaven bij tot het precies klopt zoals jij het voor je ziet.",
+    title: "Build & QA",
+    desc: "Productie-engineering met test-coverage, code-review en CI/CD-pipeline. Wij hosten op eigen Hetzner-infrastructuur met Cloudflare voor edge en security. Lighthouse-CI op elke deploy.",
   },
   {
     num: "05",
-    title: "Oplevering",
-    desc: "Het project wordt overgedragen. Code, toegangen en documentatie, alles netjes geregeld.",
+    title: "Launch",
+    desc: "Deploy naar productie inclusief SEO/AEO setup, schema-implementatie, sitemap.xml, robots.txt en llms.txt. Eerste klant tevreden vanaf dag één.",
+  },
+  {
+    num: "06",
+    title: "Onderhoud",
+    desc: "Doorlopende ondersteuning vanaf 495 euro per maand inclusief monitoring, security-updates, dependency-upgrades en eerste-lijns support. Sentry en uptime-monitoring werken 24/7.",
+  },
+  {
+    num: "07",
+    title: "Iteratie",
+    desc: "Growth-experimenten, nieuwe features per sprint, A/B-testing van conversie-flows. We blijven betrokken zolang het waarde toevoegt. Gemiddelde klantrelatie is meer dan drie jaar.",
   },
 ];
 
@@ -353,7 +363,7 @@ export default function Home() {
                   <div className="werkwijze-line-fill" />
                 </div>
 
-                <div className="grid grid-cols-5">
+                <div className="grid grid-cols-7">
                   {steps.map((step, i) => {
                     const isOdd = i % 2 === 0;
                     return (
