@@ -3,6 +3,7 @@ import Link from "next/link";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ContactForm from "@/components/ContactForm";
 import CountUp from "@/components/CountUp";
+import HeroCanvas from "@/components/HeroCanvas";
 import { cases } from "@/data/cases";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -137,36 +138,8 @@ export default function Home() {
             />
           </div>
 
-          {/* Bewegend dot-grid */}
-          <div
-            className="hero-grid"
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 0,
-              backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-              animation: "grid-drift 8s linear infinite",
-              pointerEvents: "none",
-            }}
-          />
-
-          {/* Oranje radiale glow achter "jouw visie." */}
-          <div
-            className="hero-glow"
-            style={{
-              position: "absolute",
-              top: "42%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "600px",
-              height: "200px",
-              background: "radial-gradient(ellipse, rgba(232,98,10,0.18) 0%, transparent 70%)",
-              zIndex: 0,
-              animation: "glow-pulse 1.5s ease-out forwards",
-              pointerEvents: "none",
-            }}
-          />
+          {/* Canvas animatie: wireframe sphere + particle field */}
+          <HeroCanvas />
 
           {/* Content */}
           <div className="relative z-10 mx-auto w-full max-w-7xl pt-6 pb-10 lg:pt-8 lg:pb-12">
