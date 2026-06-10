@@ -55,6 +55,34 @@ const diensten = [
   },
 ];
 
+const steps = [
+  {
+    num: "01",
+    title: "Kennismaking",
+    desc: "Vrijblijvend gesprek over je idee, doelen en budget. We kijken eerlijk of we de juiste match zijn.",
+  },
+  {
+    num: "02",
+    title: "Voorstel",
+    desc: "Een concreet projectvoorstel met scope, planning en vaste prijs. Wat je ziet is wat je betaalt.",
+  },
+  {
+    num: "03",
+    title: "Bouw",
+    desc: "We bouwen in sprints. Je ziet tussentijds de voortgang en geeft feedback waar nodig.",
+  },
+  {
+    num: "04",
+    title: "Revisies",
+    desc: "We verwerken je feedback en schaven bij tot het precies klopt zoals jij het voor je ziet.",
+  },
+  {
+    num: "05",
+    title: "Oplevering",
+    desc: "Het project wordt overgedragen. Code, toegangen en documentatie, alles netjes geregeld.",
+  },
+];
+
 const stats = [
   { value: 10,   suffix: "+",  label: "Projecten opgeleverd" },
   { value: 100,  suffix: "%",  label: "Op tijd opgeleverd" },
@@ -289,6 +317,194 @@ export default function Home() {
                 </div>
               </ScrollAnimation>
             </div>
+          </div>
+        </section>
+
+        {/* ── Werkwijze — zwart ────────────────────────────────────────────── */}
+        <section style={{ backgroundColor: "#0a0a0a" }}>
+          <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
+            <ScrollAnimation>
+              <p
+                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
+                style={{ color: "#E8620A" }}
+              >
+                HOE WE WERKEN
+              </p>
+              <h2
+                className="font-serif font-bold mb-16 lg:mb-24"
+                style={{
+                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                  color: "#F0EDE8",
+                }}
+              >
+                Onze{" "}
+                <span className="italic" style={{ color: "#E8620A" }}>
+                  werkwijze.
+                </span>
+              </h2>
+
+              {/* Desktop: horizontale timeline */}
+              <div className="relative hidden md:block">
+                <div
+                  className="absolute left-0 right-0 overflow-hidden"
+                  style={{ top: "167px", height: "1px" }}
+                >
+                  <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(240,237,232,0.1)" }} />
+                  <div className="werkwijze-line-fill" />
+                </div>
+
+                <div className="grid grid-cols-5">
+                  {steps.map((step, i) => {
+                    const isOdd = i % 2 === 0;
+                    return (
+                      <div key={step.title} className="flex flex-col items-center px-3">
+                        <div
+                          className="flex w-full flex-col items-center justify-end text-center"
+                          style={{ height: "160px", paddingBottom: "12px" }}
+                        >
+                          {isOdd ? (
+                            <>
+                              <p
+                                className="font-sans uppercase mb-2"
+                                style={{
+                                  fontSize: "11px",
+                                  letterSpacing: "0.2em",
+                                  color: "rgba(240,237,232,0.35)",
+                                }}
+                              >
+                                {step.num}
+                              </p>
+                              <p
+                                className="font-serif font-bold"
+                                style={{ fontSize: "1.1rem", color: "#F0EDE8" }}
+                              >
+                                {step.title}
+                              </p>
+                            </>
+                          ) : (
+                            <p
+                              className="font-sans text-center"
+                              style={{
+                                fontSize: "13px",
+                                color: "rgba(240,237,232,0.6)",
+                                maxWidth: "160px",
+                                lineHeight: "1.6",
+                              }}
+                            >
+                              {step.desc}
+                            </p>
+                          )}
+                        </div>
+
+                        <div
+                          className={`timeline-dot dot-step-${i} shrink-0 rounded-full`}
+                          style={{
+                            width: "14px",
+                            height: "14px",
+                            backgroundColor: "#E8620A",
+                            border: "3px solid #0a0a0a",
+                          }}
+                        />
+
+                        <div
+                          className="flex w-full flex-col items-center text-center"
+                          style={{ paddingTop: "12px" }}
+                        >
+                          {isOdd ? (
+                            <p
+                              className="font-sans"
+                              style={{
+                                fontSize: "13px",
+                                color: "rgba(240,237,232,0.6)",
+                                maxWidth: "160px",
+                                lineHeight: "1.6",
+                              }}
+                            >
+                              {step.desc}
+                            </p>
+                          ) : (
+                            <>
+                              <p
+                                className="font-sans uppercase mb-2"
+                                style={{
+                                  fontSize: "11px",
+                                  letterSpacing: "0.2em",
+                                  color: "rgba(240,237,232,0.35)",
+                                }}
+                              >
+                                {step.num}
+                              </p>
+                              <p
+                                className="font-serif font-bold"
+                                style={{ fontSize: "1.1rem", color: "#F0EDE8" }}
+                              >
+                                {step.title}
+                              </p>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Mobiel: verticale timeline */}
+              <div className="md:hidden">
+                {steps.map((step, i) => (
+                  <div key={step.title} className="flex gap-5">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className={`timeline-dot dot-step-${i} shrink-0 rounded-full`}
+                        style={{
+                          width: "14px",
+                          height: "14px",
+                          backgroundColor: "#E8620A",
+                          border: "3px solid #0a0a0a",
+                        }}
+                      />
+                      {i < steps.length - 1 && (
+                        <div
+                          className="mt-1 w-px flex-1"
+                          style={{
+                            backgroundColor: "rgba(240,237,232,0.1)",
+                            minHeight: "60px",
+                          }}
+                        />
+                      )}
+                    </div>
+                    <div className="pb-10">
+                      <p
+                        className="font-sans uppercase mb-1"
+                        style={{
+                          fontSize: "11px",
+                          letterSpacing: "0.2em",
+                          color: "rgba(240,237,232,0.35)",
+                        }}
+                      >
+                        {step.num}
+                      </p>
+                      <p
+                        className="font-serif font-bold mb-2"
+                        style={{ fontSize: "1.1rem", color: "#F0EDE8" }}
+                      >
+                        {step.title}
+                      </p>
+                      <p
+                        className="font-sans"
+                        style={{
+                          fontSize: "13px",
+                          color: "rgba(240,237,232,0.6)",
+                          lineHeight: "1.6",
+                        }}
+                      >
+                        {step.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </ScrollAnimation>
           </div>
         </section>
 
