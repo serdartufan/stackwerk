@@ -226,7 +226,7 @@ void main(){
 // ── Helpers ────────────────────────────────────────────────────────────────
 
 function srgbColor(hex: string): THREE.Color {
-  return new THREE.Color(hex).convertSRGBToLinear();
+  return new THREE.Color(hex);
 }
 
 function smoothDampVec2(
