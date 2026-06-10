@@ -5,7 +5,7 @@ import ContactForm from "@/components/ContactForm";
 import CountUp from "@/components/CountUp";
 import HeroCanvas from "@/components/HeroCanvas";
 import LetterGlitch from "@/components/LetterGlitch";
-import PixelSnow from "@/components/PixelSnow";
+import GridScan from "@/components/GridScan";
 import { cases } from "@/data/cases";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -312,21 +312,24 @@ export default function Home() {
                             position: "absolute",
                             inset: 0,
                             zIndex: 0,
-                            opacity: 0.85,
+                            opacity: 0.5,
                             borderRadius: "inherit",
                             overflow: "hidden",
                             pointerEvents: "none",
                           }}
                         >
-                          <PixelSnow
-                            color="#E8620A"
-                            brightness={3.5}
-                            density={0.7}
-                            speed={1.2}
-                            flakeSize={0.022}
-                            minFlakeSize={2.5}
-                            variant="square"
-                            pixelResolution={120}
+                          <GridScan
+                            linesColor="#E8620A"
+                            scanColor="#E8620A"
+                            scanOpacity={0.9}
+                            gridScale={0.08}
+                            lineThickness={1.5}
+                            scanGlow={1.2}
+                            scanSoftness={3}
+                            scanDuration={2.5}
+                            scanDelay={1.0}
+                            scanDirection="pingpong"
+                            noiseIntensity={0.005}
                           />
                         </div>
                       )}
