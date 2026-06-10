@@ -9,18 +9,18 @@ interface GlowCardProps {
 }
 
 export default function GlowCard({ children, className, style }: GlowCardProps) {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
   const [active, setActive] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
     setMouse({ x, y });
     setTilt({
-      x: ((y / rect.height) - 0.5) * 8,
-      y: ((x / rect.width) - 0.5) * -8,
+      x: (y - 0.5) * 8,
+      y: (x - 0.5) * -8,
     });
   }
 
@@ -29,32 +29,26 @@ export default function GlowCard({ children, className, style }: GlowCardProps) 
     setTilt({ x: 0, y: 0 });
   }
 
+  const shadowX = (mouse.x - 0.5) * 40;
+  const shadowY = (mouse.y - 0.5) * 40;
+
   return (
     <div
       className={className}
       style={{ position: "relative", ...style }}
     >
-      {/* Externe glow — achter de card, in het witte gebied */}
-      <div
-        style={{
-          position: "absolute",
-          inset: -2,
-          zIndex: -1,
-          borderRadius: "inherit",
-          pointerEvents: "none",
-          background: `radial-gradient(800px circle at ${mouse.x}px ${mouse.y}px, rgba(232,98,10,0.5), transparent 50%)`,
-          opacity: active ? 1 : 0,
-          transition: "opacity 0.3s ease",
-        }}
-      />
-      {/* Card met tilt */}
       <div
         style={{
           height: "100%",
           transform: active
             ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
             : "perspective(1000px) rotateX(0deg) rotateY(0deg)",
-          transition: active ? "transform 0.15s ease" : "transform 0.5s ease",
+          boxShadow: active
+            ? `${shadowX}px ${shadowY}px 40px rgba(232,98,10,0.4), ${shadowX * 0.5}px ${shadowY * 0.5}px 80px rgba(232,98,10,0.2)`
+            : "none",
+          transition: active
+            ? "transform 0.15s ease, box-shadow 0.15s ease"
+            : "transform 0.5s ease, box-shadow 0.5s ease",
           willChange: "transform",
         }}
         onMouseMove={onMouseMove}
