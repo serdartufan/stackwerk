@@ -29,8 +29,8 @@ export default function GlowCard({ children, className, style }: GlowCardProps) 
     setTilt({ x: 0, y: 0 });
   }
 
-  const shadowX = (mouse.x - 0.5) * 40;
-  const shadowY = (mouse.y - 0.5) * 40;
+  const shadowX = (mouse.x - 0.5) * 30;
+  const shadowY = (mouse.y - 0.5) * 30;
 
   return (
     <div
@@ -44,7 +44,7 @@ export default function GlowCard({ children, className, style }: GlowCardProps) 
             ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
             : "perspective(1000px) rotateX(0deg) rotateY(0deg)",
           boxShadow: active
-            ? `${shadowX}px ${shadowY}px 40px rgba(232,98,10,0.4), ${shadowX * 0.5}px ${shadowY * 0.5}px 80px rgba(232,98,10,0.2)`
+            ? `${shadowX}px ${shadowY}px 25px 0px rgba(232,98,10,0.3), ${shadowX * 0.4}px ${shadowY * 0.4}px 50px 0px rgba(232,98,10,0.15)`
             : "none",
           transition: active
             ? "transform 0.15s ease, box-shadow 0.15s ease"
