@@ -6,7 +6,7 @@ import CountUp from "@/components/CountUp";
 import HeroCanvas from "@/components/HeroCanvas";
 import LetterGlitch from "@/components/LetterGlitch";
 import GridScan from "@/components/GridScan";
-import TiltCard from "@/components/TiltCard";
+import GlowCard from "@/components/GlowCard";
 import { cases } from "@/data/cases";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -605,18 +605,7 @@ export default function Home() {
               {/* Featured — eerste case, 2fr */}
               {cases[0] && (
                 <ScrollAnimation>
-                  <TiltCard
-                    tiltMaxAngleX={6}
-                    tiltMaxAngleY={6}
-                    glareEnable={true}
-                    glareMaxOpacity={0.08}
-                    glareColor="#E8620A"
-                    glarePosition="all"
-                    glareBorderRadius="inherit"
-                    scale={1.02}
-                    transitionSpeed={600}
-                    style={{ height: "100%" }}
-                  >
+                  <GlowCard style={{ height: "100%" }}>
                   <Link href={`/werk/${cases[0].slug}`} className="case-featured-card block group">
                     <div
                       className="relative overflow-hidden rounded-2xl"
@@ -656,7 +645,7 @@ export default function Home() {
                       </div>
                     </div>
                   </Link>
-                  </TiltCard>
+                  </GlowCard>
                 </ScrollAnimation>
               )}
 
@@ -664,18 +653,7 @@ export default function Home() {
               <div className="flex flex-col gap-4">
                 {cases.slice(1).map((c, i) => (
                   <ScrollAnimation key={c.slug} delay={(i + 1) * 100}>
-                    <TiltCard
-                      tiltMaxAngleX={8}
-                      tiltMaxAngleY={8}
-                      glareEnable={true}
-                      glareMaxOpacity={0.08}
-                      glareColor="#E8620A"
-                      glarePosition="all"
-                      glareBorderRadius="inherit"
-                      scale={1.03}
-                      transitionSpeed={600}
-                      style={{ height: "100%" }}
-                    >
+                    <GlowCard style={{ height: "100%" }}>
                     <Link href={`/werk/${c.slug}`} className="case-small-card block group flex-1">
                       <div
                         className="relative overflow-hidden rounded-2xl"
@@ -712,7 +690,7 @@ export default function Home() {
                         </div>
                       </div>
                     </Link>
-                    </TiltCard>
+                    </GlowCard>
                   </ScrollAnimation>
                 ))}
               </div>
