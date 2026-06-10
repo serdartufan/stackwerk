@@ -5,6 +5,7 @@ import ContactForm from "@/components/ContactForm";
 import CountUp from "@/components/CountUp";
 import HeroCanvas from "@/components/HeroCanvas";
 import LetterGlitch from "@/components/LetterGlitch";
+import PixelSnow from "@/components/PixelSnow";
 import { cases } from "@/data/cases";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -279,7 +280,10 @@ export default function Home() {
                       style={{
                         borderLeft: "1px solid rgba(255,255,255,0.08)",
                         position: "relative",
-                        overflow: d.title === "Maatwerk Software" ? "hidden" : undefined,
+                        overflow:
+                          d.title === "Maatwerk Software" || d.title === "SaaS Platforms"
+                            ? "hidden"
+                            : undefined,
                       }}
                     >
                       {d.title === "Maatwerk Software" && (
@@ -299,6 +303,28 @@ export default function Home() {
                             glitchSpeed={60}
                             outerVignette={false}
                             smooth
+                          />
+                        </div>
+                      )}
+                      {d.title === "SaaS Platforms" && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            zIndex: 0,
+                            opacity: 0.3,
+                            borderRadius: "inherit",
+                            overflow: "hidden",
+                            pointerEvents: "none",
+                          }}
+                        >
+                          <PixelSnow
+                            color="#E8620A"
+                            brightness={1.8}
+                            density={0.25}
+                            speed={0.9}
+                            variant="square"
+                            pixelResolution={180}
                           />
                         </div>
                       )}
