@@ -19,6 +19,7 @@ body[data-preloader] #nav-logo {
 
 body {
   background: #0a0a0a;
+  background-color: #0a0a0a;
   color: #f0ede8;
   font-family: var(--font-dm-sans), sans-serif;
 }
