@@ -4,6 +4,7 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import ContactForm from "@/components/ContactForm";
 import CountUp from "@/components/CountUp";
 import HeroCanvas from "@/components/HeroCanvas";
+import LetterGlitch from "@/components/LetterGlitch";
 import { cases } from "@/data/cases";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -275,26 +276,50 @@ export default function Home() {
                   <Link href={d.href} className="block h-full">
                     <div
                       className="dienst-card-v2 flex h-full flex-col gap-6 p-10"
-                      style={{ borderLeft: "1px solid rgba(255,255,255,0.08)" }}
+                      style={{
+                        borderLeft: "1px solid rgba(255,255,255,0.08)",
+                        position: "relative",
+                        overflow: d.title === "Maatwerk Software" ? "hidden" : undefined,
+                      }}
                     >
-                      <div style={{ color: "#E8620A" }}>
+                      {d.title === "Maatwerk Software" && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            zIndex: 0,
+                            opacity: 0.35,
+                            borderRadius: "inherit",
+                            overflow: "hidden",
+                            pointerEvents: "none",
+                          }}
+                        >
+                          <LetterGlitch
+                            glitchColors={["#E8620A", "rgba(232,98,10,0.4)", "rgba(255,255,255,0.08)"]}
+                            glitchSpeed={60}
+                            outerVignette={false}
+                            smooth
+                          />
+                        </div>
+                      )}
+                      <div style={{ color: "#E8620A", position: "relative", zIndex: 1 }}>
                         <d.Icon />
                       </div>
                       <h3
                         className="font-serif font-bold text-2xl"
-                        style={{ color: "#ffffff" }}
+                        style={{ color: "#ffffff", position: "relative", zIndex: 1 }}
                       >
                         {d.title}
                       </h3>
                       <p
                         className="font-sans text-sm leading-relaxed flex-1"
-                        style={{ color: "rgba(255,255,255,0.5)" }}
+                        style={{ color: "rgba(255,255,255,0.5)", position: "relative", zIndex: 1 }}
                       >
                         {d.desc}
                       </p>
                       <span
                         className="font-sans text-sm font-medium"
-                        style={{ color: "#E8620A" }}
+                        style={{ color: "#E8620A", position: "relative", zIndex: 1 }}
                       >
                         Meer lezen →
                       </span>
