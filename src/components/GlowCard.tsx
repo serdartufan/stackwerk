@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 interface GlowCardProps {
   children: React.ReactNode;
@@ -12,20 +12,16 @@ export default function GlowCard({ children, className, style }: GlowCardProps) 
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [active, setActive] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const cardRef = useRef<HTMLDivElement>(null);
 
   function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const tiltX = ((y / rect.height) - 0.5) * 8;
-    const tiltY = ((x / rect.width) - 0.5) * -8;
     setMouse({ x, y });
-    setTilt({ x: tiltX, y: tiltY });
-  }
-
-  function onMouseEnter() {
-    setActive(true);
+    setTilt({
+      x: ((y / rect.height) - 0.5) * 8,
+      y: ((x / rect.width) - 0.5) * -8,
+    });
   }
 
   function onMouseLeave() {
@@ -35,52 +31,38 @@ export default function GlowCard({ children, className, style }: GlowCardProps) 
 
   return (
     <div
-      ref={cardRef}
       className={className}
-      style={{
-        position: "relative",
-        transform: active
-          ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
-          : "perspective(1000px) rotateX(0deg) rotateY(0deg)",
-        transition: active ? "transform 0.15s ease" : "transform 0.5s ease",
-        willChange: "transform",
-        ...style,
-      }}
-      onMouseMove={onMouseMove}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      style={{ position: "relative", ...style }}
     >
-      {/* Radiale glow die de muis volgt */}
+      {/* Externe glow — achter de card, in het witte gebied */}
       <div
         style={{
           position: "absolute",
-          inset: 0,
-          zIndex: 2,
-          pointerEvents: "none",
+          inset: -2,
+          zIndex: -1,
           borderRadius: "inherit",
-          background: active
-            ? `radial-gradient(600px circle at ${mouse.x}px ${mouse.y}px, rgba(232,98,10,0.15), transparent 70%)`
-            : "none",
+          pointerEvents: "none",
+          background: `radial-gradient(800px circle at ${mouse.x}px ${mouse.y}px, rgba(232,98,10,0.5), transparent 50%)`,
           opacity: active ? 1 : 0,
-          transition: active ? "opacity 0.15s ease" : "opacity 0.3s ease",
+          transition: "opacity 0.3s ease",
         }}
       />
-      {/* Rand glow */}
+      {/* Card met tilt */}
       <div
         style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 2,
-          pointerEvents: "none",
-          borderRadius: "inherit",
-          boxShadow: active
-            ? "inset 0 0 0 1px rgba(232,98,10,0.4), 0 0 24px rgba(232,98,10,0.12)"
-            : "inset 0 0 0 1px rgba(232,98,10,0)",
-          opacity: active ? 1 : 0,
-          transition: active ? "opacity 0.15s ease" : "opacity 0.3s ease",
+          height: "100%",
+          transform: active
+            ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
+            : "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+          transition: active ? "transform 0.15s ease" : "transform 0.5s ease",
+          willChange: "transform",
         }}
-      />
-      {children}
+        onMouseMove={onMouseMove}
+        onMouseEnter={() => setActive(true)}
+        onMouseLeave={onMouseLeave}
+      >
+        {children}
+      </div>
     </div>
   );
 }
