@@ -76,8 +76,8 @@
       "Claude AI"
     ],
     "result": "Van idee naar product in 30 dagen",
-    "img": "/images/generated/case-justharry.jpg",
-    "showcaseImg": "/images/generated/case-justharry.jpg",
+    "img": "/cases/justharry.png",
+    "showcaseImg": "/cases/justharry.png",
     "projectIntro": "Just Harry is een AI-tool die dienstverleners helpt om leads automatisch te kwalificeren via een conversatie-interface. De opdracht: bouw een volledig multi-tenant SaaS platform dat klanten zelf kunnen onboarden, betalen en direct kunnen gebruiken.",
     "geleverd": [
       "Multi-tenant architectuur met gescheiden data per klant",
@@ -144,8 +144,8 @@
       "TypeScript"
     ],
     "result": "Conversie +40%",
-    "img": "/images/generated/case-mymiracle.jpg",
-    "showcaseImg": "/images/generated/case-mymiracle.jpg",
+    "img": "/cases/mymiracle.png",
+    "showcaseImg": "/cases/mymiracle.png",
     "projectIntro": "My Miracle is een behandelcentrum in Den Haag gespecialiseerd in LPG Endermologie. De bestaande website converteerde slecht en stond niet goed in Google voor lokale zoekopdrachten. De opdracht: een snelle, vertrouwenwekkende site die lokaal gevonden wordt en bezoekers omzet in boekingen.",
     "geleverd": [
       "Volledige website met 8 pagina's",
