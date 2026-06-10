@@ -24,10 +24,10 @@ interface Shape {
   color: string;
 }
 
-function randomShape(W: number, H: number, randomY = false): Shape {
+function randomShape(W: number, docH: number, randomY = false): Shape {
   return {
     x: W * 0.42 + Math.random() * W * 0.58,
-    y: randomY ? Math.random() * H : -40 - Math.random() * 200,
+    y: randomY ? Math.random() * docH : -40 - Math.random() * 200,
     vx: (Math.random() - 0.5) * 0.5,
     vy: 1.2 + Math.random() * 1.8,
     vrot: (Math.random() - 0.5) * 0.05,
@@ -52,40 +52,56 @@ export default function HeroCanvas() {
     if (!ctxOrNull) return;
     const ctx: CanvasRenderingContext2D = ctxOrNull;
 
+    // W: viewport breedte
+    // docH: document-hoogte van het canvas-gebied (0 t/m bovenkant diensten)
+    // heroH: document-hoogte van de hero sectie (opacity grens)
     let W = 0;
-    let H = 0; // canvas height = top of diensten section
-    let heroH = 0; // height of hero section (boundary for opacity)
+    let docH = 0;
+    let heroH = 0;
     let shapes: Shape[] = [];
 
-    function measure() {
-      const dienstenEl = document.querySelector("[data-canvas-stop]");
-      const heroEl = document.getElementById("hero-sectie");
+    function getDienstenEl(): HTMLElement | null {
+      return document.querySelector("[data-canvas-stop]");
+    }
 
+    // Herbereken document-afmetingen (alleen bij resize — niet bij scroll)
+    function measureDoc() {
+      const dienstenEl = getDienstenEl();
+      const heroEl = document.getElementById("hero-sectie");
       W = window.innerWidth;
-      H = dienstenEl
-        ? (dienstenEl as HTMLElement).getBoundingClientRect().top + window.scrollY
+      docH = dienstenEl
+        ? dienstenEl.getBoundingClientRect().top + window.scrollY
         : window.innerHeight * 2;
       heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+    }
 
+    // Update canvas-dimensies in viewport-ruimte (bij scroll én resize)
+    function updateCanvasSize() {
+      const dienstenEl = getDienstenEl();
+      // Viewport-Y van bovenkant diensten (negatief als gescrolld voorbij)
+      const viewportBottom = dienstenEl
+        ? Math.max(0, dienstenEl.getBoundingClientRect().top)
+        : window.innerHeight;
       el.width = W;
-      el.height = H;
+      el.height = viewportBottom;
       el.style.width = `${W}px`;
-      el.style.height = `${H}px`;
+      el.style.height = `${viewportBottom}px`;
     }
 
     function init() {
-      shapes = Array.from({ length: 16 }, () => randomShape(W, H, true));
+      shapes = Array.from({ length: 16 }, () => randomShape(W, docH, true));
     }
 
     function frame() {
-      ctx.clearRect(0, 0, W, H);
+      const scrollY = window.scrollY;
+      const canvasH = el.height;
+
+      ctx.clearRect(0, 0, W, canvasH);
 
       // Spawn
       if (shapes.length < 24 && Math.random() < 0.025) {
-        shapes.push(randomShape(W, H, false));
+        shapes.push(randomShape(W, docH, false));
       }
-
-      const scrollY = window.scrollY;
 
       for (let i = shapes.length - 1; i >= 0; i--) {
         const s = shapes[i];
@@ -94,25 +110,26 @@ export default function HeroCanvas() {
         s.y += s.vy;
         s.rot += s.vrot;
 
-        if (s.y > H + 60) {
-          shapes[i] = randomShape(W, H, false);
+        // Reset zodra shape voorbij de document-grens valt
+        if (s.y > docH + 60) {
+          shapes[i] = randomShape(W, docH, false);
           continue;
         }
 
-        // Absolute y op het scherm = s.y - scrollY
-        const screenY = s.y - scrollY;
+        // Converteer document-Y naar viewport-Y voor tekenen
+        const viewY = s.y - scrollY;
 
-        // Buiten zichtbaar venster: skip draw
-        if (screenY > window.innerHeight + 60 || screenY < -60) continue;
+        // Skip als buiten het zichtbare canvas-venster
+        if (viewY < -40 || viewY > canvasH + 40) continue;
 
-        // Opacity: donker gedeelte (hero) = vol, wit gedeelte = gereduceerd
+        // Opacity: gereduceerd in het witte statement-blok
         const inWhiteSection = s.y > heroH;
         const drawOpacity = inWhiteSection
-          ? 0.15 + (s.opacity - 0.4) * ((0.35 - 0.15) / 0.5)
+          ? 0.15 + (s.opacity - 0.4) * 0.4
           : s.opacity;
 
         ctx.save();
-        ctx.translate(s.x, s.y);
+        ctx.translate(s.x, viewY); // viewport-coördinaten
         ctx.rotate(s.rot);
         ctx.scale(s.scale, s.scale);
         ctx.globalAlpha = Math.max(0, Math.min(1, drawOpacity));
@@ -127,23 +144,30 @@ export default function HeroCanvas() {
       rafRef.current = requestAnimationFrame(frame);
     }
 
-    measure();
+    measureDoc();
+    updateCanvasSize();
     init();
     rafRef.current = requestAnimationFrame(frame);
 
+    // Scroll: canvas hoogte bijwerken (viewport-Y van diensten verandert)
+    const onScroll = () => { updateCanvasSize(); };
+
+    // Resize: document-afmetingen + canvas hoogte herberekenen
     let resizeTimer: ReturnType<typeof setTimeout>;
     const onResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        measure();
-        shapes = shapes.map((s) => ({ ...s }));
+        measureDoc();
+        updateCanvasSize();
       }, 100);
     };
 
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       clearTimeout(resizeTimer);
     };
