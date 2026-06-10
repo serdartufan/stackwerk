@@ -116,10 +116,12 @@ const navLinks = [
 export default function Home() {
   return (
     <>
+      <HeroCanvas />
       <main>
 
         {/* ── Hero — zwart ─────────────────────────────────────────────────── */}
         <section
+          id="hero-sectie"
           className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 lg:px-8"
           style={{ backgroundColor: "#0a0a0a" }}
         >
@@ -141,9 +143,6 @@ export default function Home() {
               }}
             />
           </div>
-
-          {/* Canvas animatie: wireframe sphere + particle field */}
-          <HeroCanvas />
 
           {/* Content */}
           <div className="relative z-10 mx-auto w-full max-w-7xl pt-6 pb-10 lg:pt-8 lg:pb-12">
@@ -253,7 +252,7 @@ export default function Home() {
         </section>
 
         {/* ── Diensten — zwart, 2×2 grid ───────────────────────────────────── */}
-        <section id="diensten" style={{ backgroundColor: "#0a0a0a" }}>
+        <section id="diensten" data-canvas-stop style={{ backgroundColor: "#0a0a0a" }}>
           <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
             <ScrollAnimation variant="heading">
               <p

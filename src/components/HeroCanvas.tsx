@@ -53,14 +53,24 @@ export default function HeroCanvas() {
     const ctx: CanvasRenderingContext2D = ctxOrNull;
 
     let W = 0;
-    let H = 0;
+    let H = 0; // canvas height = top of diensten section
+    let heroH = 0; // height of hero section (boundary for opacity)
     let shapes: Shape[] = [];
 
-    function resize() {
-      W = el.offsetWidth || window.innerWidth;
-      H = el.offsetHeight || window.innerHeight;
+    function measure() {
+      const dienstenEl = document.querySelector("[data-canvas-stop]");
+      const heroEl = document.getElementById("hero-sectie");
+
+      W = window.innerWidth;
+      H = dienstenEl
+        ? (dienstenEl as HTMLElement).getBoundingClientRect().top + window.scrollY
+        : window.innerHeight * 2;
+      heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+
       el.width = W;
       el.height = H;
+      el.style.width = `${W}px`;
+      el.style.height = `${H}px`;
     }
 
     function init() {
@@ -75,26 +85,37 @@ export default function HeroCanvas() {
         shapes.push(randomShape(W, H, false));
       }
 
+      const scrollY = window.scrollY;
+
       for (let i = shapes.length - 1; i >= 0; i--) {
         const s = shapes[i];
 
-        // Update
         s.x += s.vx;
         s.y += s.vy;
         s.rot += s.vrot;
 
-        // Reset als buiten beeld
         if (s.y > H + 60) {
           shapes[i] = randomShape(W, H, false);
           continue;
         }
 
-        // Draw
+        // Absolute y op het scherm = s.y - scrollY
+        const screenY = s.y - scrollY;
+
+        // Buiten zichtbaar venster: skip draw
+        if (screenY > window.innerHeight + 60 || screenY < -60) continue;
+
+        // Opacity: donker gedeelte (hero) = vol, wit gedeelte = gereduceerd
+        const inWhiteSection = s.y > heroH;
+        const drawOpacity = inWhiteSection
+          ? 0.15 + (s.opacity - 0.4) * ((0.35 - 0.15) / 0.5)
+          : s.opacity;
+
         ctx.save();
         ctx.translate(s.x, s.y);
         ctx.rotate(s.rot);
         ctx.scale(s.scale, s.scale);
-        ctx.globalAlpha = s.opacity;
+        ctx.globalAlpha = Math.max(0, Math.min(1, drawOpacity));
         ctx.font = `bold ${s.fontSize}px monospace`;
         ctx.fillStyle = s.color;
         ctx.textBaseline = "middle";
@@ -106,16 +127,25 @@ export default function HeroCanvas() {
       rafRef.current = requestAnimationFrame(frame);
     }
 
-    resize();
+    measure();
     init();
     rafRef.current = requestAnimationFrame(frame);
 
-    const onResize = () => { resize(); };
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        measure();
+        shapes = shapes.map((s) => ({ ...s }));
+      }, 100);
+    };
+
     window.addEventListener("resize", onResize);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", onResize);
+      clearTimeout(resizeTimer);
     };
   }, []);
 
@@ -123,11 +153,10 @@ export default function HeroCanvas() {
     <canvas
       ref={canvasRef}
       style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: 0,
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 1,
         pointerEvents: "none",
       }}
     />
