@@ -214,6 +214,10 @@ export default function HeroCanvas() {
       rafRef.current = requestAnimationFrame(frame);
     }
 
+    // Events op de parent section — canvas zelf heeft pointer-events: none
+    const parentOrNull = el.parentElement;
+    const parent: HTMLElement = parentOrNull ?? el;
+
     function onMouseMove(e: MouseEvent) {
       const rect = el.getBoundingClientRect();
       mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
@@ -225,15 +229,15 @@ export default function HeroCanvas() {
 
     resize();
     initParticles();
-    el.addEventListener("mousemove", onMouseMove);
-    el.addEventListener("mouseleave", onMouseLeave);
+    parent.addEventListener("mousemove", onMouseMove);
+    parent.addEventListener("mouseleave", onMouseLeave);
     window.addEventListener("resize", resize);
     rafRef.current = requestAnimationFrame(frame);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
-      el.removeEventListener("mousemove", onMouseMove);
-      el.removeEventListener("mouseleave", onMouseLeave);
+      parent.removeEventListener("mousemove", onMouseMove);
+      parent.removeEventListener("mouseleave", onMouseLeave);
       window.removeEventListener("resize", resize);
     };
   }, []);
@@ -247,7 +251,7 @@ export default function HeroCanvas() {
         width: "100%",
         height: "100%",
         zIndex: 0,
-        pointerEvents: "auto",
+        pointerEvents: "none",
       }}
     />
   );

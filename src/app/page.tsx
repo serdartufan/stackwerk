@@ -120,7 +120,7 @@ export default function Home() {
           style={{ backgroundColor: "#0a0a0a" }}
         >
           {/* Achtergrondafbeelding */}
-          <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 z-0" style={{ pointerEvents: "none" }}>
             <Image
               src="/images/generated/hero-bg.jpg"
               alt=""
@@ -186,7 +186,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-badge absolute bottom-8 right-6 z-10 lg:right-8">
+          <div className="hero-badge absolute bottom-8 right-6 z-10 lg:right-8" style={{ pointerEvents: "none" }}>
             <p
               className="font-sans text-xs uppercase tracking-[0.18em]"
               style={{ color: "rgba(255,255,255,0.22)" }}
