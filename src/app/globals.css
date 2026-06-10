@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@keyframes preloader-scale {
+  from { transform: scale(0.92); opacity: 0.7; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
 @theme inline {
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-fraunces);

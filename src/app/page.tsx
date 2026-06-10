@@ -823,6 +823,25 @@ export default function Home() {
               © 2026 Stackwerk
             </p>
           </div>
+          <div
+            className="mt-6 flex flex-wrap gap-5"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "24px" }}
+          >
+            <a
+              href="/algemene-voorwaarden"
+              className="font-sans text-xs transition-colors hover:text-white"
+              style={{ color: "rgba(255,255,255,0.25)" }}
+            >
+              Algemene voorwaarden
+            </a>
+            <a
+              href="/privacy-policy"
+              className="font-sans text-xs transition-colors hover:text-white"
+              style={{ color: "rgba(255,255,255,0.25)" }}
+            >
+              Privacy policy
+            </a>
+          </div>
         </div>
       </footer>
     </>
