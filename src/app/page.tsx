@@ -7,6 +7,7 @@ import HeroCanvas from "@/components/HeroCanvas";
 import LetterGlitch from "@/components/LetterGlitch";
 import GridScan from "@/components/GridScan";
 import TiltCard from "@/components/TiltCard";
+import ScrambleText from "@/components/ScrambleText";
 import { cases } from "@/data/cases";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -152,12 +153,12 @@ export default function Home() {
             >
               <span className="hero-line">
                 <span className="hero-line-inner hero-delay-1" style={{ color: "#ffffff" }}>
-                  Wij bouwen
+                  <ScrambleText text="Wij bouwen" delay={500} />
                 </span>
               </span>
               <span className="hero-line italic">
                 <span className="hero-line-inner hero-delay-2" style={{ color: "#E8620A" }}>
-                  jouw visie.
+                  <ScrambleText text="jouw visie." delay={800} />
                 </span>
               </span>
             </h1>
