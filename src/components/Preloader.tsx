@@ -19,34 +19,50 @@ export default function Preloader() {
       const textEl = textRef.current;
       const overlayEl = overlayRef.current;
       const logoEl = document.getElementById("nav-logo");
-
       if (!textEl || !overlayEl || !logoEl) return;
 
-      const textRect = textEl.getBoundingClientRect();
-      const logoRect = logoEl.getBoundingClientRect();
+      // FIRST: huidige positie van de grote gecentreerde tekst
+      const first = textEl.getBoundingClientRect();
 
-      const dx = (logoRect.left + logoRect.width / 2) - (textRect.left + textRect.width / 2);
-      const dy = (logoRect.top + logoRect.height / 2) - (textRect.top + textRect.height / 2);
-      const scale = logoRect.width / textRect.width;
+      // LAST: positie van het navbar-logo
+      const last = logoEl.getBoundingClientRect();
 
-      // Fly text to logo position
-      textEl.style.transition = "transform 0.9s cubic-bezier(0.4, 0, 0.2, 1)";
-      textEl.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+      // Zet tekst op position: fixed op exact de huidige visuele positie
+      // (verwijder centering-transform en CSS-animatie)
+      textEl.style.animation = "none";
+      textEl.style.position = "fixed";
+      textEl.style.top = `${first.top}px`;
+      textEl.style.left = `${first.left}px`;
+      textEl.style.transform = "none";
+      textEl.style.transformOrigin = "top left";
 
-      // Fade overlay out (delayed 0.3s)
-      overlayEl.style.transition = "opacity 0.5s ease 0.3s";
+      // INVERT: bereken delta van FIRST naar LAST
+      const deltaX = last.left - first.left;
+      const deltaY = last.top - first.top;
+      const scaleX = last.width / first.width;
+      const scaleY = last.height / first.height;
+
+      // Force reflow zodat browser de begintoestand inpaint
+      textEl.getBoundingClientRect();
+
+      // PLAY: animeer naar LAST
+      textEl.style.transition = "transform 1.1s cubic-bezier(0.76, 0, 0.24, 1)";
+      textEl.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
+
+      // Overlay fades uit (start na 0.5s, duurt 0.7s)
+      overlayEl.style.transition = "opacity 0.7s ease 0.5s";
       overlayEl.style.opacity = "0";
 
-      // Reveal navbar logo as text arrives
+      // Navbar-logo zichtbaar als tekst aankomt
       const revealTimer = setTimeout(() => {
         document.body.removeAttribute("data-preloader");
-      }, 750);
+      }, 1050);
 
-      // Remove component from DOM
+      // Component uit DOM
       const doneTimer = setTimeout(() => {
         document.body.style.overflow = "";
         setVisible(false);
-      }, 1100);
+      }, 1300);
 
       return () => {
         clearTimeout(revealTimer);
@@ -64,33 +80,36 @@ export default function Preloader() {
   if (!visible) return null;
 
   return (
-    <div
-      ref={overlayRef}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 9999,
-        backgroundColor: "#0a0a0a",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        pointerEvents: "none",
-      }}
-    >
+    <>
+      {/* Zwarte overlay — fadeout onafhankelijk van tekst */}
+      <div
+        ref={overlayRef}
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 9998,
+          backgroundColor: "#0a0a0a",
+          pointerEvents: "none",
+        }}
+      />
+      {/* Vliegende tekst — los van overlay zodat hij zichtbaar blijft tijdens fade */}
       <span
         ref={textRef}
         className="font-serif italic"
         style={{
+          position: "fixed",
+          top: "50vh",
+          left: "50vw",
+          zIndex: 9999,
           fontSize: "clamp(3rem, 8vw, 7rem)",
           color: "#F0EDE8",
-          display: "inline-block",
-          transformOrigin: "center center",
           whiteSpace: "nowrap",
+          pointerEvents: "none",
           animation: "preloader-scale 0.6s ease-out forwards",
         }}
       >
         Stackwerk
       </span>
-    </div>
+    </>
   );
 }
