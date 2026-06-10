@@ -1,37 +1,71 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Preloader() {
-  const [phase, setPhase] = useState<"hidden" | "enter" | "exit">("hidden");
+  const [visible, setVisible] = useState(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (sessionStorage.getItem("preloader-shown")) return;
     sessionStorage.setItem("preloader-shown", "1");
 
     document.body.style.overflow = "hidden";
-    setPhase("enter");
+    document.body.setAttribute("data-preloader", "");
+    setVisible(true);
 
-    const exitTimer = setTimeout(() => setPhase("exit"), 1400);
+    const flyTimer = setTimeout(() => {
+      const textEl = textRef.current;
+      const overlayEl = overlayRef.current;
+      const logoEl = document.getElementById("nav-logo");
+
+      if (!textEl || !overlayEl || !logoEl) return;
+
+      const textRect = textEl.getBoundingClientRect();
+      const logoRect = logoEl.getBoundingClientRect();
+
+      const dx = (logoRect.left + logoRect.width / 2) - (textRect.left + textRect.width / 2);
+      const dy = (logoRect.top + logoRect.height / 2) - (textRect.top + textRect.height / 2);
+      const scale = logoRect.width / textRect.width;
+
+      // Fly text to logo position
+      textEl.style.transition = "transform 0.9s cubic-bezier(0.4, 0, 0.2, 1)";
+      textEl.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+
+      // Fade overlay out (delayed 0.3s)
+      overlayEl.style.transition = "opacity 0.5s ease 0.3s";
+      overlayEl.style.opacity = "0";
+
+      // Reveal navbar logo as text arrives
+      const revealTimer = setTimeout(() => {
+        document.body.removeAttribute("data-preloader");
+      }, 750);
+
+      // Remove component from DOM
+      const doneTimer = setTimeout(() => {
+        document.body.style.overflow = "";
+        setVisible(false);
+      }, 1100);
+
+      return () => {
+        clearTimeout(revealTimer);
+        clearTimeout(doneTimer);
+      };
+    }, 1800);
 
     return () => {
-      clearTimeout(exitTimer);
+      clearTimeout(flyTimer);
       document.body.style.overflow = "";
+      document.body.removeAttribute("data-preloader");
     };
   }, []);
 
-  function handleTransitionEnd(e: React.TransitionEvent<HTMLDivElement>) {
-    if (e.propertyName === "transform" && phase === "exit") {
-      document.body.style.overflow = "";
-      setPhase("hidden");
-    }
-  }
-
-  if (phase === "hidden") return null;
+  if (!visible) return null;
 
   return (
     <div
-      onTransitionEnd={handleTransitionEnd}
+      ref={overlayRef}
       style={{
         position: "fixed",
         inset: 0,
@@ -40,18 +74,19 @@ export default function Preloader() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        transform: phase === "exit" ? "translateY(-100%)" : "translateY(0)",
-        transition: phase === "exit" ? "transform 0.7s ease-in-out" : "none",
+        pointerEvents: "none",
       }}
     >
       <span
+        ref={textRef}
         className="font-serif italic"
         style={{
           fontSize: "clamp(3rem, 8vw, 7rem)",
           color: "#F0EDE8",
-          opacity: phase === "exit" ? 0 : 1,
-          transition: phase === "exit" ? "opacity 0.3s ease" : "none",
-          animation: phase === "enter" ? "preloader-scale 0.6s ease-out forwards" : "none",
+          display: "inline-block",
+          transformOrigin: "center center",
+          whiteSpace: "nowrap",
+          animation: "preloader-scale 0.6s ease-out forwards",
         }}
       >
         Stackwerk

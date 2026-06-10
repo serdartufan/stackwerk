@@ -21,6 +21,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link
+            id="nav-logo"
             href="/"
             className="font-serif text-xl tracking-tight"
             style={{ color: "#0a0a0a" }}
