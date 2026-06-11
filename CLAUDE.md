@@ -169,6 +169,10 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 - Werkwijze: 7 stappen met nieuwe copy, `grid-cols-7` desktop timeline, dot-animatie delays voor stap 5 en 6
 - Contactformulier: telefoon veld verplicht, `info@stackwerk.nl` en `+31 6 12 98 55 64` als contactgegevens
 
+### Sessie 11-06-2026 — Oranje focus glow op contactformulier velden
+- `.contact-input:focus` in `globals.css` uitgebreid: `border-color: #E8620A` + `box-shadow: 0 0 0 3px rgba(232,98,10,0.3)`
+- Alle formuliervelden (naam, email, telefoon, project type select, bericht) krijgen zo een oranje rand en subtiele glow bij focus
+
 ### Sessie 11-06-2026 — LetterGlitch verplaatst naar CTA-card, GridScan verwijderd
 - `LetterGlitch` wrapper verplaatst van Maatwerk Software card naar de "Iets specifieks" CTA-card
 - Maatwerk Software en SaaS Platforms cards zijn nu plain (geen animatie-overlay)
