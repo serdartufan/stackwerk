@@ -10,7 +10,7 @@
 ## Positionering
 Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS platforms en maatwerk software. Doelgroep: MKB en startups.
 
-## Huidige staat (09-06-2026)
+## Huidige staat (10-06-2026)
 
 **Paginas live:**
 - `/` — Homepage (Apple-stijl: hero, statement+stats, diensten 2x2, cases 2fr/1fr, CTA-oranje, contact)
@@ -19,6 +19,8 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 - `/diensten/saas-platforms` — Volledig uitgeschreven dienstenpagina
 - `/diensten/maatwerk-software` — Volledig uitgeschreven dienstenpagina
 - `/werk/[slug]` — Dynamische casepaginas op basis van `src/data/cases.json`
+- `/algemene-voorwaarden` — 12 secties Nederlandse AV
+- `/privacy-policy` — 11 secties AVG-compliant privacybeleid
 
 **Design systeem:**
 - Achtergrond primair: `#0a0a0a`
@@ -31,9 +33,14 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 
 **Componenten:**
 - `Navbar.tsx` — Wit achtergrond, logo en CTA in `#0a0a0a`, links via volledige paden (`/#diensten` etc.)
-- `ContactForm.tsx` — Gecontroleerd formulier met loading/error feedback, fetch naar `/api/contact`
+- `ContactForm.tsx` — Gecontroleerd formulier met loading/error feedback, fetch naar `/api/contact`; telefoon verplicht
 - `ScrollAnimation.tsx` — IntersectionObserver, variant prop: `up` / `left` / `right` / `scale` / `heading` / `fade`
 - `CountUp.tsx` — Animated number counter, telt op bij scroll via IntersectionObserver + rAF
+- `HeroCanvas.tsx` — Vallende dev-symbolen (`</>`, `{ }`, `=>`, `[ ]` etc.) in rechterhelft van hero, canvas hoogte dynamisch tot boven diensten-sectie
+- `ScrambleText.tsx` — Tekst scramble animatie op hero headline ("Wij bouwen" delay 500ms, "jouw visie." delay 800ms)
+- `LetterGlitch.tsx` — Glitch-effect op Maatwerk Software diensten-card
+- `GridScan.tsx` — Scan-effect op SaaS Platforms diensten-card (kleur `#E8620A`)
+- `Preloader.tsx` — FLIP animatie: "Stackwerk" vliegt van midden naar navbar logo positie; oranje kleur-sweep bij landing; `useState(true)` als default voor directe zichtbaarheid
 
 **Afbeeldingen:**
 - `public/images/` — Statische WebP afbeeldingen gegenereerd via Grok:
@@ -57,6 +64,10 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
   - Ontvanger: `serdar@funnelvisionagency.com`
   - Reply-to: ingesteld op het e-mailadres van de invuller
   - Rate limiting: max 5 verzoeken per IP per 15 minuten (in-memory Map)
+
+**Contact info:**
+- E-mail: `info@stackwerk.nl`
+- Telefoon: `+31 6 12 98 55 64`
 
 **Data:**
 - `src/data/cases.json` — Casesdata (gebruikt door `/werk/[slug]` en homepage cases-grid)
@@ -143,3 +154,18 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 - 4 assets gegenereerd via Grok (`grok-imagine-image-quality`): hero-bg.jpg + 3 case-images
 - API keys (`GEMINI_API_KEY`, `GROK_API_KEY`) toegevoegd aan `.env.local`
 - `generate-assets.ts` geschreven en bijgewerkt met correcte modelnamen
+
+### Sessie 10-06-2026 — Preloader, hero-animaties, diensten-effects en juridische paginas
+- `Preloader.tsx`: FLIP animatie ("Stackwerk" vliegt van midden naar navbar logo), oranje kleur-sweep bij landing, `useState(true)` default, body background `#0a0a0a` voor hydration
+- `HeroCanvas.tsx` herbouwd: wireframe sphere + particles vervangen door vallende dev-symbolen (`</>`, `{ }`, `=>`, `[ ]` etc.) in rechterhelft, canvas hoogte dynamisch berekend tot boven diensten-sectie
+- `ScrambleText.tsx`: nieuw component, scramble-animatie op hero headline "Wij bouwen" (delay 500ms) en "jouw visie." (delay 800ms)
+- `LetterGlitch.tsx` op Maatwerk Software card
+- `GridScan.tsx` op SaaS Platforms card (kleur `#E8620A`)
+- `three` + `@types/three` geïnstalleerd (voor PixelSnow experiment, later vervangen)
+- `react-parallax-tilt` geïnstalleerd; tilt effect op alle case cards (FunnelVision, Just Harry, My Miracle)
+- `GlowCard.tsx` geprobeerd en verwijderd (box-shadow glow werkte niet naar wens)
+- `/algemene-voorwaarden`: 12 secties Nederlandse AV
+- `/privacy-policy`: 11 secties AVG-compliant privacybeleid
+- Links naar juridische paginas toegevoegd in footer
+- Werkwijze: 7 stappen met nieuwe copy, `grid-cols-7` desktop timeline, dot-animatie delays voor stap 5 en 6
+- Contactformulier: telefoon veld verplicht, `info@stackwerk.nl` en `+31 6 12 98 55 64` als contactgegevens
