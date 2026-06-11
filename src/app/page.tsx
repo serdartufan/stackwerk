@@ -5,7 +5,6 @@ import ContactForm from "@/components/ContactForm";
 import CountUp from "@/components/CountUp";
 import HeroCanvas from "@/components/HeroCanvas";
 import LetterGlitch from "@/components/LetterGlitch";
-import GridScan from "@/components/GridScan";
 import TiltCard from "@/components/TiltCard";
 import ScrambleText from "@/components/ScrambleText";
 import { cases } from "@/data/cases";
@@ -281,59 +280,8 @@ export default function Home() {
                       style={{
                         borderLeft: "1px solid rgba(255,255,255,0.08)",
                         position: "relative",
-                        overflow:
-                          d.title === "Maatwerk Software" || d.title === "SaaS Platforms"
-                            ? "hidden"
-                            : undefined,
                       }}
                     >
-                      {d.title === "Maatwerk Software" && (
-                        <div
-                          style={{
-                            position: "absolute",
-                            inset: 0,
-                            zIndex: 0,
-                            opacity: 0.35,
-                            borderRadius: "inherit",
-                            overflow: "hidden",
-                            pointerEvents: "none",
-                          }}
-                        >
-                          <LetterGlitch
-                            glitchColors={["#E8620A", "rgba(232,98,10,0.4)", "rgba(255,255,255,0.08)"]}
-                            glitchSpeed={60}
-                            outerVignette={false}
-                            smooth
-                          />
-                        </div>
-                      )}
-                      {d.title === "SaaS Platforms" && (
-                        <div
-                          style={{
-                            position: "absolute",
-                            inset: 0,
-                            zIndex: 0,
-                            opacity: 0.5,
-                            borderRadius: "inherit",
-                            overflow: "hidden",
-                            pointerEvents: "none",
-                          }}
-                        >
-                          <GridScan
-                            linesColor="#E8620A"
-                            scanColor="#E8620A"
-                            scanOpacity={0.9}
-                            gridScale={0.08}
-                            lineThickness={1.5}
-                            scanGlow={1.2}
-                            scanSoftness={3}
-                            scanDuration={2.5}
-                            scanDelay={1.0}
-                            scanDirection="pingpong"
-                            noiseIntensity={0.005}
-                          />
-                        </div>
-                      )}
                       <div style={{ color: "#E8620A", position: "relative", zIndex: 1 }}>
                         <d.Icon />
                       </div>
@@ -364,24 +312,42 @@ export default function Home() {
               <ScrollAnimation delay={3 * 90}>
                 <div
                   className="dienst-card-v2 flex h-full flex-col justify-center gap-6 p-10"
-                  style={{ borderLeft: "1px solid rgba(255,255,255,0.08)" }}
+                  style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", position: "relative", overflow: "hidden" }}
                 >
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      zIndex: 0,
+                      opacity: 0.35,
+                      borderRadius: "inherit",
+                      overflow: "hidden",
+                      pointerEvents: "none",
+                    }}
+                  >
+                    <LetterGlitch
+                      glitchColors={["#E8620A", "rgba(232,98,10,0.4)", "rgba(255,255,255,0.08)"]}
+                      glitchSpeed={60}
+                      outerVignette={false}
+                      smooth
+                    />
+                  </div>
                   <p
                     className="font-sans text-xs uppercase tracking-[0.22em]"
-                    style={{ color: "rgba(255,255,255,0.25)" }}
+                    style={{ color: "rgba(255,255,255,0.25)", position: "relative", zIndex: 1 }}
                   >
                     OP MAAT
                   </p>
                   <p
                     className="font-serif font-bold"
-                    style={{ fontSize: "1.5rem", color: "#ffffff", lineHeight: 1.2 }}
+                    style={{ fontSize: "1.5rem", color: "#ffffff", lineHeight: 1.2, position: "relative", zIndex: 1 }}
                   >
                     Iets specifieks nodig dat hier niet bij staat?
                   </p>
                   <a
                     href="#contact"
                     className="font-sans text-sm font-medium"
-                    style={{ color: "#E8620A" }}
+                    style={{ color: "#E8620A", position: "relative", zIndex: 1 }}
                   >
                     Plan een gesprek →
                   </a>

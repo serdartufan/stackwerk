@@ -10,7 +10,7 @@
 ## Positionering
 Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS platforms en maatwerk software. Doelgroep: MKB en startups.
 
-## Huidige staat (10-06-2026)
+## Huidige staat (11-06-2026)
 
 **Paginas live:**
 - `/` — Homepage (Apple-stijl: hero, statement+stats, diensten 2x2, cases 2fr/1fr, CTA-oranje, contact)
@@ -38,8 +38,7 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 - `CountUp.tsx` — Animated number counter, telt op bij scroll via IntersectionObserver + rAF
 - `HeroCanvas.tsx` — Vallende dev-symbolen (`</>`, `{ }`, `=>`, `[ ]` etc.) in rechterhelft van hero, canvas hoogte dynamisch tot boven diensten-sectie
 - `ScrambleText.tsx` — Tekst scramble animatie op hero headline ("Wij bouwen" delay 500ms, "jouw visie." delay 800ms)
-- `LetterGlitch.tsx` — Glitch-effect op Maatwerk Software diensten-card
-- `GridScan.tsx` — Scan-effect op SaaS Platforms diensten-card (kleur `#E8620A`)
+- `LetterGlitch.tsx` — Glitch-effect op de "Iets specifieks" CTA-card in de diensten sectie
 - `Preloader.tsx` — FLIP animatie: "Stackwerk" vliegt van midden naar navbar logo positie; oranje kleur-sweep bij landing; `useState(true)` als default voor directe zichtbaarheid
 
 **Afbeeldingen:**
@@ -169,3 +168,9 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 - Links naar juridische paginas toegevoegd in footer
 - Werkwijze: 7 stappen met nieuwe copy, `grid-cols-7` desktop timeline, dot-animatie delays voor stap 5 en 6
 - Contactformulier: telefoon veld verplicht, `info@stackwerk.nl` en `+31 6 12 98 55 64` als contactgegevens
+
+### Sessie 11-06-2026 — LetterGlitch verplaatst naar CTA-card, GridScan verwijderd
+- `LetterGlitch` wrapper verplaatst van Maatwerk Software card naar de "Iets specifieks" CTA-card
+- Maatwerk Software en SaaS Platforms cards zijn nu plain (geen animatie-overlay)
+- `GridScan.tsx` verwijderd (niet meer gebruikt)
+- `.gridscan` CSS class verwijderd uit `globals.css`
