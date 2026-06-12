@@ -104,7 +104,7 @@ const sections = [
     title: "11. Contact",
     content: [
       `Heb je vragen over deze privacy policy of over de verwerking van jouw persoonsgegevens? Neem dan contact op:`,
-      `Stackwerk — ${BEDRIJF.adres}`,
+      `Stackwerk, ${BEDRIJF.adres}`,
       `E-mail: ${BEDRIJF.email}`,
       `Telefoon: ${BEDRIJF.telefoon}`,
     ],
@@ -129,7 +129,7 @@ export default function PrivacyPolicy() {
             Privacy policy
           </h1>
           <p className="font-sans" style={{ color: "rgba(17,17,17,0.55)", fontSize: "14px" }}>
-            Versie 1.0 — juni 2026 — AVG-conform
+            Versie 1.0 · juni 2026 · AVG-conform
           </p>
           <div className="mt-8 p-5 rounded-xl" style={{ backgroundColor: "#f5f4f2", fontSize: "14px" }}>
             <p className="font-sans font-medium mb-1" style={{ color: "#111111" }}>

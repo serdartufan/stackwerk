@@ -15,6 +15,8 @@ export default function ScrambleText({ text, className, style, delay = 0 }: Scra
   const [displayed, setDisplayed] = useState(text);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const timeouts: ReturnType<typeof setTimeout>[] = [];
 
     const startTimeout = setTimeout(() => {

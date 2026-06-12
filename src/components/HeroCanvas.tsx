@@ -45,6 +45,7 @@ export default function HeroCanvas() {
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const elOrNull = canvasRef.current;
     if (!elOrNull) return;
     const el: HTMLCanvasElement = elOrNull;

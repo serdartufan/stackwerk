@@ -142,7 +142,7 @@ export default function AlgemeneVoorwaarden() {
             Algemene voorwaarden
           </h1>
           <p className="font-sans" style={{ color: "rgba(17,17,17,0.55)", fontSize: "14px" }}>
-            Versie 1.0 — juni 2026
+            Versie 1.0 · juni 2026
           </p>
           <div className="mt-8 p-5 rounded-xl" style={{ backgroundColor: "#f5f4f2", fontSize: "14px" }}>
             <p className="font-sans font-medium mb-1" style={{ color: "#111111" }}>

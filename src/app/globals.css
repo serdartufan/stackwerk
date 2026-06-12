@@ -24,6 +24,25 @@ body {
   font-family: var(--font-dm-sans), sans-serif;
 }
 
+/* ── Craft-basis (agency-foundation) ─────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #e8620a;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+::selection {
+  background: #e8620a;
+  color: #0a0a0a;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
 /* ── Hero entrance ────────────────────────────────────────────────────────── */
 @keyframes hero-line-up {
   from { transform: translateY(110%); }

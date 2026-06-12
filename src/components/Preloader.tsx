@@ -9,8 +9,11 @@ export default function Preloader() {
   const textRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Terugkerende bezoeker: verberg overlay direct
-    if (sessionStorage.getItem("preloader-shown")) {
+    // Reduced motion of terugkerende bezoeker: verberg overlay direct
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      sessionStorage.getItem("preloader-shown")
+    ) {
       setVisible(false);
       document.body.style.backgroundColor = "";
       return;
