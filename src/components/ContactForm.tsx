@@ -67,7 +67,7 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div
-        className="flex min-h-80 items-center justify-center text-center"
+        className="form-success flex min-h-80 items-center justify-center text-center"
         style={{
           backgroundColor: "rgba(255,255,255,0.04)",
           border: "1px solid rgba(240,237,232,0.08)",
@@ -176,7 +176,7 @@ export default function ContactForm() {
       {error && (
         <p
           className="font-sans"
-          style={{ color: "#E85D26", fontSize: "14px" }}
+          style={{ color: "#E8620A", fontSize: "14px" }}
         >
           {error}
         </p>
@@ -186,9 +186,9 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="font-sans font-medium text-white transition-opacity hover:opacity-85 disabled:opacity-50"
+        className="press font-sans font-medium text-white hover:opacity-90 disabled:opacity-50"
         style={{
-          backgroundColor: "#E85D26",
+          backgroundColor: "#E8620A",
           borderRadius: "10px",
           padding: "14px",
           width: "100%",

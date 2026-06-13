@@ -180,7 +180,7 @@ export default function Home() {
               </a>
               <a
                 href="#werk"
-                className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium transition-opacity hover:opacity-75"
+                className="press inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium hover:opacity-75"
                 style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#ffffff" }}
               >
                 Bekijk ons werk
@@ -301,7 +301,7 @@ export default function Home() {
                         className="font-sans text-sm font-medium"
                         style={{ color: "#E8620A", position: "relative", zIndex: 1 }}
                       >
-                        Meer lezen →
+                        Meer lezen <span className="arrow">→</span>
                       </span>
                     </div>
                   </Link>
@@ -346,10 +346,10 @@ export default function Home() {
                   </p>
                   <a
                     href="#contact"
-                    className="font-sans text-sm font-medium"
+                    className="link-arrow font-sans text-sm font-medium"
                     style={{ color: "#E8620A", position: "relative", zIndex: 1 }}
                   >
-                    Plan een gesprek →
+                    Plan een gesprek <span className="arrow">→</span>
                   </a>
                 </div>
               </ScrollAnimation>
@@ -680,11 +680,11 @@ export default function Home() {
               <div className="mt-12">
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 font-sans text-sm font-medium transition-opacity hover:opacity-70"
+                  className="link-arrow inline-flex items-center gap-2 font-sans text-sm font-medium transition-opacity hover:opacity-70"
                   style={{ color: "#0a0a0a" }}
                 >
                   Zulke resultaten voor jouw project?
-                  <span style={{ color: "#E8620A" }}>Plan een kennismaking →</span>
+                  <span style={{ color: "#E8620A" }}>Plan een kennismaking <span className="arrow">→</span></span>
                 </a>
               </div>
             </ScrollAnimation>

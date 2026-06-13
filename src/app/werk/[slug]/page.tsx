@@ -44,7 +44,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
                 className="font-sans rounded-full px-3 py-1 text-xs"
                 style={{
                   backgroundColor: "rgba(232,93,38,0.12)",
-                  color: "#E85D26",
+                  color: "#E8620A",
                 }}
               >
                 {c.label}
@@ -122,7 +122,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             <ScrollAnimation>
               <p
                 className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "#E85D26" }}
+                style={{ color: "#E8620A" }}
               >
                 HET PROJECT
               </p>
@@ -134,7 +134,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
                 }}
               >
                 Wat we{" "}
-                <span className="italic" style={{ color: "#E85D26" }}>
+                <span className="italic" style={{ color: "#E8620A" }}>
                   gebouwd hebben.
                 </span>
               </h2>
@@ -166,7 +166,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
                   >
                     <span
                       className="mt-1 shrink-0 font-serif font-bold"
-                      style={{ color: "#E85D26", fontSize: "0.9rem" }}
+                      style={{ color: "#E8620A", fontSize: "0.9rem" }}
                     >
                       →
                     </span>
@@ -185,7 +185,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           <ScrollAnimation>
             <p
               className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "#E85D26" }}
+              style={{ color: "#E8620A" }}
             >
               DE AANPAK
             </p>
@@ -197,7 +197,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
               }}
             >
               Hoe we het{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 aangepakt hebben.
               </span>
             </h2>
@@ -212,7 +212,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
                 >
                   <p
                     className="font-sans text-xs font-medium mb-5 uppercase tracking-[0.2em]"
-                    style={{ color: "#E85D26" }}
+                    style={{ color: "#E8620A" }}
                   >
                     {stap.num}
                   </p>
@@ -248,7 +248,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           <ScrollAnimation>
             <p
               className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "#E85D26" }}
+              style={{ color: "#E8620A" }}
             >
               DE RESULTATEN
             </p>
@@ -260,7 +260,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
               }}
             >
               Wat het{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 opleverde.
               </span>
             </h2>
@@ -318,7 +318,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
               <div>
                 <p
                   className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-                  style={{ color: "#E85D26" }}
+                  style={{ color: "#E8620A" }}
                 >
                   VOLGENDE STAP
                 </p>
@@ -332,7 +332,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
                 >
                   Zulke resultaten
                   <br />
-                  <span className="italic" style={{ color: "#E85D26" }}>
+                  <span className="italic" style={{ color: "#E8620A" }}>
                     voor jouw project?
                   </span>
                 </h2>
@@ -351,14 +351,14 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
                 <div className="flex flex-wrap gap-4">
                   <a
                     href="/#contact"
-                    className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white transition-opacity hover:opacity-85"
-                    style={{ backgroundColor: "#E85D26" }}
+                    className="press inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium text-white hover:opacity-85"
+                    style={{ backgroundColor: "#E8620A" }}
                   >
                     Plan een kennismaking
                   </a>
                   <Link
                     href="/#werk"
-                    className="inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium transition-opacity hover:opacity-75"
+                    className="press inline-flex items-center rounded-full px-8 py-4 font-sans text-sm font-medium hover:opacity-75"
                     style={{
                       border: "1px solid rgba(240,237,232,0.2)",
                       color: "#F0EDE8",

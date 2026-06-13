@@ -73,7 +73,7 @@ export default function OverOns() {
         <div className="mx-auto max-w-7xl">
           <p
             className="font-sans mb-6 text-xs uppercase tracking-[0.28em]"
-            style={{ color: "#E85D26" }}
+            style={{ color: "#E8620A" }}
           >
             OVER ONS
           </p>
@@ -83,7 +83,7 @@ export default function OverOns() {
           >
             Van marketeers
             <br />
-            <span className="italic" style={{ color: "#E85D26" }}>
+            <span className="italic" style={{ color: "#E8620A" }}>
               naar developers.
             </span>
           </h1>
@@ -108,7 +108,7 @@ export default function OverOns() {
           <ScrollAnimation>
             <p
               className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "#E85D26" }}
+              style={{ color: "#E8620A" }}
             >
               ONS VERHAAL
             </p>
@@ -120,7 +120,7 @@ export default function OverOns() {
               }}
             >
               Van advertenties naar{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 architectuur.
               </span>
             </h2>
@@ -216,7 +216,7 @@ export default function OverOns() {
           <ScrollAnimation>
             <p
               className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "#E85D26" }}
+              style={{ color: "#E8620A" }}
             >
               HET TEAM
             </p>
@@ -228,7 +228,7 @@ export default function OverOns() {
               }}
             >
               De mensen{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 achter
               </span>{" "}
               Stackwerk.
@@ -263,7 +263,7 @@ export default function OverOns() {
                     style={{
                       fontSize: "11px",
                       letterSpacing: "0.12em",
-                      color: "#E85D26",
+                      color: "#E8620A",
                     }}
                   >
                     {lid.rol}
@@ -293,7 +293,7 @@ export default function OverOns() {
           <ScrollAnimation>
             <p
               className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "#E85D26" }}
+              style={{ color: "#E8620A" }}
             >
               WAAROM STACKWERK
             </p>
@@ -305,7 +305,7 @@ export default function OverOns() {
               }}
             >
               Marketing in ons{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 DNA.
               </span>
             </h2>
@@ -320,7 +320,7 @@ export default function OverOns() {
                 >
                   <p
                     className="font-sans text-xs font-medium mb-5 uppercase tracking-[0.2em]"
-                    style={{ color: "#E85D26" }}
+                    style={{ color: "#E8620A" }}
                   >
                     {punt.num}
                   </p>
@@ -355,7 +355,7 @@ export default function OverOns() {
               }}
             >
               Klaar om te{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 bouwen?
               </span>
             </h2>
@@ -372,8 +372,8 @@ export default function OverOns() {
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center rounded-full px-8 py-4 font-sans text-base font-medium text-white transition-opacity hover:opacity-85"
-              style={{ backgroundColor: "#E85D26" }}
+              className="press inline-flex items-center rounded-full px-8 py-4 font-sans text-base font-medium text-white hover:opacity-85"
+              style={{ backgroundColor: "#E8620A" }}
             >
               Start een project
             </a>

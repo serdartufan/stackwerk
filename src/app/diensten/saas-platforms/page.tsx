@@ -73,7 +73,7 @@ export default function SaasPlatformsDienst() {
             <div>
               <p
                 className="font-sans mb-6 text-xs uppercase tracking-[0.28em]"
-                style={{ color: "#E85D26" }}
+                style={{ color: "#E8620A" }}
               >
                 DIENST 02
               </p>
@@ -82,7 +82,7 @@ export default function SaasPlatformsDienst() {
                 style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "#F0EDE8" }}
               >
                 SaaS platforms die{" "}
-                <span className="italic" style={{ color: "#E85D26" }}>
+                <span className="italic" style={{ color: "#E8620A" }}>
                   schalen.
                 </span>
               </h1>
@@ -125,7 +125,7 @@ export default function SaasPlatformsDienst() {
           <ScrollAnimation>
             <p
               className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "#E85D26" }}
+              style={{ color: "#E8620A" }}
             >
               WAT JE KRIJGT
             </p>
@@ -134,7 +134,7 @@ export default function SaasPlatformsDienst() {
               style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#111111" }}
             >
               Alles wat een SaaS platform{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 nodig heeft.
               </span>
             </h2>
@@ -153,7 +153,7 @@ export default function SaasPlatformsDienst() {
                 >
                   <p
                     className="font-sans text-sm font-medium mb-3"
-                    style={{ color: "#E85D26" }}
+                    style={{ color: "#E8620A" }}
                   >
                     {f.num}
                   </p>
@@ -182,7 +182,7 @@ export default function SaasPlatformsDienst() {
           <ScrollAnimation>
             <p
               className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "#E85D26" }}
+              style={{ color: "#E8620A" }}
             >
               VOOR WIE
             </p>
@@ -191,7 +191,7 @@ export default function SaasPlatformsDienst() {
               style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#F0EDE8" }}
             >
               Geschikt als{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 jij...
               </span>
             </h2>
@@ -213,7 +213,7 @@ export default function SaasPlatformsDienst() {
                     className="shrink-0"
                     style={{
                       width: "4px",
-                      backgroundColor: "#E85D26",
+                      backgroundColor: "#E8620A",
                       borderRadius: "2px",
                     }}
                   />
@@ -240,7 +240,7 @@ export default function SaasPlatformsDienst() {
           <ScrollAnimation>
             <p
               className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
-              style={{ color: "#E85D26" }}
+              style={{ color: "#E8620A" }}
             >
               HOE WE BOUWEN
             </p>
@@ -249,7 +249,7 @@ export default function SaasPlatformsDienst() {
               style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#111111" }}
             >
               Onze{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 aanpak.
               </span>
             </h2>
@@ -305,7 +305,7 @@ export default function SaasPlatformsDienst() {
               style={{ fontSize: "clamp(2rem, 5vw, 4rem)", color: "#F0EDE8" }}
             >
               Klaar om je SaaS{" "}
-              <span className="italic" style={{ color: "#E85D26" }}>
+              <span className="italic" style={{ color: "#E8620A" }}>
                 te bouwen?
               </span>
             </h2>
@@ -322,8 +322,8 @@ export default function SaasPlatformsDienst() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center rounded-full px-8 py-4 font-sans text-base font-medium text-white transition-opacity hover:opacity-85"
-              style={{ backgroundColor: "#E85D26" }}
+              className="press inline-flex items-center rounded-full px-8 py-4 font-sans text-base font-medium text-white hover:opacity-85"
+              style={{ backgroundColor: "#E8620A" }}
             >
               Start een project
             </Link>

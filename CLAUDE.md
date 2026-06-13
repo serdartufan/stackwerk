@@ -10,7 +10,7 @@
 ## Positionering
 Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS platforms en maatwerk software. Doelgroep: MKB en startups.
 
-## Huidige staat (11-06-2026)
+## Huidige staat (13-06-2026)
 
 **Paginas live:**
 - `/` — Homepage (Apple-stijl: hero, statement+stats, diensten 2x2, cases 2fr/1fr, CTA-oranje, contact)
@@ -178,3 +178,13 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 - Maatwerk Software en SaaS Platforms cards zijn nu plain (geen animatie-overlay)
 - `GridScan.tsx` verwijderd (niet meer gebruikt)
 - `.gridscan` CSS class verwijderd uit `globals.css`
+
+### Sessie 13-06-2026 — Emil-craft retrofit (hero + preloader ongemoeid)
+- Easing-tokens toegevoegd in `globals.css`: `--ease-out` en `--ease-in-out`
+- `.press` utility: alle knoppen/CTA's krijgen `scale(0.97)` op `:active` (hero-secundair, navbar-CTA's, contactformulier-submit, dienstenpagina-CTA's, case-pagina CTA's). `.btn-fill` en `.cta-pill` kregen ook active-scale
+- Accent-inconsistentie opgelost: alle `#E85D26` site-breed vervangen door token `#E8620A` (diensten, over-ons, werk/[slug], contactformulier-submit en foutmelding)
+- `.arrow` micro-interactie: pijltjes (`→`) schuiven 4px mee bij hover op dienstkaarten en `.link-arrow` links — gated achter `@media (hover: hover)`
+- Case-image zoom-hovers gated achter `@media (hover: hover) and (pointer: fine)` zodat ze niet blijven hangen op touch
+- `.scroll-anim` basis-easing van plat `ease` naar `--ease-out`
+- Navbar mobiel menu: van mount/unmount naar vloeiende `grid-template-rows` 0fr→1fr reveal (+ `inert` wanneer gesloten)
+- Contactformulier succes-bevestiging: zachte `form-success-in` entree (fade + scale), respecteert reduced-motion
