@@ -97,8 +97,31 @@ const steps = [
   },
 ];
 
+const faqs = [
+  {
+    q: "Wat kost een project bij jullie?",
+    a: "Dat hangt af van de scope, maar we zijn er eerlijk over. Een website start meestal in de lagere vijfcijferige range, een SaaS platform of maatwerksoftware loopt hoger. In de kennismaking geven we al een richtprijs, zodat je nooit voor verrassingen komt te staan.",
+  },
+  {
+    q: "Hoe snel staat mijn project live?",
+    a: "Een website leveren we vaak binnen 2 tot 6 weken op. Grotere platforms bouwen we in sprints, waarbij je al vanaf week 1 meekijkt op een testomgeving. Je zit dus nooit weken in het donker te wachten.",
+  },
+  {
+    q: "Werken jullie met een vaste prijs of een uurtarief?",
+    a: "Allebei kan, jij kiest. Bij een heldere scope werken we graag met een vaste prijs, zodat je vooraf precies weet waar je aan toe bent. Voor doorlopend werk of onderzoek is een uurtarief vaak logischer.",
+  },
+  {
+    q: "Wat als jullie niet de juiste partij zijn?",
+    a: "Dan zeggen we dat eerlijk in de kennismaking, en denken we mee over wie wel bij je past. We nemen liever geen project aan dan een project dat we niet goed kunnen doen.",
+  },
+  {
+    q: "Wat gebeurt er na de oplevering?",
+    a: "We laten je niet los na livegang. Met een onderhoudsabonnement vanaf 495 euro per maand houden we je software snel, veilig en up-to-date, en zijn we het eerste aanspreekpunt als er iets is.",
+  },
+];
+
 const stats = [
-  { value: 10,   suffix: "+",  label: "Projecten opgeleverd" },
+  { value: 40,   prefix: "+", suffix: "%",  label: "Conversiestijging voor klanten" },
   { value: 100,  suffix: "%",  label: "Op tijd opgeleverd" },
   { value: 2019, from: 2015, suffix: "", label: "Actief sinds" },
 ];
@@ -151,12 +174,12 @@ export default function Home() {
             >
               <span className="hero-line">
                 <span className="hero-line-inner hero-delay-1" style={{ color: "#ffffff" }}>
-                  <ScrambleText text="Wij bouwen" delay={500} />
+                  <ScrambleText text="Wij bouwen wat" delay={500} />
                 </span>
               </span>
               <span className="hero-line italic">
                 <span className="hero-line-inner hero-delay-2" style={{ color: "#E8620A" }}>
-                  <ScrambleText text="jouw visie." delay={800} />
+                  <ScrambleText text="jou verder brengt." delay={800} />
                 </span>
               </span>
             </h1>
@@ -186,6 +209,13 @@ export default function Home() {
                 Bekijk ons werk
               </a>
             </div>
+
+            <p
+              className="hero-sub font-sans mt-8 text-sm"
+              style={{ color: "rgba(255,255,255,0.35)" }}
+            >
+              10+ projecten opgeleverd · 100% op tijd · gemiddeld 3 jaar klant
+            </p>
           </div>
 
           <div className="hero-badge absolute bottom-8 right-6 z-10 lg:right-8" style={{ pointerEvents: "none" }}>
@@ -238,7 +268,7 @@ export default function Home() {
                       className="font-serif font-bold mb-2"
                       style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#E8620A", lineHeight: 1 }}
                     >
-                      <CountUp value={stat.value} from={stat.from} suffix={stat.suffix} />
+                      <CountUp value={stat.value} from={stat.from} prefix={stat.prefix} suffix={stat.suffix} />
                     </p>
                     <p className="font-sans text-sm" style={{ color: "rgba(0,0,0,0.5)" }}>
                       {stat.label}
@@ -685,6 +715,74 @@ export default function Home() {
                 >
                   Zulke resultaten voor jouw project?
                   <span style={{ color: "#E8620A" }}>Plan een kennismaking <span className="arrow">→</span></span>
+                </a>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </section>
+
+        {/* ── FAQ — zwart ──────────────────────────────────────────────────── */}
+        <section style={{ backgroundColor: "#0a0a0a" }}>
+          <div className="mx-auto max-w-4xl px-6 py-32 lg:px-8 lg:py-40">
+            <ScrollAnimation variant="heading">
+              <p
+                className="font-sans mb-4 text-xs uppercase tracking-[0.28em]"
+                style={{ color: "#E8620A" }}
+              >
+                GOED OM TE WETEN
+              </p>
+              <h2
+                className="font-serif font-bold mb-16"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#ffffff" }}
+              >
+                Vragen die je{" "}
+                <span className="italic" style={{ color: "#E8620A" }}>
+                  vast hebt.
+                </span>
+              </h2>
+            </ScrollAnimation>
+
+            <ScrollAnimation>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                {faqs.map((faq) => (
+                  <details
+                    key={faq.q}
+                    className="faq-item"
+                    style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+                  >
+                    <summary className="faq-summary">
+                      <span
+                        className="font-serif font-bold"
+                        style={{ fontSize: "1.2rem", color: "#ffffff" }}
+                      >
+                        {faq.q}
+                      </span>
+                      <span className="faq-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <p
+                      className="font-sans faq-answer"
+                      style={{
+                        fontSize: "15px",
+                        color: "rgba(255,255,255,0.55)",
+                        lineHeight: 1.7,
+                        maxWidth: "640px",
+                      }}
+                    >
+                      {faq.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation variant="fade">
+              <div className="mt-12">
+                <a
+                  href="#contact"
+                  className="link-arrow inline-flex items-center gap-2 font-sans text-sm font-medium transition-opacity hover:opacity-70"
+                  style={{ color: "#E8620A" }}
+                >
+                  Andere vraag? Stel hem gerust <span className="arrow">→</span>
                 </a>
               </div>
             </ScrollAnimation>

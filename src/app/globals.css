@@ -412,3 +412,57 @@ h1, h2, h3 {
   will-change: transform;
   backface-visibility: hidden;
 }
+
+
+/* ── FAQ accordion ────────────────────────────────────────────────────────── */
+.faq-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  font-family: var(--font-dm-sans, sans-serif);
+  font-size: 24px;
+  line-height: 1;
+  color: #E8620A;
+  transition: transform 0.28s var(--ease-out);
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding-bottom: 28px;
+  margin-top: -4px;
+}
+
+.faq-item[open] .faq-answer {
+  animation: faq-reveal 0.4s var(--ease-out) both;
+}
+
+@keyframes faq-reveal {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (hover: hover) {
+  .faq-summary:hover .faq-icon {
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-icon { transition: none; }
+  .faq-item[open] .faq-answer { animation: none; }
+}

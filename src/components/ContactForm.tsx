@@ -123,7 +123,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label className="font-sans" style={labelStyle}>
-            Telefoon
+            Telefoon <span style={{ color: "rgba(240,237,232,0.4)" }}>(optioneel)</span>
           </label>
           <input
             type="tel"
@@ -132,7 +132,6 @@ export default function ContactForm() {
             style={fieldStyle()}
             value={telefoon}
             onChange={(e) => setTelefoon(e.target.value)}
-            required
           />
         </div>
         <div>
@@ -201,6 +200,13 @@ export default function ContactForm() {
           {loading ? "Bezig met verzenden..." : "Verstuur bericht"}
         </span>
       </button>
+
+      <p
+        className="font-sans text-center"
+        style={{ fontSize: "13px", color: "rgba(240,237,232,0.4)", marginTop: "-4px" }}
+      >
+        We reageren binnen 24 uur. Geen salespraat, geen verplichtingen.
+      </p>
     </form>
   );
 }

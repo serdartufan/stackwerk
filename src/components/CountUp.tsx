@@ -6,6 +6,7 @@ interface Props {
   value: number;
   from?: number;
   duration?: number;
+  prefix?: string;
   suffix?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -15,6 +16,7 @@ export default function CountUp({
   value,
   from = 0,
   duration = 1500,
+  prefix = "",
   suffix = "",
   className,
   style,
@@ -59,7 +61,7 @@ export default function CountUp({
 
   return (
     <span ref={ref} className={className} style={style}>
-      {current}{suffix}
+      {prefix}{current}{suffix}
     </span>
   );
 }

@@ -10,10 +10,10 @@
 ## Positionering
 Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS platforms en maatwerk software. Doelgroep: MKB en startups.
 
-## Huidige staat (13-06-2026, laatste update sessie 2)
+## Huidige staat (13-06-2026, laatste update CRO-sessie)
 
 **Paginas live:**
-- `/` — Homepage (Apple-stijl: hero, statement+stats, diensten 2x2, cases 2fr/1fr, CTA-oranje, contact)
+- `/` — Homepage (Apple-stijl: hero, statement+stats, diensten 2x2, cases 2fr/1fr, FAQ-accordion, CTA-oranje, contact)
 - `/over-ons` — Verhaal, team (Serdar + Dogukan), waarom-sectie
 - `/diensten/websites` — Volledig uitgeschreven dienstenpagina
 - `/diensten/saas-platforms` — Volledig uitgeschreven dienstenpagina
@@ -33,9 +33,9 @@ Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS
 
 **Componenten:**
 - `Navbar.tsx` — Wit achtergrond, logo en CTA in `#0a0a0a`, links via volledige paden (`/#diensten` etc.)
-- `ContactForm.tsx` — Gecontroleerd formulier met loading/error feedback, fetch naar `/api/contact`; telefoon verplicht
+- `ContactForm.tsx` — Gecontroleerd formulier met loading/error feedback, fetch naar `/api/contact`; telefoon optioneel; geruststellingsregel onder verzendknop ("binnen 24 uur, geen salespraat")
 - `ScrollAnimation.tsx` — IntersectionObserver, variant prop: `up` / `left` / `right` / `scale` / `heading` / `fade`
-- `CountUp.tsx` — Animated number counter, telt op bij scroll via IntersectionObserver + rAF
+- `CountUp.tsx` — Animated number counter, telt op bij scroll via IntersectionObserver + rAF; props `prefix` en `suffix`
 - `HeroCanvas.tsx` — Vallende dev-symbolen (`</>`, `{ }`, `=>`, `[ ]` etc.) in rechterhelft van hero, canvas hoogte dynamisch tot boven diensten-sectie
 - `ScrambleText.tsx` — Tekst scramble animatie op hero headline ("Wij bouwen" delay 500ms, "jouw visie." delay 800ms)
 - `LetterGlitch.tsx` — Glitch-effect op de "Iets specifieks" CTA-card in de diensten sectie
@@ -88,6 +88,7 @@ GitHub Action gebruikt `nvm use --lts` zodat `npm` en `pm2` in PATH staan.
 ## Openstaande taken
 - [ ] SEO: sitemap, schema markup, meta tags per pagina
 - [ ] Kennisbank of blog toevoegen
+- [ ] Social-proof strook op homepage (klantcitaten + logo's) — wacht op 1 quote + naam + bedrijf per case; voeg dan `quote`-veld toe aan `cases.json`. Grootste resterende CRO-winst.
 
 ## Sessieafsluiting (automatisch, altijd)
 
@@ -101,6 +102,15 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 ---
 
 ## Sessiehistorie
+
+### Sessie 13-06-2026 — CRO-audit homepage + verbeteringen
+- CRO-audit uitgevoerd (page-cro skill, score 79/100): grootste gaten = social proof en trust signals
+- Hero-headline: "jouw visie." → "jou verder brengt." (concreter, behoudt ScrambleText)
+- Bewijsregel toegevoegd onder hero-CTA's ("10+ projecten · 100% op tijd · gemiddeld 3 jaar klant")
+- Zwakke stat "10+ projecten" vervangen door "+40% conversiestijging voor klanten"; `CountUp` kreeg `prefix`-prop
+- Nieuwe FAQ-sectie (zwart, `<details>`-accordion zonder JS) tussen cases en CTA: kosten met richtprijs, doorlooptijd, vaste prijs vs uurtarief, geen-match, onderhoud. FAQ-CSS in `globals.css` (plus-icoon roteert, reduced-motion guard)
+- Contactformulier: telefoon nu optioneel (was verplicht), geruststellingsregel onder verzendknop
+- Openstaand: social-proof strook met echte klantcitaten (content nodig van Serdar)
 
 ### Sessie 02-06-2026 — Initiële bouw
 - Homepage volledig gebouwd (hero, stats, diensten, werkwijze, cases, waarom, contact, footer)
