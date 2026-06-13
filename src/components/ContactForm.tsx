@@ -197,7 +197,9 @@ export default function ContactForm() {
           cursor: loading ? "not-allowed" : "pointer",
         }}
       >
-        {loading ? "Bezig met verzenden..." : "Verstuur bericht"}
+        <span className="submit-label" data-loading={loading}>
+          {loading ? "Bezig met verzenden..." : "Verstuur bericht"}
+        </span>
       </button>
     </form>
   );

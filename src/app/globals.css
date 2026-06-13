@@ -53,6 +53,44 @@ body {
   transform: scale(0.97);
 }
 
+/* ── Navbar links — meegroeiende underline van links naar rechts ──────────── */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1.5px;
+  width: 100%;
+  background-color: #e8620a;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* ── Submit-knop — blur-mask bij label-wissel (loading) ───────────────────── */
+.submit-label {
+  display: inline-block;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.submit-label[data-loading="true"] {
+  filter: blur(3px);
+  opacity: 0.75;
+}
+@media (prefers-reduced-motion: reduce) {
+  .submit-label { transition: opacity 0.2s ease; filter: none; }
+  .submit-label[data-loading="true"] { filter: none; }
+  .nav-link::after { transition: none; }
+}
+
 /* ── Link-pijl die meeschuift bij hover ───────────────────────────────────── */
 .arrow {
   display: inline-block;
@@ -162,6 +200,10 @@ h1, h2, h3 {
 }
 
 /* ── Contact formulier velden ─────────────────────────────────────────────── */
+.contact-input {
+  transition: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}
+
 .contact-input::placeholder {
   color: rgba(240,237,232,0.3);
 }

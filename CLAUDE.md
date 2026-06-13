@@ -10,7 +10,7 @@
 ## Positionering
 Stackwerk is een Nederlands development bureau gespecialiseerd in websites, SaaS platforms en maatwerk software. Doelgroep: MKB en startups.
 
-## Huidige staat (13-06-2026)
+## Huidige staat (13-06-2026, laatste update sessie 2)
 
 **Paginas live:**
 - `/` — Homepage (Apple-stijl: hero, statement+stats, diensten 2x2, cases 2fr/1fr, CTA-oranje, contact)
@@ -178,6 +178,13 @@ Dit is een harde instructie die altijd geldt, ook als de sessie kort was of er w
 - Maatwerk Software en SaaS Platforms cards zijn nu plain (geen animatie-overlay)
 - `GridScan.tsx` verwijderd (niet meer gebruikt)
 - `.gridscan` CSS class verwijderd uit `globals.css`
+
+### Sessie 13-06-2026 (2) — Emil-craft vervolg (hero + preloader ongemoeid)
+- `.contact-input` kreeg een eased focus-transition (`border-color` + `box-shadow` via `--ease-out`); de oranje glow snapte voorheen hard in
+- `.nav-link` in `globals.css`: meegroeiende underline links→rechts (`scaleX` + `transform-origin: left`), gegate achter `hover: hover`; toegepast op desktop-navbarlinks
+- Mobiel menu: links + CTA komen staggered binnen bij openen (`0.08s + i*0.05s`), direct weg bij sluiten (asymmetrisch)
+- `.submit-label` in contactformulier: blur-mask (`filter: blur(3px)` + opacity) op `data-loading` i.p.v. harde tekstwissel
+- Alle nieuwe motion respecteert `prefers-reduced-motion`
 
 ### Sessie 13-06-2026 — Emil-craft retrofit (hero + preloader ongemoeid)
 - Easing-tokens toegevoegd in `globals.css`: `--ease-out` en `--ease-in-out`

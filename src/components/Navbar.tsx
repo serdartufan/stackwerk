@@ -34,7 +34,7 @@ export default function Navbar() {
               <Link
                 key={label}
                 href={href}
-                className="font-sans text-sm transition-colors hover:text-[#0a0a0a]"
+                className="nav-link font-sans text-sm hover:text-[#0a0a0a]"
                 style={{ color: "rgba(0,0,0,0.5)" }}
               >
                 {label}
@@ -90,12 +90,18 @@ export default function Navbar() {
             className="px-6 pb-6 pt-4 space-y-5"
             style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}
           >
-            {NAV_LINKS.map(({ label, href }) => (
+            {NAV_LINKS.map(({ label, href }, i) => (
               <Link
                 key={label}
                 href={href}
                 className="block font-sans text-base"
-                style={{ color: "#0a0a0a" }}
+                style={{
+                  color: "#0a0a0a",
+                  opacity: open ? 1 : 0,
+                  transform: open ? "translateY(0)" : "translateY(6px)",
+                  transition: "opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out)",
+                  transitionDelay: open ? `${0.08 + i * 0.05}s` : "0s",
+                }}
                 onClick={() => setOpen(false)}
               >
                 {label}
@@ -104,7 +110,13 @@ export default function Navbar() {
             <Link
               href="/#contact"
               className="press inline-flex items-center px-5 py-2.5 rounded-full font-sans text-sm font-medium text-white"
-              style={{ backgroundColor: "#0a0a0a" }}
+              style={{
+                backgroundColor: "#0a0a0a",
+                opacity: open ? 1 : 0,
+                transform: open ? "translateY(0)" : "translateY(6px)",
+                transition: "opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out)",
+                transitionDelay: open ? `${0.08 + NAV_LINKS.length * 0.05}s` : "0s",
+              }}
               onClick={() => setOpen(false)}
             >
               Start een project
